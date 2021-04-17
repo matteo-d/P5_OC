@@ -1,0 +1,19 @@
+{
+  "name": "p5_drouin_matteo",
+  "version": "1.0.0",
+  "main": "produits.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matteo-d/P5_OpenClassroom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matteo-d/P5_OpenClassroom/issues"
+  },
+  "homepage": "https://github.com/matteo-d/P5_OpenClassroom#readme",
+  "description": ""
+}
