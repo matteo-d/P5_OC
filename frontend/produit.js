@@ -56,22 +56,20 @@ btnAddToCart.addEventListener('click', function(e)  {
     }
 
     // Local Storage  
-    let productInLocal = JSON.parse(localStorage.getItem(cartItem));
-
+    // Si Local storage vide productInLocalStorage = null
+    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     // S'il y à deja des items dans le local storage
-    if (productInLocal){
-        console.log('ok')
-        productInLocal.push(cartItem);
-        localStorage.setItem("cartItem", JSON.stringify(productInLocal))
+    if (productInLocalStorage ){
+     console.log('il y a deja un article dans le panier')
+     productInLocalStorage.push(cartItem); 
+     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
     }
     else {
-        productInLocal = [
-        ]
-        console.log(productInLocal);
-
-        productInLocal.push(cartItem);
-        console.log(productInLocal);
-        localStorage.setItem("cartItem", JSON.stringify(productInLocal))
+      console.log(' Pas articles dans le panier')
+      productInLocalStorage = []
+      productInLocalStorage.push(cartItem); 
+      localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+      console.log(productInLocalStorage);
     }
 });
 
