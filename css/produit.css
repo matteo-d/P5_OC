@@ -74,11 +74,6 @@ body main .product {
   height: 75%;
 }
 
-body main .product:hover {
-  -webkit-transform: scale(1.005);
-          transform: scale(1.005);
-}
-
 body main .product img {
   border-top-right-radius: 33px;
   border-top-left-radius: 33px;
@@ -114,12 +109,11 @@ body main .product article p.product_description {
 }
 
 body main .product article p.price {
-  padding-top: 0,5rem;
-  margin-top: 1rem;
+  padding-top: 0.6rem;
 }
 
 body main .product article label {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   font-style: italic;
 }
 
@@ -128,7 +122,9 @@ body main .product article label h3 {
 }
 
 body main .product article select {
-  margin-top: 0.3rem;
+  margin-top: 0.6rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
 }
 
 body main .product article select:hover {
@@ -141,14 +137,61 @@ body main .product article select option {
   padding-top: 1rem;
 }
 
-body main .product article button {
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  margin-top: 0.5rem;
+body main .product article div#container_quantity {
+  padding: 1rem 0rem 0.5rem 0rem;
+}
+
+body main .product article div#container_quantity #btnMinus {
+  border: none;
+  background-color: #ebdcdc;
+  outline: none;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border-radius: 50px;
+  color: red;
+}
+
+body main .product article div#container_quantity #btnMinus:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  cursor: pointer;
+}
+
+body main .product article div#container_quantity span {
+  margin: 1rem;
+}
+
+body main .product article div#container_quantity #btnPlus {
+  border: none;
+  background-color: #ebdcdc;
+  outline: none;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border-radius: 50px;
+  color: green;
+}
+
+body main .product article div#container_quantity #btnPlus:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  cursor: pointer;
+}
+
+body main .product article div#container_addToCart {
   width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body main .product article div#container_addToCart button#addToCart {
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  margin-top: 0.5rem;
   border-radius: 33px;
 }
 
-body main .product article button:hover {
+body main .product article div#container_addToCart button#addToCart:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   cursor: pointer;

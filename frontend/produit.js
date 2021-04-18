@@ -15,18 +15,28 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
           <p class="product_description" id="description_product_${
             productResp.name}">${productResp.description}</p>   
           <p class="price" id="price_product_${productResp.name}">${(productResp.price / 100).toFixed(2).replace(".", ",")} €</p>
-        <!-- Personalisation de la couleur -->
+     
+          <!-- Personalisation de la couleur -->
         <label for="select__color">
             <h3>Personnaliser votre ours</h3>
         </label>
         <select class="section_choice" name="colors" id="select_choice">
         <!-- Mes choix de couleurs dans la function forEach --!>
-        </select>
-            <button class="addCart">Add</button>
+        </select> 
+        
+        <!-- Personalisation de la quantité -->
+        <div id="container_quantity">
+            <button id="btnMinus">-</button>
+            <span id="quantityOfProduct">0</span>
+            <button id="btnPlus">+</button>
+        </div>
+        <!--Btn Add to Cart-->
+        <div id="container_addToCart">
+            <button id="addToCart" class="addCart">Add</button>
         </div>`;
-    document.getElementById("main").innerHTML = html;
 
-    //Affichage des choix
+    document.getElementById("main").innerHTML = html;
+    //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
 
     productResp.colors.forEach(function (colors) {
@@ -35,8 +45,21 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       option.textContent = colors;
       choice.appendChild(option);
     });
-   
-    // Au clic l'élément et otption sélectionné au local storage
+   // Logique boutons quantité + et - 
+    let btnPlus = document.getElementById('btnPlus');
+    let btnMinus = document.getElementById('btnMinus');
+    let quantity = document.getElementById('quantityOfProduct');
+    let compteur = parseInt(quantity.innerText);
+
+    btnPlus.addEventListener('click', function() {
+        compteur ++;
+        quantity.innerHTML = compteur;
+    });
+    btnMinus.addEventListener('click', function() {
+      compteur --;
+        quantity.innerHTML = compteur;
+  });
+ // Au clic l'élément et otption sélectionné au local storage
 let btnAddToCart = document.querySelector(".addCart");
 let selectedValue = document.getElementById("select_choice");
   // Array qui contiendra les Cart Items 
@@ -54,7 +77,6 @@ btnAddToCart.addEventListener('click', function(e)  {
         quantity: 1,
         selectColors: selectedColor
     }
-
     // Local Storage  
     // Si Local storage vide productInLocalStorage = null
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -75,17 +97,4 @@ btnAddToCart.addEventListener('click', function(e)  {
 
 });
 
-    /*
-    let shoppingCart = []
-    shoppingCart.push(cartItem);
- 
-   // Ajoute le produit choisi au panier ( local storage )
-   localStorage.setItem('item', JSON.stringify(shoppingCart));
   
-   // Si le local storage est vide on créer une array
- 
-})
-
-
-*/
-

@@ -19,24 +19,68 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet" />
+
+    <script defer src="frontend/cart.js"></script>
 </head>
 
 <body>
 
-
     <nav>
         <a href="./index.html">
-            <i class="fas fa-arrow-left"></i>
+          <i class="fas fa-arrow-left"></i>
         </a>
         <a href="./index.html">
-            <img src="ressources/SVG/orioursPlan de travail 1.svg" alt="Logo OrinoPelcuche" class="logo" />
+          <img
+            src="ressources/SVG/orioursPlan de travail 1.svg"
+            alt="Logo OrinoPelcuche"
+            class="logo"
+          />
         </a>
-        <img src="shopping-cart.png" alt="panier" class="panier" />
+        <a href="panier.html"
+          ><img src="img/shopping-cart.png" alt="panier" class="panier" />
+        </a>
     </nav>
 
 
-    <main>
+    <main id="main">
+        <h1>Votre panier</h1>
+        <section class="options">
+            <p>Votre Ours</p>
+            <p>Couleur</p>
+            <p>Quantité</p>
+            <p>Prix</p>
+          
+        </section>
 
+        <section class="selectedProduct">
+            <ul>
+                <li><img src="" alt=""></li>
+                <li>Couleur</li>
+                <li>
+                </li>
+                <li>Prix</li>
+                <li>ClearCart</li>
+            </ul>
+        </section>
+        <section class="total">
+            <p>Total de la commande : 100e</p>
+        </section>
+       
+        <h2>Vos coordonnées</h2>
+        <form action="confirmation.html" method="GET">
+            <label for="name">Prénom</label>
+            <input type="text">
+            <label for="name">Nom</label>
+            <input type="text">
+            <label for="name">Adresse</label>
+            <input type="text">
+            <label for="name">Ville</label>
+            <input type="text">
+            <label for="email">E-mail</label>
+            <input type="email">
+            <button type="submit"> Passer commande</button>
+
+        </form>
     </main>
 
    

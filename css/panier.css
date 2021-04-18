@@ -55,78 +55,87 @@ body nav img.panier {
   padding-right: 4rem;
 }
 
-body main .product_caract {
+body main h1 {
+  color: red;
+  text-align: center;
+  padding: 2rem 0rem 1rem 0rem;
+}
+
+body main section.options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  border: solid 3px green;
-  margin-bottom: 4rem;
+  font-size: 2rem;
+  border-bottom: 4px solid red;
 }
 
-body main .product_caract h2 {
-  padding: 3rem;
-}
-
-body main .cart-items ul {
+body main section.selectedProduct {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  border: solid 3px red;
+  padding: 1rem 0rem 1rem 0rem;
 }
 
-body main .cart-items ul li {
-  padding: 3rem;
-  font-size: 1.5rem;
-}
-
-body main .cart-items ul li.cart-items_img {
-  color: green;
-}
-
-body main .cart-items ul li.cart-items_caract {
-  color: green;
-}
-
-body main .cart-items ul li.cart-items_price {
-  color: green;
-}
-
-body main .cart-items ul li.cart-items_total {
-  color: green;
-}
-
-body main .cart-total {
+body main section.selectedProduct ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+}
+
+body main section.selectedProduct ul li {
+  color: red padd;
+}
+
+body main section.total {
+  border-top: 4px solid green;
+}
+
+body main h2 {
+  color: red;
+  text-align: center;
+  padding: 2rem 0rem 1rem 0rem;
+}
+
+body main form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0rem 5rem 3rem 5rem;
+}
+
+body main form input {
+  color: blue;
+}
+
+body main form button {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  width: 30%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 33px;
+}
+
+body footer {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 3rem 6rem 3rem 3rem;
-  font-size: 1.5rem;
-}
-
-body main .cart-total p {
-  color: green;
-}
-
-body main .cart-total p span {
-  color: green;
-}
-
-body main .cart-total a {
-  outline-color: greenyellow;
-}
-
-body main .cart-total a button {
-  padding: 1rem;
-  margin-left: 1rem;
+  background-color: #333c63;
+  padding: 2rem 0 3rem 3rem;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
 }
 /*# sourceMappingURL=panier.css.map */

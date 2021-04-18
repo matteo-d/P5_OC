@@ -45,57 +45,62 @@ body {
   }
 
   main {
-    .product_caract {
+    h1 {
+      color: red;
+      text-align: center;
+      padding: 2rem 0rem 1rem 0rem;
+    }
+    section.options {
       display: flex;
       justify-content: space-around;
-      border: solid 3px green;
-      margin-bottom: 4rem;
-      h2 {
-        padding: 3rem;
-      }
+      font-size: 2rem
+      ;
+      border-bottom: 4px solid red;
     }
-    .cart-items {
-      ul {
-        display: flex;
-        justify-content: space-around;
-        border: solid 3px red;
-        li {
-          padding: 3rem;
-          font-size: 1.5rem;
-        }
-        li.cart-items_img {
-          color: green;
-        }
-        li.cart-items_caract {
-          color: green;
-        }
-        li.cart-items_price {
-          color: green;
-        }
-        li.cart-items_total {
-          color: green;
-        }
-      }
-    }
-    .cart-total {
+    section.selectedProduct {
       display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 3rem 6rem 3rem 3rem;
-      font-size: 1.5rem;
-      p {
-        color: green;
-        span {
-          color: green;
+      justify-content: space-around;
+      padding: 1rem 0rem 1rem 0rem;
+        ul {
+          display: flex;
+         
+            li {
+              color:red
+              padd
+            }
         }
+    }
+    section.total {
+      border-top: 4px solid green;
+    }
+    h2 {
+      color: red;
+      text-align: center;
+      padding: 2rem 0rem 1rem 0rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 0rem 5rem 3rem 5rem;
+      input {
+        color: blue;
       }
-      a {
-        outline-color: greenyellow;
-        button {
-          padding: 1rem;
-          margin-left: 1rem;
-        }
+      button {
+        margin-top: 1rem;
+        padding: 0.7rem;
+        width: 30%;
+        align-self: center;
+        border-radius: 33px;
       }
     }
+  }
+  footer {
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #333c63;
+    padding: 2rem 0 3rem 3rem;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
   }
 }
