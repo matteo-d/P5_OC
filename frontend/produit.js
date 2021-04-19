@@ -54,6 +54,9 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     });
     btnMinus.addEventListener('click', function() {
       compteur --;
+      if (compteur  = 0) {
+        compteur ++;
+      }
         quantity.innerHTML = compteur;
     });
     // Au clic l'élément et otption sélectionné au local storage
@@ -74,12 +77,14 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       name: productResp.name,
       price: productResp.price,
       chosenQuantity: chosenQuantity,
-      selectColors: selectedColor,
+      selectedColor: selectedColor,
     }
     // Local Storage  
     // Si Local storage vide productInLocalStorage = null
-    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-    // S'il y à deja des items dans le local storage
+// On recupère l'array contenant les objets du local sotrage
+let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+console.table(productInLocalStorage)
+
     if (productInLocalStorage ){
      console.log('il y a deja un article dans le panier')
      productInLocalStorage.push(cartItem); 

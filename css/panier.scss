@@ -59,14 +59,19 @@ body {
     }
     section.selectedProduct {
       display: flex;
+      flex-direction: column;
       justify-content: space-around;
       padding: 1rem 0rem 1rem 0rem;
         ul {
           display: flex;
+          justify-content: space-around;
          
             li {
-              color:red
-              padd
+              color:red;
+              img {
+                width: 4rem;
+                height: 4rem;
+              }
             }
         }
     }

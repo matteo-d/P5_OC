@@ -75,6 +75,10 @@ body main section.selectedProduct {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 1rem 0rem 1rem 0rem;
@@ -84,10 +88,17 @@ body main section.selectedProduct ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 body main section.selectedProduct ul li {
-  color: red padd;
+  color: red;
+}
+
+body main section.selectedProduct ul li img {
+  width: 4rem;
+  height: 4rem;
 }
 
 body main section.total {
