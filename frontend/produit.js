@@ -53,10 +53,11 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         quantity.innerHTML = compteur;
     });
     btnMinus.addEventListener('click', function() {
-      compteur --;
-      if (compteur  = 0) {
-        compteur ++;
-      }
+  
+   if(compteur > 1) {
+     compteur --;
+   }
+  
         quantity.innerHTML = compteur;
     });
     // Au clic l'élément et otption sélectionné au local storage
