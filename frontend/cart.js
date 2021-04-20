@@ -17,8 +17,9 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
       <button class="btnMinus">-</button>         
       <button class="btnPlus">+</button>
  </li>
- <li>
- ${(productInLocalStorage[i].price / 100).toFixed(2).replace(".", ",")}€
+ <li class="totalElPrice" id="totalElprice">
+ <span id="price">${(productInLocalStorage[i].price / 100).toFixed(2).replace(".", ",")}  </span>
+ €
  </li>
  <li>
  <button class="clearCart">ClearCart</button>
@@ -29,41 +30,54 @@ document.querySelector(".selectedProduct").innerHTML = html
 }
 
 // Logique boutons quantité +
-let btnPlus = document.querySelectorAll(".btnPlus");
-
+let btnPlus = document.querySelectorAll(".btnPlus"); 
 for(let x = 0; x < btnPlus.length; x++) {
- 
+
   btnPlus[x].addEventListener('click', () => {
     let quantity = btnPlus[x].previousElementSibling.previousElementSibling;
     let compteur = parseInt(quantity.innerText);
- console.log(quantity)
- console.log(compteur)
- compteur ++ ;
- quantity.innerText = compteur
+
+    compteur ++ ;
+    console.log(quantity)
+    console.log(typeof compteur)
+    quantity.innerText = compteur;
+
+ // Logique Affichage prix quand boutton + est clické 
+
+    // Récupérer la quantité séléctioné en nombre
+   let parsedQuantity = parseFloat(quantity.innerHTML);
+      console.log(  parsedQuantity);
+    // Récupérer le prix de base de ce produit
+   
+    //Calcul 
+    let newPrice = (parsedQuantity * price);  
+      console.log(newPrice);
+      console.log(typeof newPrice);
+   //Afficher le résultat
+btnPlus[x].parentElement.nextElementSibling.firstElementChild.innerHTML = newPrice;
 })
 };
 
 // Logique boutons quantité -
+
 let btnMinus = document.querySelectorAll(".btnMinus");
 
 for(let z = 0; z < btnPlus.length; z++) {
   btnMinus[z].addEventListener('click', () => {
     let quantity = btnMinus[z].previousElementSibling;
     let compteur = parseInt(quantity.innerText);
-    console.log(quantity);
-    console.log(compteur);
 
     if(compteur > 1) {
       compteur --;
     }
     quantity.innerText = compteur
+ 
 });
 }
 
 
 
-
-// Vider un élément §§§ Attention ne supprime pas l'el du local storage $$$$$$$
+// Vider un élément!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Attention ne supprime pas l'element du local storage !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 let btnDelete = document.querySelectorAll(".clearCart");
 
 for(let j = 0; j < btnDelete.length; j++) {

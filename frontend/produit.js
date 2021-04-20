@@ -23,7 +23,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         <!-- Personalisation de la quantité -->
         <div id="container_quantity">
             <button id="btnMinus">-</button>
-            <span id="quantityOfProduct">0</span>
+            <span id="quantityOfProduct">1</span>
             <button id="btnPlus">+</button>
         </div>
         <!--Btn Add to Cart-->
@@ -60,6 +60,8 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
   
         quantity.innerHTML = compteur;
     });
+
+
     // Au clic l'élément et otption sélectionné au local storage
     let btnAddToCart = document.querySelector(".addCart");
     let selectedValue = document.getElementById("select_choice");
@@ -85,18 +87,22 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 // On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 console.table(productInLocalStorage)
-
-    if (productInLocalStorage ){
-     console.log('il y a deja un article dans le panier')
-     productInLocalStorage.push(cartItem); 
-     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+// Action si local storage contient dejà un article
+    if (productInLocalStorage){
+         console.log(cartItem.selectedColor);
+         console.log(cartItem._id);
+       
+         console.log(productInLocalStorage);
+        
+     // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage      
+   
+        productInLocalStorage.push(cartItem); 
+        localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage)); 
     }
     else {
-    console.log(' Pas articles dans le panier')
     productInLocalStorage = []
     productInLocalStorage.push(cartItem); 
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-    console.log(productInLocalStorage);
     }
 });
 
