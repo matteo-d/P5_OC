@@ -8,9 +8,9 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
   //Html pur , Créer les élément, clone prototype
  html += `
 <ul>
- <li><img src="${productInLocalStorage[i].imageUrl}" alt="Ours ${productInLocalStorage[i].name}">
+ <li><img id="${productInLocalStorage[i]._id}" src="${productInLocalStorage[i].imageUrl}" alt="Ours ${productInLocalStorage[i].name}">
  </li>
- <li>${productInLocalStorage[i].selectedColor}
+ <li class="selectedColor">${productInLocalStorage[i].selectedColor}
  </li>
  <li>
       <span class="quantityOfProduct"> ${productInLocalStorage[i].chosenQuantity}</span>
@@ -36,25 +36,43 @@ for(let x = 0; x < btnPlus.length; x++) {
   btnPlus[x].addEventListener('click', () => {
     let quantity = btnPlus[x].previousElementSibling.previousElementSibling;
     let compteur = parseInt(quantity.innerText);
-
+    
     compteur ++ ;
     console.log(quantity)
     console.log(typeof compteur)
     quantity.innerText = compteur;
 
  // Logique Affichage prix quand boutton + est clické 
-
     // Récupérer la quantité séléctioné en nombre
    let parsedQuantity = parseFloat(quantity.innerHTML);
-      console.log(  parsedQuantity);
     // Récupérer le prix de base de ce produit
-   
+   let product = btnPlus[x].parentElement.parentElement.firstElementChild.firstElementChild.id;
+
+   switch(product) {
+     case "5be9c8541c9d440000665243" :
+       price = 29,00;
+       break;
+       case "5beaa8bf1c9d440000a57d94":
+        price = 39,00;
+       break;
+       case "5beaaa8f1c9d440000a57d95" :
+        price = 59,00;
+       break;
+       case "5beaabe91c9d440000a57d96" :
+        price = 45,00;
+       break;
+       case "5beaacd41c9d440000a57d97" :
+        price = 55,00;
+       break;
+   }
     //Calcul 
     let newPrice = (parsedQuantity * price);  
       console.log(newPrice);
-      console.log(typeof newPrice);
    //Afficher le résultat
-btnPlus[x].parentElement.nextElementSibling.firstElementChild.innerHTML = newPrice;
+   let updatedPriceEl = btnPlus[x].parentElement.nextElementSibling;
+   console.log(updatedPriceEl);
+   updatedPriceEl.innerText = newPrice + "€";
+
 })
 };
 
@@ -71,7 +89,37 @@ for(let z = 0; z < btnPlus.length; z++) {
       compteur --;
     }
     quantity.innerText = compteur
- 
+  // Logique Affichage prix quand boutton - est clické 
+    // Récupérer la quantité séléctioné en nombre
+    let parsedQuantity = parseFloat(quantity.innerHTML);
+    // Récupérer le prix de base de ce produit
+   let product = btnMinus[z].parentElement.parentElement.firstElementChild.firstElementChild.id;
+    console.log(product)
+   switch(product) {
+     case "5be9c8541c9d440000665243" :
+       price = 29,00;
+       break;
+       case "5beaa8bf1c9d440000a57d94":
+        price = 39,00;
+       break;
+       case "5beaaa8f1c9d440000a57d95" :
+        price = 59,00;
+       break;
+       case "5beaabe91c9d440000a57d96" :
+        price = 45,00;
+       break;
+       case "5beaacd41c9d440000a57d97" :
+        price = 55,00;
+       break;
+   }
+    //Calcul 
+    let newPrice = (parsedQuantity * price);  
+      console.log(newPrice);
+   //Afficher le résultat
+   let updatedPriceEl = btnMinus[z].parentElement.nextElementSibling;
+   console.log(updatedPriceEl);
+   updatedPriceEl.innerText = newPrice + "€";
+
 });
 }
 
