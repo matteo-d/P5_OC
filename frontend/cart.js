@@ -13,9 +13,9 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
  <li>${productInLocalStorage[i].selectedColor}
  </li>
  <li>
-      <span id="quantityOfProduct"> ${productInLocalStorage[i].chosenQuantity}</span>
-      <button id="btnMinus_${productInLocalStorage[i].name}_${productInLocalStorage[i].selectedColor}">-</button>         
-      <button id="btnPlus_${productInLocalStorage[i].name}_${productInLocalStorage[i].selectedColor}">+</button>
+      <span class="quantityOfProduct"> ${productInLocalStorage[i].chosenQuantity}</span>
+      <button class="btnMinus">-</button>         
+      <button class="btnPlus">+</button>
  </li>
  <li>
  ${(productInLocalStorage[i].price / 100).toFixed(2).replace(".", ",")}€
@@ -26,24 +26,51 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
 </ul>
 `
 document.querySelector(".selectedProduct").innerHTML = html
-
- // Logique boutons quantité + et - 
-
 }
+
+// Logique boutons quantité +
+let btnPlus = document.querySelectorAll(".btnPlus");
+
+for(let x = 0; x < btnPlus.length; x++) {
  
-// Vider un élément §§§ Attention ne supprime pas l'el du local storage
+  btnPlus[x].addEventListener('click', () => {
+    let quantity = btnPlus[x].previousElementSibling.previousElementSibling;
+    let compteur = parseInt(quantity.innerText);
+ console.log(quantity)
+ console.log(compteur)
+ compteur ++ ;
+ quantity.innerText = compteur
+})
+};
+
+// Logique boutons quantité -
+let btnMinus = document.querySelectorAll(".btnMinus");
+
+for(let z = 0; z < btnPlus.length; z++) {
+  btnMinus[z].addEventListener('click', () => {
+    let quantity = btnMinus[z].previousElementSibling;
+    let compteur = parseInt(quantity.innerText);
+    console.log(quantity);
+    console.log(compteur);
+
+    if(compteur > 1) {
+      compteur --;
+    }
+    quantity.innerText = compteur
+});
+}
+
+
+
+
+// Vider un élément §§§ Attention ne supprime pas l'el du local storage $$$$$$$
 let btnDelete = document.querySelectorAll(".clearCart");
-console.log(btnDelete);
 
 for(let j = 0; j < btnDelete.length; j++) {
-
-  console.log(btnDelete[j]);
   btnDelete[j].addEventListener('click', () => {
     btnDelete[j].parentElement.parentElement.remove();
 })
-
 }
-
 
 // Vider le panier 
 const clearAll  = document.getElementById("clearCart");
