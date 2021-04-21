@@ -87,14 +87,12 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 // On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 console.table(productInLocalStorage)
+
+
 // Action si local storage contient dejà un article
     if (productInLocalStorage){
-         console.log(cartItem.selectedColor);
-         console.log(cartItem._id);
-       
-         console.log(productInLocalStorage);
-        
-     // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage      
+     
+     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     
    
         productInLocalStorage.push(cartItem); 
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage)); 
