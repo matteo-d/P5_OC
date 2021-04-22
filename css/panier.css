@@ -106,6 +106,7 @@ body main section.selectedProduct ul li img {
 }
 
 body main section.total {
+  padding-top: 2rem;
   border-top: 4px solid green;
   display: -webkit-box;
   display: -ms-flexbox;

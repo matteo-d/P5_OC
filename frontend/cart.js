@@ -38,8 +38,7 @@ for(let x = 0; x < btnPlus.length; x++) {
     let compteur = parseInt(quantity.innerText);
     
     compteur ++ ;
-    console.log(quantity)
-    console.log(typeof compteur)
+   
     quantity.innerText = compteur;
 
  ////////////////////////// Logique Affichage prix quand boutton + est clické 
@@ -67,12 +66,20 @@ for(let x = 0; x < btnPlus.length; x++) {
    }
     //Calcul 
     let newPrice = (((parsedQuantity * price) / 100).toFixed(2).replace(".", ","));  
-      console.log(newPrice);
+      
    //Afficher le résultat
-   let updatedPriceEl = btnPlus[x].parentElement.nextElementSibling;
+   let updatedPriceEl = btnPlus[x].parentElement.nextElementSibling.firstElementChild;
  
-   updatedPriceEl.innerText = newPrice + "€";
+   updatedPriceEl.innerText = newPrice ;
 
+   // Total Panier
+   arrayPricesInCart = [];
+   for(let e = 0; e < productInLocalStorage.length; e++) {
+     pricesInCart = productInLocalStorage[e].price;
+     arrayPricesInCart.push(pricesInCart)
+     console.log(arrayPricesInCart)
+   }
+   
 })
 };
 
@@ -114,25 +121,26 @@ for(let z = 0; z < btnPlus.length; z++) {
    }
     //Calcul 
     let newPrice = (((parsedQuantity * price) / 100).toFixed(2).replace(".", ","));  
-      console.log(newPrice);
+   
    //Afficher le résultat
-   let updatedPriceEl = btnMinus[z].parentElement.nextElementSibling;
-   console.log(updatedPriceEl);
-   updatedPriceEl.innerText = newPrice + "€";
+   let updatedPriceEl = btnMinus[z].parentElement.nextElementSibling.firstElementChild;
+  
+   updatedPriceEl.innerText = newPrice ;
 
+   /// Total Panier
+let elPrice = document.querySelectorAll('#price');
+
+
+for(let q = 0; q < elPrice.length; q++) { 
+let a =  elPrice[q].innerText; 
+let b =  elPrice[q++].innerText; 
+
+console.log(parseInt(a) - parseInt(b));
+
+}
 });
 }
-  ///////////////////////////////// Total Panier
-  let totalPanier = [];
-for(let v = 0; v < productInLocalStorage.length; v++) {
-let prixProduitEl = productInLocalStorage[v].price;
-
-totalPanier.push(prixProduitEl);
-// Additionner tout les prix d'un tableau
-console.log(totalPanier);
-}
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-console.log(totalPanier.reduce(reducer))
+  
 
 /////////////// Vider un élément!!!!!!!!!!!! Attention ne supprime pas l'element du local storage !!!!!!!!!!!!!!!
 let btnDelete = document.querySelectorAll(".clearCart");
@@ -140,12 +148,6 @@ console.log(productInLocalStorage)
 for(let j = 0; j < btnDelete.length; j++) {
   btnDelete[j].addEventListener('click', () => {
       
-let getLocalStorage = JSON.parse(localStorage.getItem('cartItem'));
-console.log(getLocalStorage[j]);
-let ItemRemoved = getLocalStorage.splice(j,1)
-console.log(ItemRemoved);
-localStorage.setItem("cartItem", JSON.stringify(ItemRemoved));
-
     btnDelete[j].parentElement.parentElement.remove();
     
 })
