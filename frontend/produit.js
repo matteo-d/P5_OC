@@ -93,9 +93,9 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
         // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage 
        if ( productInLocalStorage.some( el => el._id == cartItem._id)  && productInLocalStorage.some( el => el.selectedColor == cartItem.selectedColor) == true) {
         console.log('déja dans el panier ')   
-        return
        }     
      else {
+      console.log('Ajout au panier')
       productInLocalStorage.push(cartItem); 
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
      }

@@ -145,10 +145,14 @@ console.log(parseInt(a) - parseInt(b));
 /////////////// Vider un élément!!!!!!!!!!!! Attention ne supprime pas l'element du local storage !!!!!!!!!!!!!!!
 let btnDelete = document.querySelectorAll(".clearCart");
 console.log(productInLocalStorage)
+console.log(btnDelete);
 for(let j = 0; j < btnDelete.length; j++) {
   btnDelete[j].addEventListener('click', () => {
       
     btnDelete[j].parentElement.parentElement.remove();
+    productInLocalStorage.splice([j], 1);
+    console.table(productInLocalStorage);
+    localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
     
 })
 }
