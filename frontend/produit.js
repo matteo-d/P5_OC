@@ -18,6 +18,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
             <h3>Personnaliser votre ours</h3>
         </label>
         <select class="section_choice" name="colors" id="select_choice">
+        <option disabled selected > Couleurs </option>
           <!-- Mes choix de couleurs dans la function forEach --!>
         </select>        
         <!-- Personalisation de la quantité -->
@@ -92,7 +93,7 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
         // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage 
        if ( productInLocalStorage.some( el => el._id == cartItem._id)  && productInLocalStorage.some( el => el.selectedColor == cartItem.selectedColor) == true) {
-        console.log('déja dans el panier ')   
+        console.log('déja dans le panier panier ')   
        }     
      else {
       console.log('Ajout au panier')

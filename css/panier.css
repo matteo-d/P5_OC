@@ -32,9 +32,7 @@ body nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #d9832f;
-  background: -webkit-gradient(linear, left top, right top, from(#d9832f), to(#8d5afa));
-  background: linear-gradient(90deg, #d9832f 0%, #8d5afa 100%);
+  height: 15vh;
 }
 
 body nav .fa-arrow-left {
@@ -45,20 +43,17 @@ body nav .fa-arrow-left {
 
 body nav img.logo {
   width: 20rem;
-  font-family: "Paytone One", sans-serif;
   cursor: pointer;
 }
 
 body nav img.panier {
-  width: 120px;
+  width: 40px;
   cursor: pointer;
   padding-right: 4rem;
 }
 
-body main h1 {
-  color: red;
-  text-align: center;
-  padding: 2rem 0rem 1rem 0rem;
+body main {
+  margin-top: 3rem;
 }
 
 body main section.options {
@@ -68,7 +63,7 @@ body main section.options {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   font-size: 2rem;
-  border-bottom: 4px solid red;
+  border-bottom: 1px solid;
   padding-bottom: 2rem;
 }
 
@@ -105,9 +100,27 @@ body main section.selectedProduct ul li img {
   height: 9rem;
 }
 
+body main section.selectedProduct ul li .btnMinus {
+  border: none;
+  background-color: #f1cbcb;
+  color: #d0a1a1;
+  outline: none;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border-radius: 50px;
+}
+
+body main section.selectedProduct ul li .btnPlus {
+  border: none;
+  color: #946262;
+  background-color: #f2cccc;
+  outline: none;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  border-radius: 50px;
+}
+
 body main section.total {
   padding-top: 2rem;
-  border-top: 4px solid green;
+  border-top: 1px solid;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,7 +134,6 @@ body main section.total p {
 }
 
 body main h2 {
-  color: red;
   text-align: center;
   padding: 2rem 0rem 1rem 0rem;
 }
@@ -134,17 +146,21 @@ body main form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0rem 5rem 3rem 5rem;
 }
 
 body main form input {
-  color: blue;
+  width: 30%;
+  height: 1.6rem;
 }
 
 body main form button {
   margin-top: 1rem;
   padding: 0.7rem;
-  width: 30%;
+  width: 10%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;

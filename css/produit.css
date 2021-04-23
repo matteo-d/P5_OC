@@ -31,9 +31,7 @@ body nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #d9832f;
-  background: -webkit-gradient(linear, left top, right top, from(#d9832f), to(#8d5afa));
-  background: linear-gradient(90deg, #d9832f 0%, #8d5afa 100%);
+  height: 15vh;
 }
 
 body nav .fa-arrow-left {
@@ -43,14 +41,14 @@ body nav .fa-arrow-left {
 }
 
 body nav img.logo {
-  width: 18rem;
+  width: 20rem;
   cursor: pointer;
 }
 
 body nav img.panier {
-  height: 30px;
+  width: 40px;
   cursor: pointer;
-  padding-right: 3rem;
+  margin-right: 3rem;
 }
 
 body main {
@@ -70,8 +68,8 @@ body main {
 body main .product {
   border: solid 5px black;
   border-radius: 33px;
-  width: 70%;
-  height: 75%;
+  width: 40%;
+  height: 35%;
 }
 
 body main .product img {
@@ -128,6 +126,8 @@ body main .product article select {
 }
 
 body main .product article select:hover {
+  outline: none;
+  border: 1px solid #bbbb;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   cursor: pointer;
@@ -135,6 +135,7 @@ body main .product article select:hover {
 
 body main .product article select option {
   padding-top: 1rem;
+  background-color: #f4e1e1;
 }
 
 body main .product article div#container_quantity {
@@ -143,11 +144,11 @@ body main .product article div#container_quantity {
 
 body main .product article div#container_quantity #btnMinus {
   border: none;
-  background-color: #ebdcdc;
+  background-color: #f1cbcb;
+  color: #d0a1a1;
   outline: none;
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 50px;
-  color: red;
 }
 
 body main .product article div#container_quantity #btnMinus:hover {
@@ -162,11 +163,11 @@ body main .product article div#container_quantity span {
 
 body main .product article div#container_quantity #btnPlus {
   border: none;
-  background-color: #ebdcdc;
+  color: #946262;
+  background-color: #f2cccc;
   outline: none;
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 50px;
-  color: green;
 }
 
 body main .product article div#container_quantity #btnPlus:hover {

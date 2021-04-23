@@ -1,10 +1,21 @@
 // On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
+
+
+
+
+
+
 //////////////////////// Display des articles présents dans le panier
 let html =""
 // Boucle pour récupérer toutes les variables des produits + (Foreach)
 for(let i = 0; i < productInLocalStorage.length; i++) {
+  // To display the right price Onload
+  let number = ((productInLocalStorage[i].chosenQuantity))
+  let multiplicator =( (productInLocalStorage[i].price / 100))
+  let result = number * multiplicator;
+ let twoDecimalResult = (Math.round(result * 100) / 100).toFixed(2)
   //Html pur , Créer les élément, clone prototype
  html += `
 <ul>
@@ -18,7 +29,7 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
       <button class="btnPlus">+</button>
  </li>
  <li class="totalElPrice" id="totalElprice">
- <span id="price">${(productInLocalStorage[i].price / 100).toFixed(2).replace(".", ",")}  </span>
+ <span id="price">${twoDecimalResult }  </span>
  €
  </li>
  <li>
@@ -28,6 +39,14 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
 `
 document.querySelector(".selectedProduct").innerHTML = html
 }
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////// Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus"); 
@@ -99,6 +118,12 @@ for(let x = 0; x < btnPlus.length; x++) {
 })
 };
 
+
+
+
+
+
+
 //////////////////////////////////// Logique boutons quantité -
 
 let btnMinus = document.querySelectorAll(".btnMinus");
@@ -112,7 +137,9 @@ for(let z = 0; z < btnPlus.length; z++) {
       compteur --;
     }
     quantity.innerText = compteur
+
   //////////////////////// Logique Affichage prix quand boutton - est clické 
+
     // Récupérer la quantité séléctioné en nombre
     let parsedQuantity = parseFloat(quantity.innerHTML);
     // Récupérer le prix de base de ce produit
@@ -135,6 +162,7 @@ for(let z = 0; z < btnPlus.length; z++) {
         price = 5500;
        break;
    }
+
     //Calcul 
     let newPrice = (((parsedQuantity * price) / 100).toFixed(2).replace(".", ","));  
    
@@ -165,10 +193,15 @@ for(let z = 0; z < btnPlus.length; z++) {
   console.log( resultFloat);
   totalText.innerHTML = (resultFloat)
 
-
 });
 }
   
+
+
+
+
+
+
 
 /////////////// Vider un élément
 let btnDelete = document.querySelectorAll(".clearCart");
