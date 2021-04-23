@@ -72,14 +72,30 @@ for(let x = 0; x < btnPlus.length; x++) {
  
    updatedPriceEl.innerText = newPrice ;
 
-   // Total Panier
-   arrayPricesInCart = [];
-   for(let e = 0; e < productInLocalStorage.length; e++) {
-     pricesInCart = productInLocalStorage[e].price;
-     arrayPricesInCart.push(pricesInCart)
-     console.log(arrayPricesInCart)
-   }
-   
+
+    /// Total Panier
+    let totalText = document.getElementById("totalPrice");
+    let calcul = [];
+    let elPrice = document.querySelectorAll('#price');
+    let elQuantity = document.querySelectorAll('.quantityOfProduct')
+    for(let d = 0; d < elPrice.length; d++) { 
+      let a = (parseInt(elQuantity[d].innerText));
+     
+      let b = (productInLocalStorage[d].price);
+    
+      let sum = (a * b) 
+      
+      calcul.push(sum)
+    }
+
+    const add = (a, b) => a + b
+  let result = calcul.reduce(add);
+  
+ let resultFloat =  ((result / 100).toFixed(2).replace(".", ","));
+  console.log( resultFloat);
+  totalText.innerHTML = (resultFloat)
+
+
 })
 };
 
@@ -127,31 +143,42 @@ for(let z = 0; z < btnPlus.length; z++) {
   
    updatedPriceEl.innerText = newPrice ;
 
-   /// Total Panier
-let elPrice = document.querySelectorAll('#price');
+    /// Total Panier
+    let totalText = document.getElementById("totalPrice");
+    let calcul = [];
+    let elPrice = document.querySelectorAll('#price');
+    let elQuantity = document.querySelectorAll('.quantityOfProduct')
+    for(let d = 0; d < elPrice.length; d++) { 
+      let a = (parseInt(elQuantity[d].innerText));
+     
+      let b = (productInLocalStorage[d].price);
+    
+      let sum = (a * b) 
+      
+      calcul.push(sum)
+    }
+
+    const add = (a, b) => a + b
+  let result = calcul.reduce(add);
+  
+ let resultFloat =  ((result / 100).toFixed(2).replace(".", ","));
+  console.log( resultFloat);
+  totalText.innerHTML = (resultFloat)
 
 
-for(let q = 0; q < elPrice.length; q++) { 
-let a =  elPrice[q].innerText; 
-let b =  elPrice[q++].innerText; 
-
-console.log(parseInt(a) - parseInt(b));
-
-}
 });
 }
   
 
-/////////////// Vider un élément!!!!!!!!!!!! Attention ne supprime pas l'element du local storage !!!!!!!!!!!!!!!
+/////////////// Vider un élément
 let btnDelete = document.querySelectorAll(".clearCart");
-console.log(productInLocalStorage)
-console.log(btnDelete);
+
 for(let j = 0; j < btnDelete.length; j++) {
   btnDelete[j].addEventListener('click', () => {
       
     btnDelete[j].parentElement.parentElement.remove();
     productInLocalStorage.splice([j], 1);
-    console.table(productInLocalStorage);
+   
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
     
 })
