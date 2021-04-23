@@ -10,13 +10,18 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 //////////////////////// Display des articles présents dans le panier
 let html =""
 // Boucle pour récupérer toutes les variables des produits + (Foreach)
+let TotalPriceOnLoad = [];
 for(let i = 0; i < productInLocalStorage.length; i++) {
-  // To display the right price Onload
+  //  Display the right price Onload
   let number = ((productInLocalStorage[i].chosenQuantity))
   let multiplicator =( (productInLocalStorage[i].price / 100))
   let result = number * multiplicator;
  let twoDecimalResult = (Math.round(result * 100) / 100).toFixed(2)
-  //Html pur , Créer les élément, clone prototype
+ //  Display the right TOTAL price Onload 
+
+TotalPriceOnLoad.push(result)
+
+  //Html  
  html += `
 <ul>
  <li><img id="${productInLocalStorage[i]._id}" src="${productInLocalStorage[i].imageUrl}" alt="Ours ${productInLocalStorage[i].name}">
@@ -40,11 +45,11 @@ for(let i = 0; i < productInLocalStorage.length; i++) {
 document.querySelector(".selectedProduct").innerHTML = html
 }
 
-
-
-
-
-
+// Affiché le prix total sélectionné dès l'arrivé sur la page 
+let totalText = document.getElementById("totalPrice");
+    const add = (a, b) => a + b
+  let TotalPrice = TotalPriceOnLoad.reduce(add);
+  totalText.innerHTML = TotalPrice
 
 
 
