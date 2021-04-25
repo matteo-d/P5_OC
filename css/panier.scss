@@ -32,7 +32,7 @@ padding-bottom: 2rem;
     }
     .goToHome {
      
-      transform: translateY(-4.5rem);
+      transform: translateY(-4.2rem);
       img {
         width: 20rem;
         height: 9vh;
@@ -46,51 +46,66 @@ padding-bottom: 2rem;
   main {
     padding-top: 3rem;
     section.options {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+      border-bottom: solid 1px black;
       font-size: 2rem;
-      border-bottom: 1px solid;
       padding-bottom: 2rem;
+      padding-left: 2rem;
      svg{  
         cursor: pointer;  
+       margin-left: 3rem;
       }
     }
     section.selectedProduct {
       display: flex;
       flex-direction: column;
-      padding: 1rem 0rem 1rem 0rem;
+      padding: 3rem 0rem 1rem 0rem;
       ul {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+     
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-template-rows: 1fr;
+          grid-column-gap: 0px;
+          grid-row-gap: 0px;
+          padding-bottom: 2rem;
+          
         li {
+          display: flex;
+          align-items: center;
           font-size: 1.4rem;
-       margin-right: 3rem;
+          padding-left: 1.5rem;
+          
           img {
             width: 12rem;
             height: 9rem;
-          }
+            border: solid 1px black;
+                 }
           .btnMinus {
             border: none;
             background-color: #f1cbcb;
-            color: #d0a1a1;
+            color: #dcb1b1;
             outline: none;
             padding: 0.5rem 0.8rem 0.5rem 0.8rem;
             border-radius: 50px;
             cursor: pointer;
+            margin-left: 0.5rem;
             &:hover {
               transform: scale(1.05);
             }
           }
           .btnPlus {
             border: none;
-            color: #946262;
+            color: #7e5454;
             background-color: #f2cccc;
             outline: none;
             padding: 0.5rem 0.8rem 0.5rem 0.8rem;
             border-radius: 50px;
             cursor: pointer;
+            margin-left: 0.5rem;
             &:hover {
               transform: scale(1.05);
             }
@@ -99,7 +114,11 @@ padding-bottom: 2rem;
             border: solid 2px;
         cursor: pointer;
         padding: 1rem;
+        width: 30%;
         background-color: white;
+        &:hover {
+          transform: scale(1.05);
+        }
           }
         }
       }

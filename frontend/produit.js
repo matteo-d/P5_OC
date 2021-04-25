@@ -104,7 +104,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         ) {
           console.log("déja dans le panier panier ");
         } else {
-          console.log("Ajout au panier");
+          alert("Ajout au panier");
           productInLocalStorage.push(cartItem);
           localStorage.setItem(
             "cartItem",
