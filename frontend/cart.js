@@ -38,7 +38,15 @@ for (let i = 0; i < productInLocalStorage.length; i++) {
 `;
   document.querySelector(".selectedProduct").innerHTML = html;
 }
-
+ // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+    let numberOfArticleInCart = productInLocalStorage.length;
+    console.log(numberOfArticleInCart);
+    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+   }
 // Affiché le prix total sélectionné dès l'arrivé sur la page
 let totalText = document.getElementById("totalPrice");
 const add = (a, b) => a + b;
@@ -229,12 +237,15 @@ for (let j = 0; j < btnDelete.length; j++) {
      console.log(resultFloat);
      totalText.innerHTML = resultFloat;
 
-     // Affiché le nbres d'items dans le panier dès l'arrivé sur la page
-
-let numberOfArticleInCart = productInLocalStorage.length;
-console.log(numberOfArticleInCart);
-let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+     // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+    let numberOfArticleInCart = productInLocalStorage.length;
+    console.log(numberOfArticleInCart);
+    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+   }
   });
 }
 

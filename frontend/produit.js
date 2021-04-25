@@ -38,7 +38,17 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
             <button id="addToCart" class="addCart">Add</button>
         </div>`;
     document.getElementById("main").innerHTML = html;
-
+  
+    // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+    let numberOfArticleInCart = productInLocalStorage.length;
+    console.log(numberOfArticleInCart);
+    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+   }
+  
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
 
@@ -48,13 +58,6 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       option.textContent = colors;
       choice.appendChild(option);
     });
-    
- // Number of article in cart next to Cart Image 
- let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
- let numberOfArticleInCart = productInLocalStorage.length;
- console.log(numberOfArticleInCart);
- let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
- numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
 
     // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
@@ -70,19 +73,18 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       if (compteur > 1) {
         compteur--;
       }
-
-      quantity.innerHTML = compteur;
+    quantity.innerHTML = compteur;
     });
 
     // Au clic l'élément et otption sélectionné au local storage
     let btnAddToCart = document.querySelector(".addCart");
     let selectedValue = document.getElementById("select_choice");
-    // Array qui contiendra les Cart Items
+    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+
     btnAddToCart.addEventListener("click", function (e) {
       e.preventDefault();
       // trouver la valeur selectionée par l'utilisateur
-      let selectedColor =
-        selectedValue.options[selectedValue.selectedIndex].value;
+      let selectedColor = selectedValue.options[selectedValue.selectedIndex].value;
 
       let chosenQuantity = parseInt(quantity.innerText);
       // stockage de la valeur sélectionné dans un objet
@@ -94,13 +96,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         chosenQuantity: chosenQuantity,
         selectedColor: selectedColor,
       };
-      // Local Storage
-      // Si Local storage vide productInLocalStorage = null
-
-      // On recupère l'array contenant les objets du local sotrage
-     
-
-      
+      // Local Storage       
       // Action si local storage contient dejà un article
       if (productInLocalStorage) {
         // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage
@@ -111,10 +107,8 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
           ) == true
         ) {
           alert("déja dans le panier panier ");
-        
         } else {
           window.scrollTo(0,0);
-          
           productInLocalStorage.push(cartItem);
           localStorage.setItem(
             "cartItem",
@@ -127,12 +121,11 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         window.scrollTo(0,0);
       };
-
       // Number of article in cart next to Cart Image 
-     
-      let numberOfArticleInCart = productInLocalStorage.length;
-      console.log(numberOfArticleInCart);
-      let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-      numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+    // On recupère l'array contenant les objets du local sotrage
+let numberOfArticleInCart = productInLocalStorage.length;
+console.log(numberOfArticleInCart);
+let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
+numberOfArticleInCartEl.innerText = numberOfArticleInCart;
     });
   });
