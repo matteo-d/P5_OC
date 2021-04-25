@@ -24,35 +24,34 @@ body nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 10vh;
-  padding-bottom: 2rem;
   border-bottom: solid 1px black;
 }
 
-body nav .goToMenu {
-  cursor: pointer;
-  -ms-flex-item-align: start;
-      -ms-grid-row-align: start;
-      align-self: start;
-  margin: 1rem 0rem 0rem 3rem;
+body nav a {
+  padding-left: 2rem;
 }
 
-body nav .goToHome {
-  -webkit-transform: translateY(-4.2rem);
-          transform: translateY(-4.2rem);
-}
-
-body nav .goToHome img {
+body nav img.logo {
   width: 20rem;
   height: 9vh;
   cursor: pointer;
+}
+
+body nav a.cartSvg {
+  padding-right: 2rem;
+}
+
+body nav a.cartSvg .itemsInCart {
+  background-color: #f1cbcb;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  border-radius: 30px;
 }
 
 body main {
@@ -69,7 +68,7 @@ body main section.options {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   border-bottom: solid 1px black;
-  font-size: 2rem;
+  font-size: 1.6rem;
   padding-bottom: 2rem;
   padding-left: 2rem;
 }

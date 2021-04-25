@@ -31,8 +31,13 @@ body {
        height: 9vh;
       cursor: pointer;
     }
-    a {
+    a.cartSvg {
       padding-right: 2rem;
+      .itemsInCart {
+        background-color: #f1cbcb;
+       padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+      border-radius: 30px;
+      }
     }
   
   }

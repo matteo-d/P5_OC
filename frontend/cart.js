@@ -45,6 +45,12 @@ const add = (a, b) => a + b;
 let TotalPrice = TotalPriceOnLoad.reduce(add);
 totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
 
+// Affiché le nbres d'items dans le panier dès l'arrivé sur la page
+
+let numberOfArticleInCart = productInLocalStorage.length;
+console.log(numberOfArticleInCart);
+let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
 //////////////////////////////////////// Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus");
 for (let x = 0; x < btnPlus.length; x++) {
@@ -201,6 +207,34 @@ for (let j = 0; j < btnDelete.length; j++) {
     productInLocalStorage.splice([j], 1);
 
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+     /// Total Panier
+     let totalText = document.getElementById("totalPrice");
+     let calcul = [];
+     let elPrice = document.querySelectorAll("#price");
+     let elQuantity = document.querySelectorAll(".quantityOfProduct");
+     for (let d = 0; d < elPrice.length; d++) {
+       let a = parseInt(elQuantity[d].innerText);
+ 
+       let b = productInLocalStorage[d].price;
+ 
+       let sum = a * b;
+ 
+       calcul.push(sum);
+     }
+ 
+     const add = (a, b) => a + b;
+     let result = calcul.reduce(add);
+ 
+     let resultFloat = (result / 100).toFixed(2).replace(".", ",");
+     console.log(resultFloat);
+     totalText.innerHTML = resultFloat;
+
+     // Affiché le nbres d'items dans le panier dès l'arrivé sur la page
+
+let numberOfArticleInCart = productInLocalStorage.length;
+console.log(numberOfArticleInCart);
+let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
   });
 }
 

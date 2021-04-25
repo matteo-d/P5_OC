@@ -34,6 +34,8 @@ fetch("http://localhost:3000/api/teddies")
 `;
     }
 
+
+
     // Ajouter mes element créer dans le HTML pour afficher mes produits
     document.getElementById("main").innerHTML = html;
   });

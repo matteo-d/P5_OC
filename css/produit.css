@@ -43,8 +43,14 @@ body nav img.logo {
   cursor: pointer;
 }
 
-body nav a {
+body nav a.cartSvg {
   padding-right: 2rem;
+}
+
+body nav a.cartSvg .itemsInCart {
+  background-color: #f1cbcb;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  border-radius: 30px;
 }
 
 body main {

@@ -17,28 +17,27 @@ a {
 body {
   font-family: "Roboto", sans-serif;
   
-  nav {
+ nav {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     height: 10vh;
-padding-bottom: 2rem;
     border-bottom: solid 1px black;
-    .goToMenu {
-     cursor: pointer;
-     align-self: start;
-     margin: 1rem 0rem 0rem 3rem;
-   
+  a {
+    padding-left: 2rem;
+  }
+    img.logo {
+      width: 20rem;
+       height: 9vh;
+      cursor: pointer;
     }
-    .goToHome {
-     
-      transform: translateY(-4.2rem);
-      img {
-        width: 20rem;
-        height: 9vh;
-        cursor: pointer;
+    a.cartSvg {
+      padding-right: 2rem;
+      .itemsInCart {
+        background-color: #f1cbcb;
+       padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+      border-radius: 30px;
       }
- 
     }
   
   }
@@ -52,7 +51,7 @@ padding-bottom: 2rem;
       grid-column-gap: 0px;
       grid-row-gap: 0px;
       border-bottom: solid 1px black;
-      font-size: 2rem;
+      font-size: 1.6rem;
       padding-bottom: 2rem;
       padding-left: 2rem;
       

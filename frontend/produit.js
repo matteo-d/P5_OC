@@ -48,6 +48,13 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       option.textContent = colors;
       choice.appendChild(option);
     });
+    
+ // Number of article in cart next to Cart Image 
+ let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+ let numberOfArticleInCart = productInLocalStorage.length;
+ console.log(numberOfArticleInCart);
+ let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+ numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
 
     // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
@@ -91,8 +98,9 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       // Si Local storage vide productInLocalStorage = null
 
       // On recupère l'array contenant les objets du local sotrage
-      let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+     
 
+      
       // Action si local storage contient dejà un article
       if (productInLocalStorage) {
         // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage
@@ -102,9 +110,11 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
             (el) => el.selectedColor == cartItem.selectedColor
           ) == true
         ) {
-          console.log("déja dans le panier panier ");
+          alert("déja dans le panier panier ");
+        
         } else {
-          alert("Ajout au panier");
+          window.scrollTo(0,0);
+          
           productInLocalStorage.push(cartItem);
           localStorage.setItem(
             "cartItem",
@@ -115,6 +125,14 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         productInLocalStorage = [];
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-      }
+        window.scrollTo(0,0);
+      };
+
+      // Number of article in cart next to Cart Image 
+     
+      let numberOfArticleInCart = productInLocalStorage.length;
+      console.log(numberOfArticleInCart);
+      let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+      numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
     });
   });
