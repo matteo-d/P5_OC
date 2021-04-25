@@ -17,7 +17,6 @@ a {
 }
 
 body {
-  width: 100vw;
   font-family: "Roboto", sans-serif;
 }
 
@@ -25,35 +24,39 @@ body nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 1rem 0rem 2rem 0rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 15vh;
+  height: 10vh;
+  padding-bottom: 2rem;
+  border-bottom: solid 1px black;
 }
 
-body nav .fa-arrow-left {
-  font-size: 2rem;
-  padding-left: 3rem;
+body nav .goToMenu {
   cursor: pointer;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  margin: 1rem 0rem 0rem 3rem;
 }
 
-body nav img.logo {
+body nav .goToHome {
+  -webkit-transform: translateY(-4.5rem);
+          transform: translateY(-4.5rem);
+}
+
+body nav .goToHome img {
   width: 20rem;
+  height: 9vh;
   cursor: pointer;
-}
-
-body nav img.panier {
-  width: 40px;
-  cursor: pointer;
-  padding-right: 4rem;
 }
 
 body main {
-  margin-top: 3rem;
+  padding-top: 3rem;
 }
 
 body main section.options {
@@ -62,13 +65,15 @@ body main section.options {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 2rem;
   border-bottom: 1px solid;
   padding-bottom: 2rem;
 }
 
-body main section.options #clearCart {
-  border: solid 2px;
+body main section.options svg {
   cursor: pointer;
 }
 
@@ -89,10 +94,14 @@ body main section.selectedProduct ul {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body main section.selectedProduct ul li {
   font-size: 1.4rem;
+  margin-right: 3rem;
 }
 
 body main section.selectedProduct ul li img {
@@ -107,6 +116,12 @@ body main section.selectedProduct ul li .btnMinus {
   outline: none;
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 50px;
+  cursor: pointer;
+}
+
+body main section.selectedProduct ul li .btnMinus:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 body main section.selectedProduct ul li .btnPlus {
@@ -116,6 +131,19 @@ body main section.selectedProduct ul li .btnPlus {
   outline: none;
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 50px;
+  cursor: pointer;
+}
+
+body main section.selectedProduct ul li .btnPlus:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+body main section.selectedProduct ul li .clearCart {
+  border: solid 2px;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: white;
 }
 
 body main section.total {
@@ -149,36 +177,30 @@ body main form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0rem 5rem 3rem 5rem;
+  padding-bottom: 3rem;
 }
 
 body main form input {
-  width: 30%;
+  width: 40%;
   height: 1.6rem;
 }
 
 body main form button {
   margin-top: 1rem;
-  padding: 0.7rem;
+  padding: 1rem 3rem 1rem 3rem;
   width: 10%;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  text-align: center;
   border-radius: 33px;
   cursor: pointer;
 }
 
 body footer {
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #333c63;
-  padding: 2rem 0 3rem 3rem;
-  color: white;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  background-color: #2c1f62;
+}
+
+body footer ul {
+  color: #f8f7f7;
+  margin: 0;
+  padding: 1rem 0rem 1rem 2rem;
 }
 /*# sourceMappingURL=panier.css.map */

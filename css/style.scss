@@ -1,3 +1,5 @@
+@import "mixins.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -14,107 +16,101 @@ a {
 }
 
 body {
-  width: 100vw;
-  
-  font-family: "Roboto", sans-serif;
-  nav{
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    height: 15vh;
-    padding: 2rem 0 2rem 0;
- 
-    img.logo {
-      width: 20rem;
-     
-    }
-    img.panier {
-      width: 40px;
-      cursor: pointer;
-    }
-  }
-  header {
- 
-    background-image:  url("../img/header.jpg");
-    height: 85vh;
-    background-size: cover;
-    display: flex;
-    align-items: flex-end;
-  article {
-    text-align: center;  
-    margin: auto;
-    width: 60%;
-    h2 {
-      font-size: 2.5rem;
-      padding-bottom: 1rem;
-      color: whitesmoke;
-    }
-    p {
-      font-size: 1.3rem;
-      color: whitesmoke;   
-    }
-  }
-}
 
-  main {
-    width: 100vw;
+  font-family: "Roboto", sans-serif;
+  nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-  div.product {
-    width: 50vw;
-   
-    margin: 2rem 0rem 2rem 0rem;
-    border: solid 1px black;
-    border-radius: 33px;
-   &:hover {
-      transform: scale(1.005); 
+    justify-content: start;
+    height: 10vh;
+    img.logo {
+      width: 20rem;
+      height: 9vh;
     }
-    img.ourspic {
-      width: 100%;
-      border-top-right-radius: 33px;
-      border-top-left-radius: 33px;
-      border-bottom-right-radius: 33px;
-      border-bottom-left-radius: 33px;
-      margin-bottom: -2rem;
+    #goToCart {
+      align-self: flex-end;
+      transform: translateY(-3rem);
+      margin-right: 3rem;
     }
+  }
+  header {
+    background-image: url("../img/header.jpg");
+    height: 90vh;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
     article {
-      background-color: #f7f2f2;
-      padding: 2rem 0rem 2rem 0rem;
-      border-bottom-right-radius: 33px;
-      border-bottom-left-radius: 33px;
       text-align: center;
+      margin: auto;
+      width: 60%;
       h2 {
-        color: rgb(133, 95, 95);
+        font-size: 2.5rem;
         padding-bottom: 1rem;
-        
+        color: whitesmoke;
       }
-      p.product_description {
-        font-size: 1.2em;
-      }
-      p.price {
-        color: rgb(133, 95, 95);
-       font-size: 1.2em;
-       padding-bottom: 1rem;
-       font-weight: bold;
-      }
-      a {
-        color: rgb(133, 95, 95);
-        padding:0.5rem 1.5rem 0.5rem 1.5rem;
-        border: solid 3px blanchedalmond;
-       
+      p {
+        font-size: 1.3rem;
+        color: whitesmoke;
       }
     }
   }
-  }
-  footer {
-    justify-content: center;
-    align-items: center;
-    background-color: #333c63;
-    padding: 2rem 0 3rem 0;
-    color: white;
 
-    font-size: 0.8rem;
+  main {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 0rem 4rem 0rem;
+    div.product {
+      width: 50%;
+      margin: 2rem 0rem 2rem 0rem;
+      border: solid 1px black;
+      border-radius: 33px;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.005);
+      }
+      img.ourspic {
+        width: 100%;
+        height: 35rem;
+        border-top-right-radius: 33px;
+        border-top-left-radius: 33px;
+        border-bottom-right-radius: 33px;
+        border-bottom-left-radius: 33px;
+        margin-bottom: -2rem;
+      }
+      article {
+        background-color: #f7f2f2;
+        padding: 2rem 0rem 2rem 0rem;
+        border-bottom-right-radius: 33px;
+        border-bottom-left-radius: 33px;
+        text-align: center;
+        h2 {
+          color: rgb(66, 47, 47);
+          padding-bottom: 1rem;
+        }
+        p.product_description {
+          font-size: 1.2em;
+          text-align: center;
+          padding: 0rem 8rem 0rem 8rem;
+        }
+        p.price {
+          color: rgb(75, 53, 53);
+          font-size: 1.2em;
+          padding-bottom: 1rem;
+          font-weight: bold;
+        }
+        .btnGoTo {
+          color: rgb(133, 95, 95);
+          padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+          border: solid 3px rgb(133, 95, 95);
+          border-radius: 33px;
+          outline: none;
+          margin-top: 2rem;
+        }
+      }
+    }
   }
+  @include styleFooter;
 }

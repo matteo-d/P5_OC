@@ -1,3 +1,4 @@
+@import "mixins.scss";
 * {
   margin: 0;
   padding: 0;
@@ -14,89 +15,103 @@ a {
 }
 
 body {
-  width: 100vw;
-  
   font-family: "Roboto", sans-serif;
+  
   nav {
     display: flex;
-    padding: 1rem 0rem 2rem 0rem;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    height: 15vh;
+    height: 10vh;
+padding-bottom: 2rem;
+    border-bottom: solid 1px black;
+    .goToMenu {
+     cursor: pointer;
+     align-self: start;
+     margin: 1rem 0rem 0rem 3rem;
+   
+    }
+    .goToHome {
+     
+      transform: translateY(-4.5rem);
+      img {
+        width: 20rem;
+        height: 9vh;
+        cursor: pointer;
+      }
+ 
+    }
   
-    .fa-arrow-left {
-      font-size: 2rem;
-      padding-left: 3rem;
-      cursor: pointer;
-    }
-    img.logo {
-      width: 20rem;
-      
-      cursor: pointer;
-    }
-    img.panier {
-      width: 40px;
-      cursor: pointer;
-      padding-right: 4rem;
-    }
   }
 
   main {
-margin-top: 3rem;
+    padding-top: 3rem;
     section.options {
       display: flex;
       justify-content: space-around;
+      align-items: center;
       font-size: 2rem;
-      border-bottom: 1px solid ;
+      border-bottom: 1px solid;
       padding-bottom: 2rem;
-        #clearCart {
-          border: solid 2px;
-          cursor: pointer;
-        }
+     svg{  
+        cursor: pointer;  
+      }
     }
     section.selectedProduct {
       display: flex;
       flex-direction: column;
-   
       padding: 1rem 0rem 1rem 0rem;
-        ul {
-          display: flex;
-          justify-content: space-around;
-            li {
-              font-size: 1.4rem;
-              img {
-                width: 12rem;
-                height: 9rem;
-              }
-              .btnMinus {
-                border: none;
-                background-color: #f1cbcb;
-                color: #d0a1a1;
-                 outline: none;
-                 padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-                 border-radius: 50px;
-              }
-              .btnPlus {
-                border: none;
-                color:#946262 ;
-                 background-color: #f2cccc;
-                 outline: none;
-                 padding: 0.5rem 0.8rem 0.5rem 0.8rem;
-                 border-radius: 50px;
-              }
+      ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        li {
+          font-size: 1.4rem;
+       margin-right: 3rem;
+          img {
+            width: 12rem;
+            height: 9rem;
+          }
+          .btnMinus {
+            border: none;
+            background-color: #f1cbcb;
+            color: #d0a1a1;
+            outline: none;
+            padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+            border-radius: 50px;
+            cursor: pointer;
+            &:hover {
+              transform: scale(1.05);
             }
+          }
+          .btnPlus {
+            border: none;
+            color: #946262;
+            background-color: #f2cccc;
+            outline: none;
+            padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+            border-radius: 50px;
+            cursor: pointer;
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+          .clearCart {
+            border: solid 2px;
+        cursor: pointer;
+        padding: 1rem;
+        background-color: white;
+          }
         }
+      }
     }
     section.total {
       padding-top: 2rem;
-      border-top: 1px solid ;
+      border-top: 1px solid;
       display: flex;
       justify-content: center;
       p {
-       font-size: 1.5rem;
-      
+        font-size: 1.5rem;
       }
-      
     }
 
     h2 {
@@ -107,28 +122,20 @@ margin-top: 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0rem 5rem 3rem 5rem;
+      padding-bottom: 3rem ;
       input {
-        width: 30%;
+        width: 40%;
         height: 1.6rem;
       }
       button {
         margin-top: 1rem;
-        padding: 0.7rem;
+        padding: 1rem 3rem 1rem 3rem;
         width: 10%;
-        align-self: center;
+        text-align: center;
         border-radius: 33px;
         cursor: pointer;
       }
     }
   }
-  footer {
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #333c63;
-    padding: 2rem 0 3rem 3rem;
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-  }
+ @include styleFooter;
 }

@@ -17,7 +17,6 @@ a {
 }
 
 body {
-  width: 100vw;
   font-family: "Roboto", sans-serif;
 }
 
@@ -31,24 +30,21 @@ body nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 15vh;
+  height: 10vh;
 }
 
-body nav .fa-arrow-left {
-  font-size: 1.5rem;
+body nav a {
   padding-left: 2rem;
-  cursor: pointer;
 }
 
 body nav img.logo {
   width: 20rem;
+  height: 9vh;
   cursor: pointer;
 }
 
-body nav img.panier {
-  width: 40px;
-  cursor: pointer;
-  margin-right: 3rem;
+body nav a {
+  padding-right: 2rem;
 }
 
 body main {
@@ -60,16 +56,16 @@ body main {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100vw;
   padding: 3rem 0rem 3rem 0rem;
   background-color: #f5ecec;
 }
 
 body main .product {
-  border: solid 5px black;
+  border: solid 1px black;
   border-radius: 33px;
   width: 40%;
   height: 35%;
+  cursor: pointer;
 }
 
 body main .product img {
@@ -100,7 +96,7 @@ body main .product article h2 {
 }
 
 body main .product article p.product_description {
-  padding-top: 0,5rem;
+  padding-top: 0, 5rem;
   margin-top: 1rem;
   text-align: center;
   width: 60%;
@@ -116,7 +112,7 @@ body main .product article label {
 }
 
 body main .product article label h3 {
-  padding-top: 0,5rem;
+  padding-top: 0, 5rem;
 }
 
 body main .product article select {
@@ -199,16 +195,12 @@ body main .product article div#container_addToCart button#addToCart:hover {
 }
 
 body footer {
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #333c63;
-  padding: 2rem 0 3rem 3rem;
-  color: white;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  background-color: #2c1f62;
+}
+
+body footer ul {
+  color: #f8f7f7;
+  margin: 0;
+  padding: 1rem 0rem 1rem 2rem;
 }
 /*# sourceMappingURL=produit.css.map */

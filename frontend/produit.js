@@ -7,13 +7,19 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
   .then((productResp) => productResp.json())
   .then((productResp) => {
     let html = "";
-    // Affichage du produit 
+    // Affichage du produit
     html = `<div class="product">
     <img src="${productResp.imageUrl}" alt="Ours ${productResp.name}">
     <article class="product_infos">
       <h2 id="name_product_${productResp.name}">${productResp.name}</h2>
-        <p class="product_description" id="description_product_${productResp.name}">${productResp.description}</p>   
-        <p class="price" id="price_product_${productResp.name}">${(productResp.price / 100).toFixed(2).replace(".", ",")} €</p>    
+        <p class="product_description" id="description_product_${
+          productResp.name
+        }">${productResp.description}</p>   
+        <p class="price" id="price_product_${productResp.name}">${(
+      productResp.price / 100
+    )
+      .toFixed(2)
+      .replace(".", ",")} €</p>    
         <label for="select__color">
             <h3>Personnaliser votre ours</h3>
         </label>
@@ -32,7 +38,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
             <button id="addToCart" class="addCart">Add</button>
         </div>`;
     document.getElementById("main").innerHTML = html;
-    
+
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
 
@@ -43,72 +49,72 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       choice.appendChild(option);
     });
 
-   // Logique boutons quantité + et - 
-    let btnPlus = document.getElementById('btnPlus');
-    let btnMinus = document.getElementById('btnMinus');
-    let quantity = document.getElementById('quantityOfProduct');
+    // Logique boutons quantité + et -
+    let btnPlus = document.getElementById("btnPlus");
+    let btnMinus = document.getElementById("btnMinus");
+    let quantity = document.getElementById("quantityOfProduct");
     let compteur = parseInt(quantity.innerText);
 
-    btnPlus.addEventListener('click', function() {
-        compteur ++;
-        quantity.innerHTML = compteur;
+    btnPlus.addEventListener("click", function () {
+      compteur++;
+      quantity.innerHTML = compteur;
     });
-    btnMinus.addEventListener('click', function() {
-  
-   if(compteur > 1) {
-     compteur --;
-   }
-  
-        quantity.innerHTML = compteur;
-    });
+    btnMinus.addEventListener("click", function () {
+      if (compteur > 1) {
+        compteur--;
+      }
 
+      quantity.innerHTML = compteur;
+    });
 
     // Au clic l'élément et otption sélectionné au local storage
     let btnAddToCart = document.querySelector(".addCart");
     let selectedValue = document.getElementById("select_choice");
-    // Array qui contiendra les Cart Items 
-    btnAddToCart.addEventListener('click', function(e)  {
-    e.preventDefault();
-    // trouver la valeur selectionée par l'utilisateur
-    let selectedColor = selectedValue.options[selectedValue.selectedIndex].value;
-    
-    let chosenQuantity = parseInt(quantity.innerText);
-    // stockage de la valeur sélectionné dans un objet
-    let cartItem = {
-      _id: productResp._id,
-      imageUrl: productResp.imageUrl,
-      name: productResp.name,
-      price: productResp.price,
-      chosenQuantity: chosenQuantity,
-      selectedColor: selectedColor,
-    }
-    // Local Storage  
-    // Si Local storage vide productInLocalStorage = null
+    // Array qui contiendra les Cart Items
+    btnAddToCart.addEventListener("click", function (e) {
+      e.preventDefault();
+      // trouver la valeur selectionée par l'utilisateur
+      let selectedColor =
+        selectedValue.options[selectedValue.selectedIndex].value;
 
-    // On recupère l'array contenant les objets du local sotrage
-let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+      let chosenQuantity = parseInt(quantity.innerText);
+      // stockage de la valeur sélectionné dans un objet
+      let cartItem = {
+        _id: productResp._id,
+        imageUrl: productResp.imageUrl,
+        name: productResp.name,
+        price: productResp.price,
+        chosenQuantity: chosenQuantity,
+        selectedColor: selectedColor,
+      };
+      // Local Storage
+      // Si Local storage vide productInLocalStorage = null
 
-// Action si local storage contient dejà un article
-    if (productInLocalStorage){   
+      // On recupère l'array contenant les objets du local sotrage
+      let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
-        // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage 
-       if ( productInLocalStorage.some( el => el._id == cartItem._id)  && productInLocalStorage.some( el => el.selectedColor == cartItem.selectedColor) == true) {
-        console.log('déja dans le panier panier ')   
-       }     
-     else {
-      console.log('Ajout au panier')
-      productInLocalStorage.push(cartItem); 
-      localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-     }
+      // Action si local storage contient dejà un article
+      if (productInLocalStorage) {
+        // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage
+        if (
+          productInLocalStorage.some((el) => el._id == cartItem._id) &&
+          productInLocalStorage.some(
+            (el) => el.selectedColor == cartItem.selectedColor
+          ) == true
+        ) {
+          console.log("déja dans le panier panier ");
+        } else {
+          console.log("Ajout au panier");
+          productInLocalStorage.push(cartItem);
+          localStorage.setItem(
+            "cartItem",
+            JSON.stringify(productInLocalStorage)
+          );
         }
-      
-    else {
-    productInLocalStorage = []
-    productInLocalStorage.push(cartItem); 
-    localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-    }
-});
-
-});
-
-  
+      } else {
+        productInLocalStorage = [];
+        productInLocalStorage.push(cartItem);
+        localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+      }
+    });
+  });

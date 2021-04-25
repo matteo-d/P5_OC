@@ -1,0 +1,11 @@
+
+ 
+ @mixin styleFooter {
+    footer {
+      background-color: #2c1f62;
+      ul {   
+        color: rgb(248, 247, 247);
+        margin: 0;
+        padding: 1rem 0rem 1rem 2rem;
+    }}
+}

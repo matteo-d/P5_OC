@@ -1,3 +1,5 @@
+@import "mixins.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -14,45 +16,43 @@ a {
 }
 
 body {
-  width: 100vw;
+ 
   font-family: "Roboto", sans-serif;
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 15vh;
-    .fa-arrow-left {
-      font-size: 1.5rem;
-      padding-left: 2rem;
-      cursor: pointer;
-    }
+    height: 10vh;
+  a {
+    padding-left: 2rem;
+  }
     img.logo {
       width: 20rem;
+       height: 9vh;
       cursor: pointer;
-    
     }
-    img.panier {
-      width: 40px;
-      cursor: pointer;
-      margin-right: 3rem;
+    a {
+      padding-right: 2rem;
     }
+  
   }
   main {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100vw;
+
     padding: 3rem 0rem 3rem 0rem;
     background-color: #f5ecec;
     .product {
-      border: solid 5px black;
+      border: solid 1px black;
       border-radius: 33px;
       width: 40%;
       height: 35%;
+      cursor: pointer;
       img {
         border-top-right-radius: 33px;
-      border-top-left-radius: 33px;
-      width: 100%;
+        border-top-left-radius: 33px;
+        width: 100%;
       }
       article {
         padding: 1rem 0rem 1rem 1rem;
@@ -64,20 +64,19 @@ body {
           font-size: 2rem;
         }
         p.product_description {
-          padding-top: 0,5rem;
+          padding-top: 0, 5rem;
           margin-top: 1rem;
           text-align: center;
           width: 60%;
         }
         p.price {
           padding-top: 0.6rem;
-         
         }
         label {
           margin-top: 0.6rem;
           font-style: italic;
-          h3{
-            padding-top: 0,5rem;
+          h3 {
+            padding-top: 0, 5rem;
           }
         }
         select {
@@ -88,11 +87,10 @@ body {
           &:hover {
             outline: none;
             border: 1px solid #bbbb;
-            transform: scale(1.05); 
+            transform: scale(1.05);
             cursor: pointer;
           }
-         
-          
+
           option {
             padding-top: 1rem;
             background-color: #f4e1e1;
@@ -100,36 +98,36 @@ body {
         }
         div#container_quantity {
           padding: 1rem 0rem 0.5rem 0rem;
-          #btnMinus  {
+          #btnMinus {
             border: none;
             background-color: #f1cbcb;
-          color: #d0a1a1;
+            color: #d0a1a1;
             outline: none;
             padding: 0.5rem 0.8rem 0.5rem 0.8rem;
             border-radius: 50px;
-           
+
             &:hover {
-              transform: scale(1.05); 
+              transform: scale(1.05);
               cursor: pointer;
             }
           }
           span {
-            margin:  1rem;
+            margin: 1rem;
           }
           #btnPlus {
             border: none;
-           color:#946262 ;
+            color: #946262;
             background-color: #f2cccc;
             outline: none;
             padding: 0.5rem 0.8rem 0.5rem 0.8rem;
             border-radius: 50px;
-            
+
             &:hover {
-              transform: scale(1.05); 
+              transform: scale(1.05);
               cursor: pointer;
             }
+          }
         }
-      }
         div#container_addToCart {
           width: 30%;
           display: flex;
@@ -139,21 +137,13 @@ body {
             margin-top: 0.5rem;
             border-radius: 33px;
             &:hover {
-              transform: scale(1.05); 
+              transform: scale(1.05);
               cursor: pointer;
             }
           }
         }
       }
-    } 
-  }
-      footer {
-        justify-content: space-evenly;
-        align-items: center;
-        background-color: #333c63;
-        padding: 2rem 0 3rem 3rem;
-        color: white;
-        font-family: "Roboto", sans-serif;
-        font-size: 1rem;
-      }
     }
+  }
+  @include styleFooter;
+}

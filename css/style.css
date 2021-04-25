@@ -17,7 +17,6 @@ a {
 }
 
 body {
-  width: 100vw;
   font-family: "Roboto", sans-serif;
 }
 
@@ -25,30 +24,35 @@ body nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  height: 15vh;
-  padding: 2rem 0 2rem 0;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  height: 10vh;
 }
 
 body nav img.logo {
   width: 20rem;
+  height: 9vh;
 }
 
-body nav img.panier {
-  width: 40px;
-  cursor: pointer;
+body nav #goToCart {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transform: translateY(-3rem);
+          transform: translateY(-3rem);
+  margin-right: 3rem;
 }
 
 body header {
   background-image: url("../img/header.jpg");
-  height: 85vh;
+  height: 90vh;
   background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -76,7 +80,6 @@ body header article p {
 }
 
 body main {
-  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,13 +90,15 @@ body main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 4rem 0rem 4rem 0rem;
 }
 
 body main div.product {
-  width: 50vw;
+  width: 50%;
   margin: 2rem 0rem 2rem 0rem;
   border: solid 1px black;
   border-radius: 33px;
+  cursor: pointer;
 }
 
 body main div.product:hover {
@@ -103,6 +108,7 @@ body main div.product:hover {
 
 body main div.product img.ourspic {
   width: 100%;
+  height: 35rem;
   border-top-right-radius: 33px;
   border-top-left-radius: 33px;
   border-bottom-right-radius: 33px;
@@ -119,37 +125,39 @@ body main div.product article {
 }
 
 body main div.product article h2 {
-  color: #855f5f;
+  color: #422f2f;
   padding-bottom: 1rem;
 }
 
 body main div.product article p.product_description {
   font-size: 1.2em;
+  text-align: center;
+  padding: 0rem 8rem 0rem 8rem;
 }
 
 body main div.product article p.price {
-  color: #855f5f;
+  color: #4b3535;
   font-size: 1.2em;
   padding-bottom: 1rem;
   font-weight: bold;
 }
 
-body main div.product article a {
+body main div.product article .btnGoTo {
   color: #855f5f;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-  border: solid 3px blanchedalmond;
+  border: solid 3px #855f5f;
+  border-radius: 33px;
+  outline: none;
+  margin-top: 2rem;
 }
 
 body footer {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #333c63;
-  padding: 2rem 0 3rem 0;
-  color: white;
-  font-size: 0.8rem;
+  background-color: #2c1f62;
+}
+
+body footer ul {
+  color: #f8f7f7;
+  margin: 0;
+  padding: 1rem 0rem 1rem 2rem;
 }
 /*# sourceMappingURL=style.css.map */
