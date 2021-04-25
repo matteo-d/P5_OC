@@ -79,6 +79,11 @@ body main section.options svg {
   margin-left: 3rem;
 }
 
+body main section.options svg:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
 body main section.selectedProduct {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -143,7 +148,7 @@ body main section.selectedProduct ul li .btnPlus {
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 50px;
   cursor: pointer;
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
 }
 
 body main section.selectedProduct ul li .btnPlus:hover {
@@ -198,9 +203,14 @@ body main form {
   padding-bottom: 3rem;
 }
 
+body main form label {
+  padding-top: 1rem;
+}
+
 body main form input {
   width: 40%;
-  height: 1.6rem;
+  height: 2rem;
+  padding-top: 0.8rem;
 }
 
 body main form button {
