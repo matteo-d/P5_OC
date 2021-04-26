@@ -88,19 +88,15 @@ body {
           margin-top: 0.6rem;
           padding: 0.5rem;
           font-size: 0.9rem;
-
-          &:hover {
-            outline: none;
-            border: 1px solid #bbbb;
-            transform: scale(1.05);
-            cursor: pointer;
-          }
-
+          border-radius: 33px;
+        }
           option {
             padding-top: 1rem;
             background-color: #f4e1e1;
+            border-radius: 33px;
+            
           }
-        }
+        
         div#container_quantity {
           padding: 1rem 0rem 0.5rem 0rem;
           #btnMinus {

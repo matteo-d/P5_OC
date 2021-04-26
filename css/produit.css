@@ -125,19 +125,13 @@ body main .product article select {
   margin-top: 0.6rem;
   padding: 0.5rem;
   font-size: 0.9rem;
+  border-radius: 33px;
 }
 
-body main .product article select:hover {
-  outline: none;
-  border: 1px solid #bbbb;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  cursor: pointer;
-}
-
-body main .product article select option {
+body main .product article option {
   padding-top: 1rem;
   background-color: #f4e1e1;
+  border-radius: 33px;
 }
 
 body main .product article div#container_quantity {

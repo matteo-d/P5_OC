@@ -33,15 +33,23 @@ fetch("http://localhost:3000/api/teddies")
       </div >
 `;
     }
-    // Number of article in cart next to Cart Image 
-   // On recupère l'array contenant les objets du local sotrage
+      // Ajouter mes element créer dans le HTML pour afficher mes produits
+      document.getElementById("main").innerHTML = html;
+ 
+
+      
+      //  Affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
+   // Si il y un Objet "cartItem" dans le local storage 
    if (JSON.parse(localStorage.getItem("cartItem"))) {
-    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-    let numberOfArticleInCart = productInLocalStorage.length;
-    console.log(numberOfArticleInCart);
-    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
-   }
-    // Ajouter mes element créer dans le HTML pour afficher mes produits
-    document.getElementById("main").innerHTML = html;
+    // On le récupère 
+   let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+   // Création variable nombres d'articles = nombre d'article dans le local storage 
+   let numberOfArticleInCart = productInLocalStorage.length;
+   console.log(numberOfArticleInCart);
+   // On vise le span "itemsInCart" à coté de l'icone panier
+   let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+   // Son innerText est le nombre d'article dans le local storage
+   numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+  }
+
   });
