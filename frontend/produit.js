@@ -1,3 +1,5 @@
+import { displayNumberOfProductsInCart } from './utils.js';
+
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
 console.log(productId);
@@ -41,22 +43,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     document.getElementById("main").innerHTML = html;
 
     //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-    const displayNumberOfProductsInCart = () => {
-      // Si il y un Objet "cartItem" dans le local storage
-      if (JSON.parse(localStorage.getItem("cartItem"))) {
-        // On le récupère
-        let productInLocalStorage = JSON.parse(
-          localStorage.getItem("cartItem")
-        );
-        // Création variable nombres d'articles = nombre d'article dans le local storage
-        let numberOfArticleInCart = productInLocalStorage.length;
-        console.log(numberOfArticleInCart);
-        // On vise le span "itemsInCart" à coté de l'icone panier
-        let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
-        // Son Text est le nombre d'article dans le local storage
-        numberOfArticleInCartEl.innerText = numberOfArticleInCart;
-      }
-    };
+
     displayNumberOfProductsInCart();
 
     // ************************ Affichage des choix de couleurs
@@ -133,6 +120,9 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         window.scrollTo(0, 0);
       }
 
-      displayNumberOfProductsInCart();
+    //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
+
+displayNumberOfProductsInCart();
+
     });
   });

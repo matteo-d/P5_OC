@@ -3,10 +3,11 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
 //***************************** */ Display du HTML
 let html = "";
-// Boucle sur l'objet local storage parser
+// Tableau qui acceuillera le prix total du panier dès arrivé sur la page 
 let TotalPriceOnLoad = [];
+// Boucle sur l'objet local storage parser
 for (let i = 0; i < productInLocalStorage.length; i++) {
-  //  Display du total du panier au chargement de la page
+  // 
   let number = productInLocalStorage[i].chosenQuantity;
   let multiplicator = productInLocalStorage[i].price / 100;
   let result = number * multiplicator;
@@ -54,7 +55,7 @@ const displayNumberOfProductsInCart = () => {
 };
 displayNumberOfProductsInCart();
 
-// ******************Fonction Mettre a jour le prix Total
+// ******************   Fonction Mettre a jour le prix Total
 const displayTotalPrice = () => {
   let totalText = document.getElementById("totalPrice");
   let calcul = [];
@@ -88,6 +89,7 @@ totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
 
 /// **************************** Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus");
+
 for (let x = 0; x < btnPlus.length; x++) {
   btnPlus[x].addEventListener("click", () => {
     let quantity = btnPlus[x].previousElementSibling.previousElementSibling;
