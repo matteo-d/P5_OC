@@ -6,7 +6,7 @@ fetch("http://localhost:3000/api/teddies")
     //Je créer ma variable que je vais ajouter à mes elements
     let html = "";
 
-    // Boucle pour récupére toutes les variables des produits + (Foreach)
+    // Boucle pour récupére toutes les variables des produits 
     for (let i = 0; i < productResp.length; i++) {
       console.log(productResp[i].name);
       //Html pur , Créer les élément, clone prototype
@@ -37,7 +37,7 @@ fetch("http://localhost:3000/api/teddies")
       document.getElementById("main").innerHTML = html;
  
 
-      
+
       //  Affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
    // Si il y un Objet "cartItem" dans le local storage 
    if (JSON.parse(localStorage.getItem("cartItem"))) {
