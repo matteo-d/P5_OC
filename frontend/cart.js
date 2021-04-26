@@ -1,3 +1,5 @@
+import { displayNumberOfProductsInCart, displayTotalPrice } from './utils.js';
+
 // Récupère et parse l'objet Local Storage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
@@ -39,45 +41,11 @@ for (let i = 0; i < productInLocalStorage.length; i++) {
 }
 
 //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-const displayNumberOfProductsInCart = () => {
-  // Si il y un Objet "cartItem" dans le local storage
-  if (JSON.parse(localStorage.getItem("cartItem"))) {
-    // On le récupère
-    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-    // Création variable nombres d'articles = nombre d'article dans le local storage
-    let numberOfArticleInCart = productInLocalStorage.length;
-    console.log(numberOfArticleInCart);
-    // On vise le span "itemsInCart" à coté de l'icone panier
-    let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
-    // Son Text est le nombre d'article dans le local storage
-    numberOfArticleInCartEl.innerText = numberOfArticleInCart;
-  }
-};
+
 displayNumberOfProductsInCart();
+// ************** Fonction affiché prix total dès arrivé
+displayTotalPrice();
 
-// ******************   Fonction Mettre a jour le prix Total
-const displayTotalPrice = () => {
-  let totalText = document.getElementById("totalPrice");
-  let calcul = [];
-  let elPrice = document.querySelectorAll("#price");
-  let elQuantity = document.querySelectorAll(".quantityOfProduct");
-  for (let d = 0; d < elPrice.length; d++) {
-    let a = parseInt(elQuantity[d].innerText);
-
-    let b = productInLocalStorage[d].price;
-
-    let sum = a * b;
-
-    calcul.push(sum);
-  }
-
-  const add = (a, b) => a + b;
-  let result = calcul.reduce(add);
-
-  let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-  console.log(resultFloat);
-  totalText.innerHTML = resultFloat;
-};
 
 //  ********************************* Mettre a jour le prix Total dès l'arrivée sur la page
 let totalText = document.getElementById("totalPrice");
@@ -86,6 +54,9 @@ const add = (a, b) => a + b;
 let TotalPrice = TotalPriceOnLoad.reduce(add);
 // Une fois toute les valeurs additionner, les présenter en format décimal
 totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
+
+
+
 
 /// **************************** Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus");
@@ -206,6 +177,7 @@ for (let j = 0; j < btnDelete.length; j++) {
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
 
     displayTotalPrice();
+    displayNumberOfProductsInCart();
   });
 }
 
@@ -221,5 +193,3 @@ clearAll.addEventListener("click", (e) => {
 
 // ******************* Validation du formulaire
 
-let form = document.getElementById("form");
-let submitBtn = document.getElementById("submit");

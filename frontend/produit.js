@@ -53,6 +53,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       let option = document.createElement("option");
       option.value = colors;
       option.textContent = colors;
+      // Création des options sous la balise html select
       choice.appendChild(option);
     });
 

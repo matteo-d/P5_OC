@@ -1,6 +1,5 @@
 import { displayNumberOfProductsInCart } from './utils.js';
 
-console.log(displayNumberOfProductsInCart);
 fetch("http://localhost:3000/api/teddies")
   .then((productResp) => productResp.json())
   .then((productResp) => {
@@ -38,7 +37,9 @@ fetch("http://localhost:3000/api/teddies")
     }
       // Ajouter mes element créer dans le HTML pour afficher mes produits
       document.getElementById("main").innerHTML = html;
-     // Fonction affiché nbres articles dans le panier 
-      displayNumberOfProductsInCart();
+    //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
+
+displayNumberOfProductsInCart();
+
 
   });
