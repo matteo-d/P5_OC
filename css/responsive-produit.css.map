@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "responsive-produit.scss"
+    ],
+    "names": [],
+    "file": "responsive-produit.css"
+}

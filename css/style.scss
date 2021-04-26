@@ -1,5 +1,5 @@
 @import "mixins.scss";
-
+@import"responsive-index.scss";
 * {
   margin: 0;
   padding: 0;
@@ -80,7 +80,7 @@ body {
       }
       img.ourspic {
         width: 100%;
-        height: 35rem;
+        
         border-top-right-radius: 33px;
         border-top-left-radius: 33px;
         border-bottom-right-radius: 33px;
@@ -121,3 +121,4 @@ body {
   }
   @include styleFooter;
 }
+@include responsiveIndex;
