@@ -8,7 +8,7 @@ fetch("http://localhost:3000/api/teddies")
     //Je créer ma variable que je vais ajouter à mes elements
     let html = "";
 
-    // Boucle pour récupére toutes les variables des produits 
+    // Boucle pour récupére toutes les variables des produits + (Foreach)
     for (let i = 0; i < productResp.length; i++) {
       console.log(productResp[i].name);
       //Html pur , Créer les élément, clone prototype
@@ -39,7 +39,24 @@ fetch("http://localhost:3000/api/teddies")
       document.getElementById("main").innerHTML = html;
     //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
 
+<<<<<<< HEAD
 displayNumberOfProductsInCart();
 
+=======
+      
+      //  Affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
+   // Si il y un Objet "cartItem" dans le local storage 
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    // On le récupère 
+   let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+   // Création variable nombres d'articles = nombre d'article dans le local storage 
+   let numberOfArticleInCart = productInLocalStorage.length;
+   console.log(numberOfArticleInCart);
+   // On vise le span "itemsInCart" à coté de l'icone panier
+   let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+   // Son innerText est le nombre d'article dans le local storage
+   numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+  }
+>>>>>>> parent of ffca23a...  création de fonction
 
   });
