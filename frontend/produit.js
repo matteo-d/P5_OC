@@ -1,4 +1,4 @@
-import {displayNumberOfProductsInCartOnLoad} from './utils.js';
+import {displayNumberOfProductsInCart} from './utils.js';
 
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
@@ -51,8 +51,10 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       option.textContent = colors;
       choice.appendChild(option);
     });
-    displayNumberOfProductsInCartOnLoad();
 
+    if (JSON.parse(localStorage.getItem("cartItem"))) {
+    displayNumberOfProductsInCart();
+    }
     // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
     let btnMinus = document.getElementById("btnMinus");

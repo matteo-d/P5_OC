@@ -1,4 +1,6 @@
 
+import {displayNumberOfProductsInCart} from './utils.js';
+
 // On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
@@ -6,6 +8,9 @@ let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 let html = "";
 // Boucle pour récupérer toutes les variables des produits + (Foreach)
 let TotalPriceOnLoad = [];
+if (productInLocalStorage) {
+
+
 for (let i = 0; i < productInLocalStorage.length; i++) {
   //  Display the right price Onload
   let number = productInLocalStorage[i].chosenQuantity;
@@ -39,19 +44,22 @@ for (let i = 0; i < productInLocalStorage.length; i++) {
 `;
   document.querySelector(".selectedProduct").innerHTML = html;
 }
-
-// Affiché le prix total sélectionné dès l'arrivé sur la page
-let totalText = document.getElementById("totalPrice");
-const add = (a, b) => a + b;
-let TotalPrice = TotalPriceOnLoad.reduce(add);
-totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
+}
 
 // Affiché le nbres d'items dans le panier dès l'arrivé sur la page
 
-let numberOfArticleInCart = productInLocalStorage.length;
-console.log(numberOfArticleInCart);
-let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+  displayNumberOfProductsInCart();
+  
+
+// Affiché le prix total sélectionné dès l'arrivé sur la page
+if(productInLocalStorage) {
+  let totalText = document.getElementById("totalPrice");
+  const add = (a, b) => a + b;
+  let TotalPrice = TotalPriceOnLoad.reduce(add);
+  totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
+  
+}
+
 //////////////////////////////////////// Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus");
 for (let x = 0; x < btnPlus.length; x++) {
@@ -70,7 +78,8 @@ for (let x = 0; x < btnPlus.length; x++) {
     let product =
       btnPlus[x].parentElement.parentElement.firstElementChild.firstElementChild
         .id;
-
+        console.log(product)
+    let price
     switch (product) {
       case "5be9c8541c9d440000665243":
         price = 2900;
@@ -145,7 +154,7 @@ for (let z = 0; z < btnPlus.length; z++) {
     let product =
       btnMinus[z].parentElement.parentElement.firstElementChild
         .firstElementChild.id;
-    console.log(product);
+        let price
     switch (product) {
       case "5be9c8541c9d440000665243":
         price = 2900;
@@ -242,7 +251,7 @@ for (let j = 0; j < btnDelete.length; j++) {
   });
 }
 
-///////////////////////////////// Vider le panier
+///////////////////////////////// Vider le Local Storage
 const clearAll = document.querySelector(".clearAll");
 clearAll.addEventListener("click", (e) => {
   e.preventDefault;

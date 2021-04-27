@@ -1,4 +1,4 @@
-import {displayNumberOfProductsInCartOnLoad} from './utils.js';
+import {displayNumberOfProductsInCart} from './utils.js';
 
 
 fetch("http://localhost:3000/api/teddies")
@@ -36,7 +36,9 @@ fetch("http://localhost:3000/api/teddies")
       </div >
 `;
     }
-    displayNumberOfProductsInCartOnLoad();
+    if (JSON.parse(localStorage.getItem("cartItem"))) {
+    displayNumberOfProductsInCart();
+    }
     // Ajouter mes element créer dans le HTML pour afficher mes produits
     document.getElementById("main").innerHTML = html;
   });
