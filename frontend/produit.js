@@ -1,10 +1,7 @@
-import { displayNumberOfProductsInCart } from './utils.js';
-
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
-console.log(productId)
 
-// Fetch spécifiquement le bon produit pas l'API complete
+/* Récupération du produit avec l'id associé depuis le serveur */
 
 fetch(`http://localhost:3000/api/teddies/${productId}`)
   .then((productResp) => productResp.json())
@@ -18,7 +15,11 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         <p class="product_description" id="description_product_${
           productResp.name
         }">${productResp.description}</p>   
-        <p class="price" id="price_product_${productResp.name}">${(productResp.price / 100).toFixed(2).replace(".", ",")} €</p>    
+        <p class="price" id="price_product_${productResp.name}">${(
+      productResp.price / 100
+    )
+      .toFixed(2)
+      .replace(".", ",")} €</p>    
         <label for="select__color">
             <h3>Personnaliser votre ours</h3>
         </label>
@@ -38,34 +39,16 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         </div>`;
     document.getElementById("main").innerHTML = html;
   
-
-
-
-
-   //  Affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-   // Si il y un Objet "cartItem" dans le local storage 
+    // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
    if (JSON.parse(localStorage.getItem("cartItem"))) {
-    // On le récupère 
-   let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-   // Création variable nombres d'articles = nombre d'article dans le local storage 
-   let numberOfArticleInCart = productInLocalStorage.length;
-   console.log(numberOfArticleInCart);
-   // On vise le span "itemsInCart" à coté de l'icone panier
-   let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-   // Son innerText est le nombre d'article dans le local storage
-   numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
-  }
-
-
-<<<<<<< HEAD
-    //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-
-    displayNumberOfProductsInCart();
-=======
->>>>>>> parent of ffca23a...  création de fonction
-
-
-
+    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+    let numberOfArticleInCart = productInLocalStorage.length;
+    console.log(numberOfArticleInCart);
+    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+   }
+  
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
 
@@ -73,15 +56,10 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       let option = document.createElement("option");
       option.value = colors;
       option.textContent = colors;
-      // Création des options sous la balise html select
       choice.appendChild(option);
     });
 
-
-
-
-
-    // Logique affichage boutons quantité + et -
+    // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
     let btnMinus = document.getElementById("btnMinus");
     let quantity = document.getElementById("quantityOfProduct");
@@ -98,12 +76,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     quantity.innerHTML = compteur;
     });
 
-
-
-
-
-
-    // Gestion du Local Storage au clic sur le bouton ajouter au panier 
+    // Au clic l'élément et otption sélectionné au local storage
     let btnAddToCart = document.querySelector(".addCart");
     let selectedValue = document.getElementById("select_choice");
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -122,53 +95,37 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         price: productResp.price,
         chosenQuantity: chosenQuantity,
         selectedColor: selectedColor,
-      };      
+      };
+      // Local Storage       
       // Action si local storage contient dejà un article
       if (productInLocalStorage) {
         // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage
         if (
-          productInLocalStorage.some((el) => el._id == cartItem._id) && productInLocalStorage.some((el) => el.selectedColor == cartItem.selectedColor) == true
-          ) {
+          productInLocalStorage.some((el) => el._id == cartItem._id) &&
+          productInLocalStorage.some(
+            (el) => el.selectedColor == cartItem.selectedColor
+          ) == true
+        ) {
           alert("déja dans le panier panier ");
-        }
-        else {
+        } else {
           window.scrollTo(0,0);
           productInLocalStorage.push(cartItem);
-          localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage)
+          localStorage.setItem(
+            "cartItem",
+            JSON.stringify(productInLocalStorage)
           );
         }
-        // Si l'article est ajoutable au local storage et que le local storage est vide 
       } else {
         productInLocalStorage = [];
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         window.scrollTo(0,0);
       };
-   
-      
-      
-
-<<<<<<< HEAD
-    //***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-
-displayNumberOfProductsInCart();
-
+      // Number of article in cart next to Cart Image 
+    // On recupère l'array contenant les objets du local sotrage
+let numberOfArticleInCart = productInLocalStorage.length;
+console.log(numberOfArticleInCart);
+let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
+numberOfArticleInCartEl.innerText = numberOfArticleInCart;
     });
   });
-=======
-   //  Affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-   // Si il y un Objet "cartItem" dans le local storage 
-   if (JSON.parse(localStorage.getItem("cartItem"))) {
-    // On le récupère 
-   let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-   // Création variable nombres d'articles = nombre d'article dans le local storage 
-   let numberOfArticleInCart = productInLocalStorage.length;
-   console.log(numberOfArticleInCart);
-   // On vise le span "itemsInCart" à coté de l'icone panier
-   let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-   // Son innerText est le nombre d'article dans le local storage
-   numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
-  }
-});
-});
->>>>>>> parent of ffca23a...  création de fonction

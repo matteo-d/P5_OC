@@ -1,32 +1,21 @@
-import { displayNumberOfProductsInCart, displayTotalPrice } from './utils.js';
-
-// Récupère et parse l'objet Local Storage
+// On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
-
-
-
-//// Display du HTML
+//////////////////////// Display des articles présents dans le panier
 let html = "";
-<<<<<<< HEAD
-// Tableau qui acceuillera le prix total du panier dès arrivé sur la page 
-=======
-// Boucle sur l'objet local storage parser 
->>>>>>> parent of ffca23a...  création de fonction
+// Boucle pour récupérer toutes les variables des produits + (Foreach)
 let TotalPriceOnLoad = [];
-// Boucle sur l'objet local storage parser
 for (let i = 0; i < productInLocalStorage.length; i++) {
-<<<<<<< HEAD
-  // 
-=======
-  //  Display du total du panier au chargement de la page 
->>>>>>> parent of ffca23a...  création de fonction
+  //  Display the right price Onload
   let number = productInLocalStorage[i].chosenQuantity;
   let multiplicator = productInLocalStorage[i].price / 100;
   let result = number * multiplicator;
   let twoDecimalResult = (Math.round(result * 100) / 100).toFixed(2);
+  //  Display the right TOTAL price Onload
+
   TotalPriceOnLoad.push(result);
-  // Template HTML
+
+  //Html
   html += `
 <ul>
  <li><img id="${productInLocalStorage[i]._id}" src="${productInLocalStorage[i].imageUrl}" alt="Ours ${productInLocalStorage[i].name}">
@@ -49,58 +38,29 @@ for (let i = 0; i < productInLocalStorage.length; i++) {
 `;
   document.querySelector(".selectedProduct").innerHTML = html;
 }
-
-<<<<<<< HEAD
-//***************  Fonction affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-
-displayNumberOfProductsInCart();
-// ************** Fonction affiché prix total dès arrivé
-displayTotalPrice();
-
-
-//  ********************************* Mettre a jour le prix Total dès l'arrivée sur la page
-=======
-
-
-
- //  Affiché le nombre d'article sélectionné ( à coté icone panier ) dès l'arrivé sur la page
-   // Si il y un Objet "cartItem" dans le local storage 
+ // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
    if (JSON.parse(localStorage.getItem("cartItem"))) {
-     // On le récupère 
     let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-    // Création variable nombres d'articles = nombre d'article dans le local storage 
     let numberOfArticleInCart = productInLocalStorage.length;
     console.log(numberOfArticleInCart);
-    // On vise le span "itemsInCart" à coté de l'icone panier
     let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-    // Son innerText est le nombre d'article dans le local storage
     numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
    }
-
-
-
-
 // Affiché le prix total sélectionné dès l'arrivé sur la page
->>>>>>> parent of ffca23a...  création de fonction
 let totalText = document.getElementById("totalPrice");
-// méthode reduce pour additioner chaque prix dans le tableau " TotalPriceOnload", créer dans la première boucle du script cart.js
 const add = (a, b) => a + b;
 let TotalPrice = TotalPriceOnLoad.reduce(add);
-// Une fois toute les valeurs additionner, les présenter en format décimal
 totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
 
+// Affiché le nbres d'items dans le panier dès l'arrivé sur la page
 
-
-
-<<<<<<< HEAD
-/// **************************** Logique boutons quantité +
-=======
-
-
-/// Logique boutons quantité +
->>>>>>> parent of ffca23a...  création de fonction
+let numberOfArticleInCart = productInLocalStorage.length;
+console.log(numberOfArticleInCart);
+let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+//////////////////////////////////////// Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus");
-
 for (let x = 0; x < btnPlus.length; x++) {
   btnPlus[x].addEventListener("click", () => {
     let quantity = btnPlus[x].previousElementSibling.previousElementSibling;
@@ -110,7 +70,7 @@ for (let x = 0; x < btnPlus.length; x++) {
 
     quantity.innerText = compteur;
 
-    // Logique Affichage prix quand boutton + est clické
+    ////////////////////////// Logique Affichage prix quand boutton + est clické
     // Récupérer la quantité séléctioné en nombre
     let parsedQuantity = parseFloat(quantity.innerHTML);
     // Récupérer le prix de base de ce produit
@@ -146,10 +106,6 @@ for (let x = 0; x < btnPlus.length; x++) {
 
     updatedPriceEl.innerText = newPrice;
 
-
-
-
-
     /// Total Panier
     let totalText = document.getElementById("totalPrice");
     let calcul = [];
@@ -174,12 +130,7 @@ for (let x = 0; x < btnPlus.length; x++) {
   });
 }
 
-
-
-
-
-
-// Logique boutons quantité -
+//////////////////////////////////// Logique boutons quantité -
 
 let btnMinus = document.querySelectorAll(".btnMinus");
 
@@ -193,7 +144,7 @@ for (let z = 0; z < btnPlus.length; z++) {
     }
     quantity.innerText = compteur;
 
-    // Logique Affichage prix quand boutton - est clické
+    //////////////////////// Logique Affichage prix quand boutton - est clické
 
     // Récupérer la quantité séléctioné en nombre
     let parsedQuantity = parseFloat(quantity.innerHTML);
@@ -255,10 +206,7 @@ for (let z = 0; z < btnPlus.length; z++) {
   });
 }
 
-
-
-
-// Vider un élément
+/////////////// Vider un élément
 let btnDelete = document.querySelectorAll(".clearCart");
 
 for (let j = 0; j < btnDelete.length; j++) {
@@ -267,39 +215,41 @@ for (let j = 0; j < btnDelete.length; j++) {
     productInLocalStorage.splice([j], 1);
 
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+     /// Total Panier
+     let totalText = document.getElementById("totalPrice");
+     let calcul = [];
+     let elPrice = document.querySelectorAll("#price");
+     let elQuantity = document.querySelectorAll(".quantityOfProduct");
+     for (let d = 0; d < elPrice.length; d++) {
+       let a = parseInt(elQuantity[d].innerText);
+ 
+       let b = productInLocalStorage[d].price;
+ 
+       let sum = a * b;
+ 
+       calcul.push(sum);
+     }
+ 
+     const add = (a, b) => a + b;
+     let result = calcul.reduce(add);
+ 
+     let resultFloat = (result / 100).toFixed(2).replace(".", ",");
+     console.log(resultFloat);
+     totalText.innerHTML = resultFloat;
 
-<<<<<<< HEAD
-    displayTotalPrice();
-    displayNumberOfProductsInCart();
-=======
-    /// Total Panier
-    let totalText = document.getElementById("totalPrice");
-    let calcul = [];
-    let elPrice = document.querySelectorAll("#price");
-    let elQuantity = document.querySelectorAll(".quantityOfProduct");
-    for (let d = 0; d < elPrice.length; d++) {
-      let a = parseInt(elQuantity[d].innerText);
-
-      let b = productInLocalStorage[d].price;
-
-      let sum = a * b;
-
-      calcul.push(sum);
-    }
-
-    const add = (a, b) => a + b;
-    let result = calcul.reduce(add);
-
-    let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-    console.log(resultFloat);
-    totalText.innerHTML = resultFloat;
->>>>>>> parent of ffca23a...  création de fonction
+     // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
+    let numberOfArticleInCart = productInLocalStorage.length;
+    console.log(numberOfArticleInCart);
+    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
+    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+   }
   });
 }
 
-
-
-// Vider le panier entier
+///////////////////////////////// Vider le panier
 const clearAll = document.querySelector(".clearAll");
 clearAll.addEventListener("click", (e) => {
   e.preventDefault;
@@ -309,14 +259,7 @@ clearAll.addEventListener("click", (e) => {
   window.location.href = "panier.html";
 });
 
-
-
-
 // Validation du formulaire 
 
-<<<<<<< HEAD
-=======
 let form = document.getElementById("form");
 let submitBtn = document.getElementById("submit") 
-
->>>>>>> parent of ffca23a...  création de fonction
