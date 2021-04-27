@@ -1,5 +1,5 @@
 
-import {displayNumberOfProductsInCart} from './utils.js';
+import {displayNumberOfProductsInCart, displayInCartTotalPrice} from './utils.js';
 
 // On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -9,7 +9,6 @@ let html = "";
 // Boucle pour récupérer toutes les variables des produits + (Foreach)
 let TotalPriceOnLoad = [];
 if (productInLocalStorage) {
-
 
 for (let i = 0; i < productInLocalStorage.length; i++) {
   //  Display the right price Onload
@@ -46,9 +45,9 @@ for (let i = 0; i < productInLocalStorage.length; i++) {
 }
 }
 
-// Affiché le nbres d'items dans le panier dès l'arrivé sur la page
-
+// Affiché le nbres d'items dans le panier 
   displayNumberOfProductsInCart();
+
   
 
 // Affiché le prix total sélectionné dès l'arrivé sur la page
@@ -108,27 +107,7 @@ for (let x = 0; x < btnPlus.length; x++) {
 
     updatedPriceEl.innerText = newPrice;
 
-    /// Total Panier
-    let totalText = document.getElementById("totalPrice");
-    let calcul = [];
-    let elPrice = document.querySelectorAll("#price");
-    let elQuantity = document.querySelectorAll(".quantityOfProduct");
-    for (let d = 0; d < elPrice.length; d++) {
-      let a = parseInt(elQuantity[d].innerText);
-
-      let b = productInLocalStorage[d].price;
-
-      let sum = a * b;
-
-      calcul.push(sum);
-    }
-
-    const add = (a, b) => a + b;
-    let result = calcul.reduce(add);
-
-    let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-    console.log(resultFloat);
-    totalText.innerHTML = resultFloat;
+    displayInCartTotalPrice();
   });
 }
 
@@ -183,28 +162,8 @@ for (let z = 0; z < btnPlus.length; z++) {
       btnMinus[z].parentElement.nextElementSibling.firstElementChild;
 
     updatedPriceEl.innerText = newPrice;
-
-    /// Total Panier
-    let totalText = document.getElementById("totalPrice");
-    let calcul = [];
-    let elPrice = document.querySelectorAll("#price");
-    let elQuantity = document.querySelectorAll(".quantityOfProduct");
-    for (let d = 0; d < elPrice.length; d++) {
-      let a = parseInt(elQuantity[d].innerText);
-
-      let b = productInLocalStorage[d].price;
-
-      let sum = a * b;
-
-      calcul.push(sum);
-    }
-
-    const add = (a, b) => a + b;
-    let result = calcul.reduce(add);
-
-    let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-    console.log(resultFloat);
-    totalText.innerHTML = resultFloat;
+  
+    displayInCartTotalPrice();
   });
 }
 
@@ -217,36 +176,13 @@ for (let j = 0; j < btnDelete.length; j++) {
     productInLocalStorage.splice([j], 1);
 
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-     /// Total Panier
-     let totalText = document.getElementById("totalPrice");
-     let calcul = [];
-     let elPrice = document.querySelectorAll("#price");
-     let elQuantity = document.querySelectorAll(".quantityOfProduct");
-     for (let d = 0; d < elPrice.length; d++) {
-       let a = parseInt(elQuantity[d].innerText);
- 
-       let b = productInLocalStorage[d].price;
- 
-       let sum = a * b;
- 
-       calcul.push(sum);
-     }
- 
-     const add = (a, b) => a + b;
-     let result = calcul.reduce(add);
- 
-     let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-     console.log(resultFloat);
-     totalText.innerHTML = resultFloat;
+   
+    displayInCartTotalPrice();
 
      // Number of article in cart next to Cart Image 
    // On recupère l'array contenant les objets du local sotrage
    if (JSON.parse(localStorage.getItem("cartItem"))) {
-    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-    let numberOfArticleInCart = productInLocalStorage.length;
-    console.log(numberOfArticleInCart);
-    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
+   displayNumberOfProductsInCart();
    }
   });
 }
