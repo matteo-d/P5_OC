@@ -1,3 +1,5 @@
+import {displayNumberOfProductsInCartOnLoad} from './utils.js';
+
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
 
@@ -39,16 +41,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         </div>`;
     document.getElementById("main").innerHTML = html;
   
-    // Number of article in cart next to Cart Image 
-   // On recupère l'array contenant les objets du local sotrage
-   if (JSON.parse(localStorage.getItem("cartItem"))) {
-    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-    let numberOfArticleInCart = productInLocalStorage.length;
-    console.log(numberOfArticleInCart);
-    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
-   }
-  
+
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
 
@@ -58,6 +51,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       option.textContent = colors;
       choice.appendChild(option);
     });
+    displayNumberOfProductsInCartOnLoad();
 
     // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
@@ -121,6 +115,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         window.scrollTo(0,0);
       };
+      
       // Number of article in cart next to Cart Image 
     // On recupère l'array contenant les objets du local sotrage
 let numberOfArticleInCart = productInLocalStorage.length;

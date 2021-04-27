@@ -1,3 +1,6 @@
+import {displayNumberOfProductsInCartOnLoad} from './utils.js';
+
+
 fetch("http://localhost:3000/api/teddies")
   .then((productResp) => productResp.json())
   .then((productResp) => {
@@ -33,15 +36,7 @@ fetch("http://localhost:3000/api/teddies")
       </div >
 `;
     }
-    // Number of article in cart next to Cart Image 
-   // On recupère l'array contenant les objets du local sotrage
-   if (JSON.parse(localStorage.getItem("cartItem"))) {
-    let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem"))) ;
-    let numberOfArticleInCart = productInLocalStorage.length;
-    console.log(numberOfArticleInCart);
-    let numberOfArticleInCartEl = document.querySelector(".itemsInCart")
-    numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
-   }
+    displayNumberOfProductsInCartOnLoad();
     // Ajouter mes element créer dans le HTML pour afficher mes produits
     document.getElementById("main").innerHTML = html;
   });
