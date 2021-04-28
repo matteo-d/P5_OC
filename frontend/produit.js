@@ -71,7 +71,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     quantity.innerHTML = compteur;
     });
 
-    // Au clic l'élément et otption sélectionné au local storage
+    // Au clic l'élément et option sélectionné au local storage
     let btnAddToCart = document.querySelector(".addCart");
     let selectedValue = document.getElementById("select_choice");
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
