@@ -1,9 +1,12 @@
-import { displayNumberOfProductsInCart } from "./utils.js";
+import {
+  displayNumberOfProductsInCart,
+  displayPriceDynamically,
+} from "./utils.js";
 // On recupère l'array contenant les objets du local sotrage
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 //////////////////////// Display des articles présents dans le panier
 let html = "";
-// Tableau vide pour acceuillir tout les prix 
+// Tableau vide pour acceuillir tout les prix
 let TotalPriceOnLoad = [];
 
 if (productInLocalStorage) {
@@ -15,7 +18,7 @@ if (productInLocalStorage) {
     let twoDecimalResult = (Math.round(result * 100) / 100).toFixed(2);
     //  Display the right TOTAL price Onload
     TotalPriceOnLoad.push(result);
-  
+
     html += `
 <ul>
  <li><img id="${productInLocalStorage[i]._id}" src="${productInLocalStorage[i].imageUrl}" alt="Ours ${productInLocalStorage[i].name}">
@@ -45,15 +48,12 @@ displayNumberOfProductsInCart();
 
 // Affiché le prix TOTAL du panier dès l'arrivé sur la page
 if (productInLocalStorage) {
-  let totalText = document.getElementById("totalPrice");
-  const add = (a, b) => a + b;
-  let TotalPrice = TotalPriceOnLoad.reduce(add);
-  totalText.innerHTML = TotalPrice.toFixed(2).replace(".", ",");
+  displayPriceDynamically();
 }
 
 //////////////////////////////////////// Logique boutons quantité +
 let btnPlus = document.querySelectorAll(".btnPlus");
-console.log(typeof btnPlus)
+console.log(typeof btnPlus);
 for (let x = 0; x < btnPlus.length; x++) {
   btnPlus[x].addEventListener("click", () => {
     let quantity = btnPlus[x].previousElementSibling.previousElementSibling;
@@ -64,8 +64,9 @@ for (let x = 0; x < btnPlus.length; x++) {
     // Récupérer la quantité séléctioné en nombre
     let parsedQuantity = parseFloat(quantity.innerHTML);
     let product =
-    btnPlus[x].parentElement.parentElement.firstElementChild.firstElementChild.id;
-  
+      btnPlus[x].parentElement.parentElement.firstElementChild.firstElementChild
+        .id;
+
     let price;
     switch (product) {
       case "5be9c8541c9d440000665243":
@@ -91,33 +92,18 @@ for (let x = 0; x < btnPlus.length; x++) {
 
     //Afficher nouveau prix
     let updatedPriceEl =
-    btnPlus[x].parentElement.nextElementSibling.firstElementChild;
+      btnPlus[x].parentElement.nextElementSibling.firstElementChild;
     updatedPriceEl.innerText = newPrice;
 
-    /// Total Panier
-    let totalText = document.getElementById("totalPrice");
-    let calcul = [];
-    let elPrice = document.querySelectorAll("#price");
-    let elQuantity = document.querySelectorAll(".quantityOfProduct");
-
-    for (let d = 0; d < elPrice.length; d++) {
-      let a = parseInt(elQuantity[d].innerText);
-      let b = productInLocalStorage[d].price;
-      let sum = a * b;
-      calcul.push(sum);
-    }
-    const add = (a, b) => a + b;
-    let result = calcul.reduce(add);
-    let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-    console.log(resultFloat);
-    totalText.innerHTML = resultFloat;
+    /// Total Panier dynamique
+    displayPriceDynamically();
   });
 }
 
 //////////////////////////////////// Logique boutons quantité -
 
 let btnMinus = document.querySelectorAll(".btnMinus");
-console.log(typeof btnMinus)
+console.log(typeof btnMinus);
 for (let z = 0; z < btnPlus.length; z++) {
   btnMinus[z].addEventListener("click", () => {
     let quantity = btnMinus[z].previousElementSibling;
@@ -164,64 +150,26 @@ for (let z = 0; z < btnPlus.length; z++) {
 
     updatedPriceEl.innerText = newPrice;
 
-    /// Total Panier
-    let totalText = document.getElementById("totalPrice");
-    let calcul = [];
-    let elPrice = document.querySelectorAll("#price");
-    let elQuantity = document.querySelectorAll(".quantityOfProduct");
-   
-    for (let d = 0; d < elPrice.length; d++) {
-      let a = parseInt(elQuantity[d].innerText);
-      let b = productInLocalStorage[d].price;
-      let sum = a * b;
-      calcul.push(sum);
-    }
-
-    let add = (a, b) => a + b;
-    let result = calcul.reduce(add);
-    let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-    console.log(resultFloat);
-    totalText.innerHTML = resultFloat;
+    /// Total Panier à chaque changement de quantité
+    displayPriceDynamically();
   });
 }
 
 /////////////// Vider un élément
 let btnDelete = document.querySelectorAll(".clearCart");
-console.log(typeof btnDelete +"btnDelete")
+console.log(typeof btnDelete + "btnDelete");
 for (let j = 0; j < btnDelete.length; j++) {
   btnDelete[j].addEventListener("click", () => {
     btnDelete[j].parentElement.parentElement.remove();
     productInLocalStorage.splice([j], 1);
     localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
 
-    /// Total Panier
-    let totalText = document.getElementById("totalPrice");
-    let calcul = [];
-    let elPrice = document.querySelectorAll("#price");
-    let elQuantity = document.querySelectorAll(".quantityOfProduct");
-    
-    for (let d = 0; d < elPrice.length; d++) {
-      let a = parseInt(elQuantity[d].innerText);
-      let b = productInLocalStorage[d].price;
-      let sum = a * b;
-      calcul.push(sum);
-    }
-
-    let add = (a, b) => a + b;
-    let result = calcul.reduce(add);
-    let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-    console.log(resultFloat);
-    totalText.innerHTML = resultFloat;
+    /// Total Panier à chaque changement de quantité
+    displayPriceDynamically();
 
     // Number of article in cart next to Cart Image
-    if (JSON.parse(localStorage.getItem("cartItem"))) {
-      let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-      let numberOfArticleInCart = productInLocalStorage.length;
-      console.log(numberOfArticleInCart);
-      let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
-      numberOfArticleInCartEl.innerText = numberOfArticleInCart;
-    }
-    window.scrollTo(0,0);
+    displayNumberOfProductsInCart();
+    window.scrollTo(0, 0);
   });
 }
 
@@ -235,35 +183,37 @@ clearAll.addEventListener("click", (e) => {
   window.location.href = "panier.html";
 });
 
-///********************* */ Gestion formulaire 
+///********************* */ Gestion formulaire
 let form = document.getElementById("form");
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   // récupérer les value du form pour l'objet contact
-let contactObj  = {};
-contactObj .firstname = form.firstname.value;
-contactObj.lastname = form.lastname.value;
-contactObj.adress = form.adress.value;
-contactObj.city = form.city.value;
-contactObj.email = form.email.value;
-console.log(Object.keys(contactObj));
-//récupérer les id présents dan le panier pour le tableau produit
-let produitsArray = [];
-let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+  let contactObj = {};
+  contactObj.firstname = form.firstname.value;
+  contactObj.lastname = form.lastname.value;
+  contactObj.adress = form.adress.value;
+  contactObj.city = form.city.value;
+  contactObj.email = form.email.value;
+  console.log(contactObj);
+  //récupérer les id présents dan le panier pour le tableau produit
+  let produitsArray = [];
+  let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
   for (let i = 0; i < productInLocalStorage.length; i++) {
-let ids = productInLocalStorage[i]._id
-// Si id envoyé est bien de type string
-if (typeof ids === 'string') {
-  produitsArray.push(ids)
-}
+    let ids = productInLocalStorage[i]._id;
+    // Si id envoyé est bien de type string
+    if (typeof ids === "string") {
+      produitsArray.push(ids);
+    }
   }
-  console.log(produitsArray)
-// Si l'objet contact et le tableau d'ids ne sont pas  vides
-if ((produitsArray.length > 0) && (Object.keys(contactObj).length > 0)) {
-  // Envoie au backend 
-  console.log('lol')
-  // Sauvegardé dans le session storage pour affiché page confirmation
-}
-})
+  console.log(produitsArray);
+  // Et si  l'objet contact et le tableau d'ids ne sont pas  vides
+  if (produitsArray.length > 0 && Object.keys(contactObj).length > 0) {
+    // Envoie au backend ?
+    fetch("http://localhost:5501", { method: "POST" })
+      .then((results) => results.json())
+      .then(console.log);
 
+    // Sauvegardé dans le session storage pour affiché page confirmation
+  }
+});

@@ -41,7 +41,6 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         </div>`;
     document.getElementById("main").innerHTML = html;
   
-
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
 
@@ -52,9 +51,9 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       choice.appendChild(option);
     });
 
-    if (JSON.parse(localStorage.getItem("cartItem"))) {
+   
     displayNumberOfProductsInCart();
-    }
+    
     // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
     let btnMinus = document.getElementById("btnMinus");
@@ -120,9 +119,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       
       // Number of article in cart next to Cart Image 
     // On recupère l'array contenant les objets du local sotrage
-let numberOfArticleInCart = productInLocalStorage.length;
-console.log(numberOfArticleInCart);
-let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
-numberOfArticleInCartEl.innerText = numberOfArticleInCart;
+
+    displayNumberOfProductsInCart();
     });
   });
