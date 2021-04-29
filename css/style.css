@@ -34,13 +34,13 @@ body nav {
   height: 10vh;
 }
 
-body nav img.logo {
+body nav .goToHomepage img {
   width: 20rem;
   height: 9vh;
   cursor: pointer;
 }
 
-body nav a.cartSvg {
+body nav .cartSvg {
   padding-right: 2rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -48,7 +48,7 @@ body nav a.cartSvg {
           transform: translateY(-3.5rem);
 }
 
-body nav a.cartSvg .itemsInCart {
+body nav .cartSvg span {
   background-color: #f1cbcb;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   border-radius: 30px;

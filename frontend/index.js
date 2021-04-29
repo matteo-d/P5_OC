@@ -1,4 +1,5 @@
-import {displayNumberOfProductsInCart} from './utils.js';
+
+import { displayNbsItemsInCartDynamically} from "./utils.js"
 
 
 fetch("http://localhost:3000/api/teddies")
@@ -36,11 +37,14 @@ fetch("http://localhost:3000/api/teddies")
       </div >
 `;
     }
-   
-    displayNumberOfProductsInCart();
-    
-    // Ajouter mes element créer dans le HTML pour afficher mes produits
-    document.getElementById("main").innerHTML = html;
+
+      // Ajouter mes element créer dans le HTML pour afficher mes produits
+      document.getElementById("main").innerHTML = html;
+    // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    displayNbsItemsInCartDynamically();
+   }
+  
   });
 
-  console.log(typeof localStorage)

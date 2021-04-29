@@ -18,31 +18,7 @@ a {
 body {
   font-family: "Roboto", sans-serif;
   
- nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-    border-bottom: solid 1px black;
-  a {
-    padding-left: 2rem;
-  }
-    img.logo {
-      width: 20rem;
-       height: 9vh;
-      cursor: pointer;
-    }
-    a.cartSvg {
-      padding-right: 2rem;
-      .itemsInCart {
-        background-color: #f1cbcb;
-       padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-      border-radius: 30px;
-      }
-    }
-  
-  }
-
+  @include styleNavbar;
   main {
     padding-top: 3rem;
     section.options {

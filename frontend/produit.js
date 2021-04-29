@@ -1,4 +1,5 @@
-import {displayNumberOfProductsInCart} from './utils.js';
+
+import { displayNbsItemsInCartDynamically} from "./utils.js"
 
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
@@ -38,8 +39,16 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
         <!--Btn Add to Cart-->
         <div id="container_addToCart">
             <button id="addToCart" class="addCart">Add</button>
+            <span class="message"> </span>
         </div>`;
     document.getElementById("main").innerHTML = html;
+  
+
+    // Number of article in cart next to Cart Image 
+   // On recupère l'array contenant les objets du local sotrage
+   if (JSON.parse(localStorage.getItem("cartItem"))) {
+    displayNbsItemsInCartDynamically();
+   }
   
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
@@ -96,12 +105,10 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
       if (productInLocalStorage) {
         // Ajouter une condition si le meme objet avec la meme couleur est deja dans le panier annulé ajout au localstorage
         if (
-          productInLocalStorage.some((el) => el._id == cartItem._id) &&
-          productInLocalStorage.some(
-            (el) => el.selectedColor == cartItem.selectedColor
-          ) == true
+          productInLocalStorage.some((el) => el._id == cartItem._id) == true
         ) {
-          alert("déja dans le panier panier ");
+      let messageEl = document.querySelector('.message')
+       messageEl.innerText = "déja dans le panier"
         } else {
           window.scrollTo(0,0);
           productInLocalStorage.push(cartItem);
@@ -109,17 +116,23 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
             "cartItem",
             JSON.stringify(productInLocalStorage)
           );
+          let messageEl = document.querySelector('.message')
+          messageEl.innerText = "Ajouter";
+          window.scrollTo(0,0);
         }
       } else {
         productInLocalStorage = [];
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+        let messageEl = document.querySelector('.message')
+        messageEl.innerText = "Ajouter";
         window.scrollTo(0,0);
       };
-      
+
+    
       // Number of article in cart next to Cart Image 
     // On recupère l'array contenant les objets du local sotrage
+    displayNbsItemsInCartDynamically();
 
-    displayNumberOfProductsInCart();
     });
   });

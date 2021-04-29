@@ -18,29 +18,7 @@ a {
 body {
  
   font-family: "Roboto", sans-serif;
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-  a {
-    padding-left: 2rem;
-  }
-    img.logo {
-      width: 20rem;
-       height: 9vh;
-      cursor: pointer;
-    }
-    a.cartSvg {
-      padding-right: 2rem;
-      .itemsInCart {
-        background-color: #f1cbcb;
-       padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-      border-radius: 30px;
-      }
-    }
-  
-  }
+  @include styleNavbar;
   main {
     display: flex;
     justify-content: center;
@@ -141,6 +119,11 @@ body {
               transform: scale(1.05);
               cursor: pointer;
             }
+          }
+          .message {
+            padding-left: 15rem;
+            padding-top: 1em;
+            position: absolute
           }
         }
       }

@@ -24,31 +24,30 @@ body nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 10vh;
-  border-bottom: solid 1px black;
 }
 
-body nav a {
-  padding-left: 2rem;
-}
-
-body nav img.logo {
-  width: 20rem;
-  height: 9vh;
+body nav .goToHomepage {
+  width: 2rem;
   cursor: pointer;
 }
 
-body nav a.cartSvg {
+body nav .cartSvg {
   padding-right: 2rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transform: translateY(-3.5rem);
+          transform: translateY(-3.5rem);
 }
 
-body nav a.cartSvg .itemsInCart {
+body nav .cartSvg span {
   background-color: #f1cbcb;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   border-radius: 30px;
