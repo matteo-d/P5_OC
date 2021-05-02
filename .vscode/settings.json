@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5000,
+    "liveServer.settings.multiRootWorkspaceName": "P5_OpenClassroom"
 }

@@ -52,16 +52,12 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
   
     //Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
-
-    productResp.colors.forEach(function (colors) {
+    productResp.colors.forEach( (colors) => {
       let option = document.createElement("option");
       option.value = colors;
       option.textContent = colors;
       choice.appendChild(option);
     });
-
-   
-    displayNumberOfProductsInCart();
     
     // Logique boutons quantité + et -
     let btnPlus = document.getElementById("btnPlus");
@@ -85,7 +81,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     let selectedValue = document.getElementById("select_choice");
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
-    btnAddToCart.addEventListener("click", function (e) {
+    btnAddToCart.addEventListener("click", (e) => {
       e.preventDefault();
       // trouver la valeur selectionée par l'utilisateur
       let selectedColor = selectedValue.options[selectedValue.selectedIndex].value;

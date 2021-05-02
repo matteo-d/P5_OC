@@ -13,21 +13,21 @@
 @mixin styleNavbar {
   nav {
     display: flex;
-    flex-direction: column;
+  justify-content: center;
     align-items: center;
     height: 10vh;
     .goToHomepage {
-      width: 2rem;
+     
       cursor: pointer;
         img {
-          width: 2rem;
-          height: 2rem;
+          width: 14rem;
+          height: 4rem;
         }
     }
     .cartSvg {
       padding-right: 2rem;
-      align-self: flex-end;
-    transform: translateY(-3.5rem);
+    justify-content: flex-end;
+
       span {
         background-color: #f1cbcb;
         padding: 0.25rem 0.5rem 0.25rem 0.5rem;

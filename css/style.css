@@ -24,28 +24,29 @@ body nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 10vh;
 }
 
-body nav .goToHomepage img {
-  width: 20rem;
-  height: 9vh;
+body nav .goToHomepage {
   cursor: pointer;
+}
+
+body nav .goToHomepage img {
+  width: 14rem;
+  height: 4rem;
 }
 
 body nav .cartSvg {
   padding-right: 2rem;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  -webkit-transform: translateY(-3.5rem);
-          transform: translateY(-3.5rem);
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 body nav .cartSvg span {
