@@ -82,8 +82,17 @@ if (typeof ids === 'string') {
   let objetCommande = {contactObj,produitsArray}
   console.log(objetCommande)
 
+function handleErrors(response) {
+  if (!response.ok) {
+    let errorMessage = "";
+    errorMessage = `<h1> Le serveur n'est pas connecté <h1>
+    `
+    document.getElementById("main").innerHTML = errorMessage;
+  }
+  return response;
+}
   // Envoyer l'objet de commande sur une API de test qui renvoi un ID  
- const promesse = fetch('https://restapi.fr/api/posts',  {
+ const promessePost = fetch('https://restapi.fr/api/posts',  {
 method: "POST",
 body: JSON.stringify(objetCommande),
 headers : {
@@ -91,25 +100,30 @@ headers : {
 }
  })
 
-// Voir résultat dans la console
-promesse.then(async(response)=>{
+// Voir ce que l'oen envoi dans la console
+promessePost.then(async(response)=>{
   try {
-    console.log('response');
+    console.log('Success')
     console.log(response);
+ 
     const contenu = await response.json()
-    console.log('contenu')
+    console.log("Contenu de l'objet commande envoyé au serveur")
     console.log(contenu)
+    if(response.ok) {
+      // Récupération de l'id envoyé par l'API Test
+      console.log(contenu._id)
+    }
   }catch(e) {
     console.log(e)
   }
 // Ce qu'il y a sur le serveur 
-  const promesse2 = fetch('https://restapi.fr/api/posts')
-  promesse2.then(async(response)=> {
+  const promesseGet = fetch('https://restapi.fr/api/posts')
+  promesseGet.then(async(response)=> {
     try {
-      console.log('reponse ce quil y a sur le serveur')
-      console.log(promesse2)
+      console.log('Success')
+      console.log(promesseGet)
       const donnee = await response.json();
-      console.log('données')
+      console.log('Historique commandes validées sur le serveur')
       console.log(donnee);
     }
     catch(e) {
