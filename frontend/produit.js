@@ -1,12 +1,42 @@
 
 import { displayNbsItemsInCartDynamically} from "./utils.js"
 
+
+function handleErrors(response) {
+  if (!response.ok) {
+    let errorMessage = "";
+    errorMessage = `<h1> Le serveur n'est pas connecté <h1>
+    `
+    document.getElementById("main").innerHTML = errorMessage;
+  }
+  return response;
+}
+
+ // Extract query string 
+
+ let url = window.location
+ console.log(url)
+
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
-
+console.log(productId)
+// Gestion d'erreur si Url faux
+let validUrls = ["5be9c8541c9d440000665243","5beaa8bf1c9d440000a57d94", "5beaaa8f1c9d440000a57d95", "5beaabe91c9d440000a57d96", "5beaacd41c9d440000a57d97" ]
+console.log(validUrls)
+// Si l'URL ne contient pas un id de produit valable 
+if (!validUrls.includes(productId)) {
+  let errorMessage = "";
+  errorMessage = `<h1> L'URL ne correspond à aucun article <h1>
+  `
+  document.getElementById("main").innerHTML = errorMessage;
+}
 /* Récupération du produit avec l'id associé depuis le serveur */
+const MyURL = new URL (`http://localhost:3000/api/teddies/${productId}`)
 
-fetch(`http://localhost:3000/api/teddies/${productId}`)
+
+if (validUrls.includes(productId)) {
+fetch(MyURL)
+.then(handleErrors)
   .then((productResp) => productResp.json())
   .then((productResp) => {
     let html = "";
@@ -42,7 +72,7 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
             <span class="message"> </span>
         </div>`;
     document.getElementById("main").innerHTML = html;
-  
+        
 
     // Number of article in cart next to Cart Image 
    // On recupère l'array contenant les objets du local sotrage
@@ -65,11 +95,11 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     let quantity = document.getElementById("quantityOfProduct");
     let compteur = parseInt(quantity.innerText);
 
-    btnPlus.addEventListener("click", function () {
+    btnPlus.addEventListener("click", () => {
       compteur++;
       quantity.innerHTML = compteur;
     });
-    btnMinus.addEventListener("click", function () {
+    btnMinus.addEventListener("click",  () => {
       if (compteur > 1) {
         compteur--;
       }
@@ -132,3 +162,5 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 
     });
   });
+}
+  
