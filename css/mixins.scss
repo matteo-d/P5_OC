@@ -12,23 +12,28 @@
 
 @mixin styleNavbar {
   nav {
-    display: flex;
-  justify-content: center;
-    align-items: center;
-    height: 10vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     .goToHomepage {
-     
+      display: flex;
+      grid-area: 1 / 2 / 2 / 3;
       cursor: pointer;
+      justify-content: center;
         img {
+          
           width: 14rem;
           height: 4rem;
         }
     }
     .cartSvg {
       padding-right: 2rem;
-    justify-content: flex-end;
-
-      span {
+      grid-area: 1 / 3 / 2 / 4; 
+      justify-self: flex-end;
+      padding-top: 0.5rem;
+      span.itemsInCart {
         background-color: #f1cbcb;
         padding: 0.25rem 0.5rem 0.25rem 0.5rem;
        border-radius: 30px;

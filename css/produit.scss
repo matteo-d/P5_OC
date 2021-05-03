@@ -115,15 +115,16 @@ body {
             padding: 0.5rem 2rem 0.5rem 2rem;
             margin-top: 0.5rem;
             border-radius: 33px;
+            background-color: #ffffff;
             &:hover {
               transform: scale(1.05);
               cursor: pointer;
             }
           }
           .message {
-            padding-left: 15rem;
             padding-top: 1em;
-            position: absolute
+            position: absolute ;
+            transform: translate(100%, 0%)
           }
         }
       }

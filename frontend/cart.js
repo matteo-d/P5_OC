@@ -55,9 +55,9 @@ chooseYourQuantityMinus();
 chooseYourQuantityPlus();
 
 
+
 ///********************* */ Gestion formulaire 
 let form = document.getElementById("form");
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 // récupérer les value du form pour l'objet contact
@@ -74,9 +74,47 @@ let produitsArray = [];
 let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
   productInLocalStorage.forEach( (el) => {
 let ids = el._id
-// Si id envoyé est bien de type string
+// Si id envoyé est bien de type string on l'ajoute au tableau produits
 if (typeof ids === 'string') {
   produitsArray.push(ids)
 }
   })
+  let objetCommande = {contactObj,produitsArray}
+  console.log(objetCommande)
+
+  // Envoyer l'objet de commande sur une API de test qui renvoi un ID  
+ const promesse = fetch('https://restapi.fr/api/posts',  {
+method: "POST",
+body: JSON.stringify(objetCommande),
+headers : {
+  "Content-type" : "application/json",
+}
+ })
+
+// Voir résultat dans la console
+promesse.then(async(response)=>{
+  try {
+    console.log('response');
+    console.log(response);
+    const contenu = await response.json()
+    console.log('contenu')
+    console.log(contenu)
+  }catch(e) {
+    console.log(e)
+  }
+// Ce qu'il y a sur le serveur 
+  const promesse2 = fetch('https://restapi.fr/api/posts')
+  promesse2.then(async(response)=> {
+    try {
+      console.log('reponse ce quil y a sur le serveur')
+      console.log(promesse2)
+      const donnee = await response.json();
+      console.log('données')
+      console.log(donnee);
+    }
+    catch(e) {
+      console.log(e)
+    }
+  })
+})
 });

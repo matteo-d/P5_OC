@@ -2,6 +2,7 @@
 import { displayNbsItemsInCartDynamically} from "./utils.js"
 
 
+
 function handleErrors(response) {
   if (!response.ok) {
     let errorMessage = "";
@@ -17,6 +18,7 @@ function handleErrors(response) {
  let url = window.location
  console.log(url)
 
+
 /* Récupération de l'id du produit sélectionné dans la page précédente */
 const productId = window.location.search.substr(1);
 console.log(productId)
@@ -30,9 +32,16 @@ if (!validUrls.includes(productId)) {
   `
   document.getElementById("main").innerHTML = errorMessage;
 }
+
+
 /* Récupération du produit avec l'id associé depuis le serveur */
 const MyURL = new URL (`http://localhost:3000/api/teddies/${productId}`)
-
+let params = new URLSearchParams(url.search);
+params.delete('?'); 
+//Query string is now: 'bar=2'
+let newUrl =  url.origin + '/' + params.toString();
+// Delete the foo parameter.
+console.log(newUrl)
 
 if (validUrls.includes(productId)) {
 fetch(MyURL)
@@ -68,8 +77,7 @@ fetch(MyURL)
         </div>
         <!--Btn Add to Cart-->
         <div id="container_addToCart">
-            <button id="addToCart" class="addCart">Add</button>
-            <span class="message"> </span>
+            <button id="addToCart" class="addCart">Ajouter</button>
         </div>`;
     document.getElementById("main").innerHTML = html;
         
@@ -134,7 +142,8 @@ fetch(MyURL)
           productInLocalStorage.some((el) => el._id == cartItem._id) == true
         ) {
       let messageEl = document.querySelector('.message')
-       messageEl.innerText = "déja dans le panier"
+       messageEl.innerText = productResp.name + " est déjà dans votre panier"
+       window.scrollTo(0,0);
         } else {
           window.scrollTo(0,0);
           productInLocalStorage.push(cartItem);
@@ -143,15 +152,15 @@ fetch(MyURL)
             JSON.stringify(productInLocalStorage)
           );
           let messageEl = document.querySelector('.message')
-          messageEl.innerText = "Ajouter";
-          window.scrollTo(0,0);
+          messageEl.innerText = productResp.name + " ajouté au panier ";
+        
         }
       } else {
         productInLocalStorage = [];
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         let messageEl = document.querySelector('.message')
-        messageEl.innerText = "Ajouter";
+        messageEl.innerText = productResp.name + " ajouté au panier ";
         window.scrollTo(0,0);
       };
 
