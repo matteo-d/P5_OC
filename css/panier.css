@@ -62,7 +62,7 @@ body nav .cartSvg {
   padding-top: 0.5rem;
 }
 
-body nav .cartSvg span {
+body nav .cartSvg span.itemsInCart {
   background-color: #f1cbcb;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   border-radius: 30px;

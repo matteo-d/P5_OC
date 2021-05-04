@@ -28,7 +28,7 @@ console.log(validUrls)
 // Si l'URL ne contient pas un id de produit valable 
 if (!validUrls.includes(productId)) {
   let errorMessage = "";
-  errorMessage = `<h1> L'URL ne correspond à aucun article <h1>
+  errorMessage = `<h1> L'URL ne correspond à aucun article </h1>
   `
   document.getElementById("main").innerHTML = errorMessage;
 }

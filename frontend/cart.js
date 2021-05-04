@@ -82,15 +82,6 @@ if (typeof ids === 'string') {
   let objetCommande = {contactObj,produitsArray}
   console.log(objetCommande)
 
-function handleErrors(response) {
-  if (!response.ok) {
-    let errorMessage = "";
-    errorMessage = `<h1> Le serveur n'est pas connecté <h1>
-    `
-    document.getElementById("main").innerHTML = errorMessage;
-  }
-  return response;
-}
   // Envoyer l'objet de commande sur une API de test qui renvoi un ID  
  const promessePost = fetch('https://restapi.fr/api/posts',  {
 method: "POST",
@@ -103,8 +94,6 @@ headers : {
 // Voir ce que l'oen envoi dans la console
 promessePost.then(async(response)=>{
   try {
-    console.log('Success')
-    console.log(response);
  
     const contenu = await response.json()
     console.log("Contenu de l'objet commande envoyé au serveur")
@@ -112,6 +101,12 @@ promessePost.then(async(response)=>{
     if(response.ok) {
       // Récupération de l'id envoyé par l'API Test
       console.log(contenu._id)
+      console.log('Success');
+      console.log(response);
+      // Stocker l'id dans le local storage
+      localStorage.setItem("identifiant", contenu._id);
+      // Go page confirmation
+      window.location = "confirmation.html"
     }
   }catch(e) {
     console.log(e)

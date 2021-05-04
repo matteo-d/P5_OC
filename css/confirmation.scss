@@ -1,3 +1,5 @@
+@import "mixins.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -14,17 +16,19 @@ a {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   min-height: 100vh;
   width: 100vw;
-  font-family: "Merriweather Sans", sans-serif;
-  h1 {
-    font-size: 4rem;
+  font-family: "Roboto", sans-serif;
+  @include styleNavbar;
+  main {
     text-align: center;
-    span.cart_id {
-      color: greenyellow;
+    h1 {
+      padding-top: 3rem;
+      font-size: 1.2rem;
+      
+  
     }
   }
+ 
 }
