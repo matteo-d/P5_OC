@@ -1,5 +1,5 @@
 
-import { displayNbsItemsInCartDynamically,  handleServerError, choixDeCouleurs, buttonsLogic,handleForm } from "./utils.js"
+import { displayNbsItemsInCartDynamically,  handleServerError, displayColorChoices, buttonsLogic, handleAddToCart,handleURLError } from "./utils.js"
 
 
 
@@ -13,16 +13,10 @@ const productId = window.location.search.substr(1);
 console.log(productId)
 
 
-// Gestion d'erreur si Url faux
+// Gestion d'erreur SI Url produit est faux
 let validUrls = ["5be9c8541c9d440000665243","5beaa8bf1c9d440000a57d94", "5beaaa8f1c9d440000a57d95", "5beaabe91c9d440000a57d96", "5beaacd41c9d440000a57d97" ]
 console.log(validUrls)
-// Si l'URL ne contient pas un id de produit valable 
-if (!validUrls.includes(productId)) {
-  let errorMessage = "";
-  errorMessage = `<h1> L'URL ne correspond à aucun article </h1>
-  `
-  document.getElementById("main").innerHTML = errorMessage;
-}
+handleURLError(validUrls,productId);
 
 /* Récupération du produit avec l'id associé depuis le serveur */
 const MyURL = new URL (`http://localhost:3000/api/teddies/${productId}`)
@@ -65,12 +59,12 @@ fetch(MyURL)
         </div>`;
     document.getElementById("main").innerHTML = html;
         
-    choixDeCouleurs(productResp);
+    displayColorChoices(productResp);
    // SI il y a des articles dans le panier, on en écrit le nombre à coté icone panier 
    if (JSON.parse(localStorage.getItem("cartItem"))) {displayNbsItemsInCartDynamically()};   
     // Logique boutons quantité + et -
     buttonsLogic();
-    handleForm(productResp);
+    handleAddToCart(productResp);
 
   })
 // Fermeture condition si fetch marche

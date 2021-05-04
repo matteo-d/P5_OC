@@ -1,8 +1,8 @@
 
-import { displayNbsItemsInCartDynamically} from "./utils.js"
+import { displayNbsItemsInCartDynamically, handleServerError} from "./utils.js"
 
 
-fetch("http://localhost:3000/api/teddies")
+fetch("http://localhost:3000/api/teddies").then(handleServerError)
   .then((productResp) => productResp.json())
   .then((productResp) => {
     
@@ -35,8 +35,6 @@ fetch("http://localhost:3000/api/teddies")
       </div >
 `;
     });
-
-
       // Ajouter mes element créer dans le HTML pour afficher mes produits
       document.getElementById("main").innerHTML = html;
     // Number of article in cart next to Cart Image 

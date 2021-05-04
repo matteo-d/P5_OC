@@ -1,5 +1,5 @@
 
-export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTotalPriceDynamically, deleteOneElOfCart, deleteAllCart,chooseYourQuantityPlus,chooseYourQuantityMinus,handleServerError,choixDeCouleurs, buttonsLogic, handleForm }
+export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTotalPriceDynamically, deleteOneElOfCart, deleteAllCart,chooseYourQuantityPlus,chooseYourQuantityMinus,handleServerError,displayColorChoices, buttonsLogic, handleAddToCart,handleURLError }
 
  const displayNbsItemsInCartDynamically = () => {
   
@@ -214,6 +214,7 @@ export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTo
     if (!response.ok) {
       let errorMessage = "";
       errorMessage = `<h1> Le serveur n'est pas connecté <h1>
+      
       `
       document.getElementById("main").innerHTML = errorMessage;
     }
@@ -222,7 +223,7 @@ export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTo
 
 
   //Affichage des choix de couleurs
-  const choixDeCouleurs = (productResp) => {
+  const displayColorChoices = (productResp) => {
    let choice = document.querySelector(".section_choice");
    productResp.colors.forEach( (colors) => {
      let option = document.createElement("option");
@@ -252,7 +253,7 @@ export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTo
   });
 }
 
-const handleForm = (productResp) => {
+const handleAddToCart = (productResp) => {
 // Gestion de l'ajout de l'article au panier 
     let btnAddToCart = document.querySelector(".addCart");
     let selectedValue = document.getElementById("select_choice");
@@ -304,4 +305,17 @@ const handleForm = (productResp) => {
       };
     displayNbsItemsInCartDynamically();
     });
+  }
+
+  // Gestion d'erreur SI Url produit est faux
+  const handleURLError = (validUrls, productId) => {
+
+// Si l'URL ne contient pas un id de produit valable 
+if (!validUrls.includes(productId)) {
+  let errorMessage = "";
+  errorMessage = `<h1> L'URL ne correspond à aucun article </h1>
+  <a href="index.html"> Retour à l'acceuil </a>
+  `
+  document.getElementById("main").innerHTML = errorMessage;
+}
   }
