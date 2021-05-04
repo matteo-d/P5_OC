@@ -8,6 +8,9 @@ html = `<h1> Votre commande à bien été prise en compte ! </h1>
 <p> Votre identifiant de commande est : ${idText} </p>
 <a href="index.html"> Retour à la page d'acceuil </a>
 `
-
 main.innerHTML = html;
 
+// Vider l'identifiant et le contenu du local storage
+
+localStorage.removeItem("cartItem");
+localStorage.removeItem("identifiant");

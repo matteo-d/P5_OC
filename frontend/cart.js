@@ -79,6 +79,8 @@ if (typeof ids === 'string') {
   produitsArray.push(ids)
 }
   })
+
+  
   let objetCommande = {contactObj,produitsArray}
   console.log(objetCommande)
 
@@ -94,7 +96,6 @@ headers : {
 // Voir ce que l'oen envoi dans la console
 promessePost.then(async(response)=>{
   try {
- 
     const contenu = await response.json()
     console.log("Contenu de l'objet commande envoyé au serveur")
     console.log(contenu)

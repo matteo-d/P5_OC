@@ -49,8 +49,8 @@ body nav .goToHomepage {
 }
 
 body nav .goToHomepage img {
-  width: 14rem;
-  height: 4rem;
+  width: 11rem;
+  height: 3rem;
 }
 
 body nav .cartSvg {
@@ -77,5 +77,15 @@ body main {
 body main h1 {
   padding-top: 3rem;
   font-size: 1.2rem;
+  padding-bottom: 1rem;
+}
+
+body main p {
+  padding-bottom: 2rem;
+}
+
+body main a {
+  border: solid 2px;
+  padding: 0.5rem;
 }
 /*# sourceMappingURL=confirmation.css.map */

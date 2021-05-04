@@ -1,5 +1,5 @@
 
-export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTotalPriceDynamically, deleteOneElOfCart, deleteAllCart,chooseYourQuantityPlus,chooseYourQuantityMinus}
+export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTotalPriceDynamically, deleteOneElOfCart, deleteAllCart,chooseYourQuantityPlus,chooseYourQuantityMinus,handleServerError,choixDeCouleurs, buttonsLogic, handleForm }
 
  const displayNbsItemsInCartDynamically = () => {
   
@@ -9,9 +9,6 @@ export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTo
     numberOfArticleInCartEl.innerText = numberOfArticleInCart ;
   }
  
-  
-  
-  
    const displayTotalValueOfTheCart = () => {
     let productInLocalStorage = (JSON.parse(localStorage.getItem("cartItem")));
    
@@ -212,5 +209,99 @@ export { displayNbsItemsInCartDynamically, displayTotalValueOfTheCart, displayTo
     });
   }
   }
-  
 
+ const handleServerError = (response) => {
+    if (!response.ok) {
+      let errorMessage = "";
+      errorMessage = `<h1> Le serveur n'est pas connecté <h1>
+      `
+      document.getElementById("main").innerHTML = errorMessage;
+    }
+    return response;
+  }
+
+
+  //Affichage des choix de couleurs
+  const choixDeCouleurs = (productResp) => {
+   let choice = document.querySelector(".section_choice");
+   productResp.colors.forEach( (colors) => {
+     let option = document.createElement("option");
+     option.value = colors;
+     option.textContent = colors;
+     choice.appendChild(option);
+   });
+  }
+
+
+  // Lofique quantité + et - des botuons 
+  const buttonsLogic = () => {
+    let btnPlus = document.getElementById("btnPlus");
+    let btnMinus = document.getElementById("btnMinus");
+    let quantity = document.getElementById("quantityOfProduct");
+    let compteur = parseInt(quantity.innerText);
+
+  btnPlus.addEventListener("click", () => {
+    compteur++;
+    quantity.innerHTML = compteur;
+  });
+  btnMinus.addEventListener("click",  () => {
+    if (compteur > 1) {
+      compteur--;
+    }
+  quantity.innerHTML = compteur;
+  });
+}
+
+const handleForm = (productResp) => {
+// Gestion de l'ajout de l'article au panier 
+    let btnAddToCart = document.querySelector(".addCart");
+    let selectedValue = document.getElementById("select_choice");
+    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+    let quantity = document.getElementById("quantityOfProduct");
+    btnAddToCart.addEventListener("click", (e) => {
+      e.preventDefault();
+      // trouver la valeur selectionée par l'utilisateur
+      let selectedColor = selectedValue.options[selectedValue.selectedIndex].value;
+      let chosenQuantity = parseInt(quantity.innerText);
+      // stockage de la valeur sélectionné dans un objet
+      let cartItem = {
+        _id: productResp._id,
+        imageUrl: productResp.imageUrl,
+        name: productResp.name,
+        price: productResp.price,
+        chosenQuantity: chosenQuantity,
+        selectedColor: selectedColor,
+      };
+      // Local Storage       
+      // Action si local storage contient dejà un article
+      if (productInLocalStorage) {
+        // Action SI le panier contient déjà cet ours
+        if (
+          productInLocalStorage.some((el) => el._id == cartItem._id) == true
+        ) {
+      let messageEl = document.querySelector('.message')
+       messageEl.innerText = productResp.name + " est déjà dans votre panier"
+       window.scrollTo(0,0);
+       //Action SI le panier ne contient PAS cet ours 
+        } else {
+          window.scrollTo(0,0);
+          productInLocalStorage.push(cartItem);
+          localStorage.setItem(
+            "cartItem",
+            JSON.stringify(productInLocalStorage)
+          );
+          let messageEl = document.querySelector('.message')
+          messageEl.innerText = productResp.name + " ajouté au panier ";
+        }
+        // SI c'est le premier article 
+      } else {
+        productInLocalStorage = [];
+        productInLocalStorage.push(cartItem);
+        localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+        let messageEl = document.querySelector('.message')
+        messageEl.innerText = productResp.name + " ajouté au panier ";
+        window.scrollTo(0,0);
+      };
+    displayNbsItemsInCartDynamically();
+    });
+  }
