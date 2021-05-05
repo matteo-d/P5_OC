@@ -106,6 +106,9 @@ promessePost.then(async(response)=>{
       console.log(response);
       // Stocker l'id dans le local storage
       localStorage.setItem("identifiant", contenu._id);
+      let totalCommandPrice = document.getElementById("totalPrice").innerText;
+      console.log(totalCommandPrice)
+      localStorage.setItem("total", totalCommandPrice);
       // Go page confirmation
       window.location = "confirmation.html"
     }
