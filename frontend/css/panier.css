@@ -44,7 +44,7 @@ body nav .cartSvg {
 }
 body nav .cartSvg span.message {
   position: fixed;
-  margin-top: 4.1rem;
+  margin-top: 20.1rem;
   color: black;
   background-color: #F9F9F9;
   transform: translateX(-1.6em);

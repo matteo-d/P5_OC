@@ -1,7 +1,7 @@
 ;(async () => {
     const productId = getProductId();
-    console.log(productId)
-    const selectedProductData = await getProductData(productId);
+    verifyProductIdValidity (); 
+    const selectedProductData = await getProductsData(productId);
    displayProductHTML(selectedProductData);
    displayNbsItemsInCart()
    handleAddToCart(selectedProductData);

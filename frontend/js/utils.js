@@ -1,7 +1,7 @@
-///////////////////////////////////////////////// OUTILS GLOBAUX
+///////////////////////////////////////////////// FUNCTIONS USED MULTIPLE PAGES
 
 // Gère l'affichage du nombre de produits dans le panier
-function displayNbsItemsInCart()  {
+function displayNbsItemsInCart() {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     let numberOfArticleInCart = productInLocalStorage.length;
@@ -13,16 +13,36 @@ function displayNbsItemsInCart()  {
   }
 };
 
-///////////////////////////////////////////////////////////////// OUTILS PAGE PRODUIT
+function formatPrice(price) {
+  return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', }).format(price / 100);
+};
+
+
+///////////////////////////////////////////////////////////////// FUNCTIONS USED PAGES PAGE PRODUIT
 // Logique quantité + et - des boutons
 
 function getProductId() {
+  
   return new URL(window.location.href).searchParams.get('id')
+  
 }
 
+async function verifyProductIdValidity () {
+  
+  const productId = getProductId();
+  const products = await getProductsData();
 
-function handleQuantity ()  {
-    
+  let ValidsIdsArray = [];
+  products.forEach((product) => {
+    let product_id = product._id;
+    ValidsIdsArray.push(product_id); 
+})
+if (!ValidsIdsArray.includes(productId)) {
+  alert("Le produit séléctionné n'est pas disponible")
+}
+}
+function handleQuantity() {
+
   let btnPlus = document.getElementById("btnPlus");
   let btnMinus = document.getElementById("btnMinus");
   let quantity = document.getElementById("quantityOfProduct");
@@ -41,7 +61,7 @@ function handleQuantity ()  {
 };
 
 // Gère l'ajout au panier
-function handleAddToCart (selectedProductData) {
+function handleAddToCart(selectedProductData) {
 
   // Gestion de l'ajout de l'article au panier
   let btnAddToCart = document.querySelector(".addCart");
@@ -70,18 +90,18 @@ function handleAddToCart (selectedProductData) {
       if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
         let messageEl = document.querySelector(".message");
         messageEl.innerText =
-        selectedProductData.name + " est déjà dans votre panier";
-        window.scrollTo(0, 0);
-        setTimeout(() => {  messageEl.innerText = '' }, 2000);
+          selectedProductData.name + " est déjà dans votre panier";
+
+        setTimeout(() => { messageEl.innerText = '' }, 2000);
         //Action SI le panier ne contient PAS cet ours
       } else {
-  
+
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         let messageEl = document.querySelector(".message");
         messageEl.innerText = selectedProductData.name + " ajouté au panier ";
-        window.scrollTo(0, 0);
-        setTimeout(() => {  messageEl.innerText = '' }, 2000);
+
+        setTimeout(() => { messageEl.innerText = '' }, 2000);
       }
       // SI c'est le premier article
     } else {
@@ -90,8 +110,8 @@ function handleAddToCart (selectedProductData) {
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
       let messageEl = document.querySelector(".message");
       messageEl.innerText = selectedProductData.name + " ajouté au panier ";
-      window.scrollTo(0, 0);
-      setTimeout(() => {  messageEl.innerText = '' }, 2000);
+
+      setTimeout(() => { messageEl.innerText = '' }, 2000);
     }
     displayNbsItemsInCart();
   });
@@ -100,22 +120,19 @@ function handleAddToCart (selectedProductData) {
 ///////////////////////////////////// FONCTIONS PAGE PANIER
 
 // Affiche le prix cumulé de tout les élément présent dans le panier à l'arrivée sur la page 
-const displayTotalValueOfTheCart = () => {
+const displayTotalPriceOnLoad = () => {
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
   let arrayOfElPrices = [];
-  productInLocalStorage.forEach((itemPrice) =>  {
-    let quantity = itemPrice.chosenQuantity;
-    let decimalPrice = (
-      Math.round(itemPrice.price) / 100
-    ).toFixed(2);
-    let eachElTotal = quantity * decimalPrice;
+  productInLocalStorage.forEach((itemPrice) => {
+
+    let eachElTotal = itemPrice.chosenQuantity* itemPrice.price;
     arrayOfElPrices.push(eachElTotal);
   });
   let totalText = document.getElementById("totalPrice");
   // Additionner tout les Elements de l'array
   const add = (a, b) => a + b;
-  let TotalPrice = arrayOfElPrices.reduce(add);
-  totalText.innerHTML = TotalPrice;
+  let totalPrice = arrayOfElPrices.reduce(add);
+  totalText.innerHTML = formatPrice(totalPrice);
 };
 
 // Affiche le prix cumulé de tout les élément présent dans le panier dynamiquement
@@ -127,20 +144,13 @@ const displayTotalPriceDynamically = () => {
   let elQuantity = document.querySelectorAll(".quantityOfProduct");
   for (let d = 0; d < elPrice.length; d++) {
     let a = parseInt(elQuantity[d].innerText);
-
     let b = productInLocalStorage[d].price;
-
     let sum = a * b;
-
     calcul.push(sum);
   }
-
   const add = (a, b) => a + b;
   let result = calcul.reduce(add);
-
-  let resultFloat = (result / 100).toFixed(2).replace(".", ",");
-
-  totalText.innerHTML = resultFloat;
+  totalText.innerHTML = formatPrice(result);
 };
 
 // Supprime l'élément cliqué 
@@ -148,7 +158,7 @@ const deleteOneElOfCart = () => {
   let btnDelete = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-  btnDelete.forEach((btnDelete) =>  {
+  btnDelete.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       if (productInLocalStorage.length > 1) {
         // Au clic supprime l'élément dynamiquement l'élément parent
@@ -195,7 +205,6 @@ const chooseYourQuantityPlus = () => {
       let compteur = parseInt(quantity.innerText);
       compteur++;
       quantity.innerText = compteur;
-
       let parsedQuantity = parseFloat(quantity.innerHTML);
       // Récupérer le prix de base de ce produit
       let product =
@@ -218,18 +227,13 @@ const chooseYourQuantityPlus = () => {
         case "5beaacd41c9d440000a57d97":
           price = 5500;
           break;
-          
       }
       //Calcul nouveau prix
-      let newPrice = ((parsedQuantity * price) / 100)
-        .toFixed(2)
-        .replace(".", ",");
-
+      let newPrice = parsedQuantity * price;
       //Afficher nouveau prix
       let updatedPriceEl =
         btnPlus.parentElement.nextElementSibling.firstElementChild;
-
-      updatedPriceEl.innerText = newPrice;
+      updatedPriceEl.innerText = formatPrice(newPrice);
 
       displayTotalPriceDynamically();
     });
@@ -237,78 +241,37 @@ const chooseYourQuantityPlus = () => {
 };
 
 const chooseYourQuantityMinus = () => {
-  //////////////////////////////////// Logique boutons quantité -
-
+  
   let btnMinus = document.querySelectorAll(".btnMinus");
-
- btnMinus.forEach((btnMinus) => {
+  btnMinus.forEach((btnMinus) => {
     btnMinus.addEventListener("click", () => {
+      
       let quantity = btnMinus.previousElementSibling;
-      let compteur = parseInt(quantity.innerText);
+     
+      let compteur = parseInt( (document.getElementById("quantityOfProduct")).innerText);
+     
       if (compteur > 1) {
         compteur--;
       }
       quantity.innerText = compteur;
-      // Récupérer la quantité séléctioné en nombre
-      let parsedQuantity = parseFloat(quantity.innerHTML);
-      // Récupérer le prix de base de ce produit
-      let product =
-        btnMinus.parentElement.parentElement.firstElementChild
-          .firstElementChild.id;
-      let price;
+       // Logique affichage nouveau prix d'un élément
 
-      switch (product) {
-        case "5be9c8541c9d440000665243":
-          price = 2900;
-          break;
-        case "5beaa8bf1c9d440000a57d94":
-          price = 3900;
-          break;
-        case "5beaaa8f1c9d440000a57d95":
-          price = 5900;
-          break;
-        case "5beaabe91c9d440000a57d96":
-          price = 4500;
-          break;
-        case "5beaacd41c9d440000a57d97":
-          price = 5500;
-          break;
-      }
-      //Calcul nouveau prix
-      let newPrice = ((parsedQuantity * price) / 100)
-        .toFixed(2)
-        .replace(".", ",");
-      //Afficher le résultat
-      let updatedPriceEl =
-        btnMinus.parentElement.nextElementSibling.firstElementChild;
-
-      updatedPriceEl.innerText = newPrice;
-
+      const unitPrice =  parseInt( (btnMinus.parentElement.nextElementSibling.firstElementChild).innerText)
+      let updatedPriceEl =  (btnMinus.parentElement.nextElementSibling.firstElementChild);
+      updatedPriceEl.innerText = compteur * unitPrice;
+    
       displayTotalPriceDynamically();
     });
   })
 };
 
-// Gestion d'erreur SI Url produit est faux
-const handleURLError = () => {
-  // Si l'URL ne contient pas un id de produit valable
-  if (!validUrls.includes(productId)) {
-    let errorMessage = "";
-    errorMessage = `<h1> L'URL ne correspond à aucun article </h1>
-  <a href="index.html"> Retour à l'acceuil </a>
-  `;
-    document.getElementById("main").innerHTML = errorMessage;
-  }
-};
 
 ///********************* */ Gestion formulaire
 const handleForm = () => {
   let form = document.getElementById("form");
 
-  form.addEventListener("submit",  (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    
-    
     //récupérer les id présents dans le panier pour le tableau produit
     let productsArray = [];
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -320,47 +283,23 @@ const handleForm = () => {
       }
     });
     // Récupérer values du formulaire
-
     const firstname = form.firstName.value;
     const lastname = form.lastName.value;
     const adress = form.adress.value;
     const email = form.email.value;
     const city = form.city.value;
     // Création de l'objet a envoyé au server
-    let order =  {
-      contact : { 
+    let order = {
+      contact: {
         firstName: firstname,
         lastName: lastname,
         address: adress,
         city: city,
         email: email,
       },
-       products : productsArray,
+      products: productsArray,
     };
-
-   // Envoi de l'objet de commande / Retourne n id de commande 
-
-   const sendOrder = async () => {
-      const settings = {
-          method: 'POST',
-          body: JSON.stringify(order),
-          headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      };
-      try {
-          const fetchResponse = await fetch("http://localhost:3000/api/teddies/order", settings);
-          const data = await fetchResponse.json();
-        console.log(data)
-          localStorage.setItem("orderId", JSON.stringify(data.orderId));
-          let cartTotalPrice = document.getElementById("totalPrice").innerText;
-          localStorage.setItem("cartTotalPrice", JSON.stringify(cartTotalPrice));
-           window.location.href = `${window.location.origin}/confirmation.html?orderId=${data.orderId}`
-       
-          // console.log(window.location.origin)
-       //   window.location.href = `${window.location.origin}/confirmation.html?orderId=${data.orderId}`
-      } catch (error) {
-          return error;
-      }    
-  }
-  sendOrder();
+    // Envoi de l'objet de commande / Retourne n id de commande 
+    sendOrder(order);
   })
 }

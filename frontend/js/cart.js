@@ -1,7 +1,7 @@
 ;(async () => {
     displayCartHTML(); 
     displayNbsItemsInCart();
-    displayTotalValueOfTheCart();
+    displayTotalPriceOnLoad();
     displayTotalPriceDynamically();
     deleteOneElOfCart();
     deleteAllCart();
@@ -21,7 +21,7 @@
 // S'il y a un produit dans le panier, affiche le nombre d'articles. source: utils.js 
 //displayNbsItemsInCart();
 // S'il y a un produit dans le panier, affiche le nombre d'articles. source: utils.js 
-//displayTotalValueOfTheCart();
+//displayTotalPriceOnLoad();
 //  S'il y a un produit dans le panier, affiche le prix total du panier. source: utils.js 
 //displayTotalPriceDynamically();
 // Logique supression d'un élément du panier. source: utils.js 
