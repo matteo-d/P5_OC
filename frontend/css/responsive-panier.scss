@@ -1,0 +1,77 @@
+@mixin responsivePanier {
+  @media screen and (max-width: 960px) {
+    body {
+      main {
+        section.options {
+        p {
+            padding-left: 2rem;
+        }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 810px) {
+    body {
+      main {
+        section.options {
+        p {
+           display: none;
+        }
+        svg {
+            margin-left: 4rem;
+        }
+        }
+        form {
+            input {
+                width: 80%;
+            }
+      }
+    }
+  }
+  @media screen and (max-width: 640px) {
+    body {
+      main {
+        section.options {
+        p {
+           display: none;
+        }
+        svg {
+            margin-left: 4rem;
+        }
+        }
+        section.selectedProduct {
+            align-items: center;
+            ul {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 93%;
+                align-items: center;
+              li {
+               padding-top: 0.4rem;
+                    width: 100%;
+                    img {
+                        width:100%;
+                        height: auto;
+                    }
+                  }
+                  
+              }
+            }
+            section.total {
+                p {
+                    text-align: center;
+                    font-size: 1rem;
+                }
+            }
+            form {
+                input {
+                    width: 80%;
+                }
+            }
+        }
+      }
+    }
+    }
+  }
+

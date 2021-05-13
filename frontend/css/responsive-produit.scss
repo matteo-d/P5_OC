@@ -1,0 +1,134 @@
+@mixin responsiveProduit {
+  @media only screen and (max-width: 1100px) and (min-width: 0px) {
+    body {
+      main {
+        .product {
+          padding: 2rem 0rem 2rem 0rem;
+          width: 93%;
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          img {
+            width: 14rem;
+
+            width: 100%;
+            border: solid 1px rgb(215, 215, 215);
+            border-bottom: 0px;
+            border-top-right-radius: 33px;
+            border-top-left-radius: 33px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+          }
+          article {
+            padding: 1rem 0.5rem 1rem 0.5rem;
+
+            border: solid 1px rgb(215, 215, 215);
+            border-top: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 33px;
+            border-bottom-left-radius: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: space-around;
+            flex-direction: column;
+            h2 {
+              color: rgb(66, 47, 47);
+              padding: 0rem 0rem 1rem 1rem;
+              font-size: 1.5rem;
+            }
+            p.product_description {
+              font-size: 0.8em;
+              padding: 0rem 1rem 0.5rem 1rem;
+            }
+            p.price {
+              color: rgb(75, 53, 53);
+              font-size: 0.7em;
+              padding-left: 1rem;
+              font-weight: bold;
+            }
+            label {
+              padding-left: 1rem;
+
+              h3 {
+                padding-top: 0.5rem;
+                padding-left: 0rem;
+                font-size: 0.8rem;
+              }
+            }
+            select {
+              margin-top: 0.5rem;
+              margin-left: 0.9rem;
+              padding: 0.5rem;
+              font-size: 0.6rem;
+              border-radius: 33px;
+              cursor: pointer;
+              width: 25%;
+            }
+            option {
+              padding-top: 1rem;
+              background-color: #f4e1e1;
+            }
+
+            div#container_quantity {
+              padding: 0.9rem 0rem 0rem 0rem;
+              margin-left: 1.5rem;
+
+              #btnMinus {
+                border: none;
+                background-color: #f1cbcb;
+                color: #d0a1a1;
+                outline: none;
+                padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+                border-radius: 50px;
+
+                &:hover {
+                  transform: scale(1.05);
+                  cursor: pointer;
+                }
+              }
+              span {
+                margin: 0.4rem;
+                font-size: 0.8rem;
+              }
+              #btnPlus {
+                border: none;
+                color: #946262;
+                background-color: #f2cccc;
+                outline: none;
+                padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+                border-radius: 50px;
+
+                &:hover {
+                  transform: scale(1.05);
+                  cursor: pointer;
+                }
+              }
+            }
+
+            button#addToCart {
+              margin-left: 2rem;
+              margin-top: 0.7rem;
+              color: #855f5f;
+              background-color: #f9f9f9;
+              padding: 1rem 0rem 1rem 0rem;
+              border: solid 2px #f2cccc;
+              border-radius: 50px;
+             
+              width: 3.3rem;
+              cursor: pointer;
+            
+              transition: 0.1s ease-in-out;
+          
+            }
+            .message {
+              padding-top: 3em;
+              position: absolute;
+              transform: translate(70%, 0%);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}
