@@ -6,6 +6,7 @@ function displayIndexHTML (products) {
     let html = "";
     products.forEach((productElement) => {
       //Html pur , Créer les élément, clone prototype
+   let EuropeanFormatedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR',}).format(productElement.price / 100 );
       html += `
       <div class="product">
           <img src="${productElement.imageUrl}" alt="Ours ${
@@ -18,11 +19,8 @@ function displayIndexHTML (products) {
                 <p class="product_description" id="description_product_${
                   productElement.name
                 }">${productElement.description}</p>   
-                <p class="price" id="price_product_${productElement.name}">${(
-        productElement.price / 100
-      )
-        .toFixed(2)
-        .replace(".", ",")} €</p>
+                <p class="price" id="price_product_${productElement.name}">${
+                  EuropeanFormatedPrice } </p>
                 <a href="./produits.html?id=${
                   productElement._id
                 }" class="btnGoTo">Voir</a>
@@ -37,7 +35,7 @@ function displayIndexHTML (products) {
 
 //////////////////////////////////////////////// Display HTML PRODUIT
 function displayProductHTML (product) {
-
+  let EuropeanFormatedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR',}).format(product.price / 100 );
   // Affichage du produit
   html = `<div class="product">
     <img src="${product.imageUrl}" alt="Ours ${product.name}">
@@ -46,11 +44,8 @@ function displayProductHTML (product) {
         <p class="product_description" id="description_product_${
             product.name
         }">${product.description}</p>   
-        <p class="price" id="price_product_${product.name}">${(
-            product.price / 100
-  )
-    .toFixed(2)
-    .replace(".", ",")} €</p>    
+        <p class="price" id="price_product_${product.name}">${
+          EuropeanFormatedPrice}</p>    
         <label for="select__color">
             <h3>Personnaliser votre ours</h3>
         </label>
@@ -81,7 +76,7 @@ function displayProductHTML (product) {
   
   
   //////////////////////////////////////////////// Display HTML CART
-  const displayCartHTML = async () => {
+ function displayCartHTML () {
     if (JSON.parse(localStorage.getItem("cartItem")))  {
     // On recupère l'array contenant les objets du local sotrage
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -95,7 +90,7 @@ function displayProductHTML (product) {
         let number = el.chosenQuantity;
         let multiplicator = el.price / 100;
         let result = number * multiplicator;
-        let twoDecimalResult = (Math.round(result * 100) / 100).toFixed(2);
+        let EuropeanFormatedPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR',}).format(el.price / 100 );
         //  Display the right TOTAL price Onload
         TotalPriceOnLoad.push(result);
     
@@ -111,7 +106,7 @@ function displayProductHTML (product) {
         <button class="btnPlus">+</button>
     </li>
     <li class="totalElPrice" id="totalElprice">
-    <span id="price">${twoDecimalResult}  </span>
+    <span id="price">${EuropeanFormatedPrice }  </span>
     €
     </li>
     <li >
