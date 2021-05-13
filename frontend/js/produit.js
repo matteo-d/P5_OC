@@ -1,11 +1,26 @@
+;(async () => {
+    const productId = getProductId();
+    console.log(productId)
+    const selectedProductData = await getProductData(productId);
+   displayProductHTML(selectedProductData);
+   handleAddToCart(selectedProductData);
+  buttonsLogic();
+   
+  })()
+  
+
+  
+
+
+
 
 // Si l'URL du produit est valide, enregistre data d'1 produit  de L'API dans le local storage. source: request.js
-getOneProductData();
+// getOneProductData();
 // Si data d'1 produits existe dans le local storage, affiche le HTML. source: vue.js
-displayProduitHTML();
+// displayProduitHTML();
 // S'il y a un produit dans le panier, affiche le nombre d'articles. source: utils.js
-displayNbsItemsInCart();
+// displayNbsItemsInCart();
 // Gère l'ajout du produit séléctionné au panier si ce dernier n'y est pas déjà. source: utils.js
-handleAddToCart();
+// handleAddToCart();
 // Gère logique des boutons + et - et l'affichage de la quantité. source: request.js
-buttonsLogic();
+// buttonsLogic();

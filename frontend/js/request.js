@@ -14,7 +14,20 @@ async function getProductsData() {
     console.log(e)
   }    
 }; 
-
+////////////////////////////// Get Product Data Page products
+async function getProductData(productId) {
+  try {
+    const response = await fetch(`http://localhost:3000/api/teddies/${productId}`);
+    const product = await response.json();
+    console.log(" Connexion au serveur OK !");
+   
+    return product;
+  }
+  catch(e) {
+    alert("Serveur non connecté !")
+    console.log(e)
+  }    
+}; 
 
 // Clean One Product Data from local storage 
 const cleanOneProductData = () => {

@@ -23,7 +23,7 @@ function displayIndexHTML (products) {
       )
         .toFixed(2)
         .replace(".", ",")} €</p>
-                <a href="./produits.html?${
+                <a href="./produits.html?id=${
                   productElement._id
                 }" class="btnGoTo">Voir</a>
         </div >
@@ -36,21 +36,18 @@ function displayIndexHTML (products) {
 
 
 //////////////////////////////////////////////// Display HTML PRODUIT
-  const displayProduitHTML = async () => {
-    await getOneProductData();
-      if (JSON.parse(localStorage.getItem("OneProductData")))  {
-    let SelectedProductData = JSON.parse(localStorage.getItem("OneProductData"));   
-    let html = "";
+function displayProductHTML (product) {
+
   // Affichage du produit
   html = `<div class="product">
-    <img src="${SelectedProductData.imageUrl}" alt="Ours ${SelectedProductData.name}">
+    <img src="${product.imageUrl}" alt="Ours ${product.name}">
     <article class="product_infos">
-      <h2 id="name_product_${SelectedProductData.name}">${SelectedProductData.name}</h2>
+      <h2 id="name_product_${product.name}">${product.name}</h2>
         <p class="product_description" id="description_product_${
-            SelectedProductData.name
-        }">${SelectedProductData.description}</p>   
-        <p class="price" id="price_product_${SelectedProductData.name}">${(
-            SelectedProductData.price / 100
+            product.name
+        }">${product.description}</p>   
+        <p class="price" id="price_product_${product.name}">${(
+            product.price / 100
   )
     .toFixed(2)
     .replace(".", ",")} €</p>    
@@ -74,17 +71,14 @@ function displayIndexHTML (products) {
   document.getElementById("main").innerHTML = html;
   // Affichage des choix de couleurs
     let choice = document.querySelector(".section_choice");
-    SelectedProductData.colors.forEach((colors) => {
+    product.colors.forEach((colors) => {
       let option = document.createElement("option");
       option.value = colors;
       option.textContent = colors;
       choice.appendChild(option);
     });
   }
-  else {
-    alert("Impossible d'afficher l'HTML de la page produit, Data non disponible")
-  }
-  };
+  
   
   //////////////////////////////////////////////// Display HTML CART
   const displayCartHTML = async () => {

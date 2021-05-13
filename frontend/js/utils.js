@@ -15,8 +15,14 @@ const displayNbsItemsInCart = () => {
 
 ///////////////////////////////////////////////////////////////// OUTILS PAGE PRODUIT
 // Logique quantité + et - des boutons
-const buttonsLogic = async () => {
-  await handleAddToCart();
+
+function getProductId() {
+  return new URL(window.location.href).searchParams.get('id')
+}
+
+
+function buttonsLogic ()  {
+    
   let btnPlus = document.getElementById("btnPlus");
   let btnMinus = document.getElementById("btnMinus");
   let quantity = document.getElementById("quantityOfProduct");
@@ -35,9 +41,8 @@ const buttonsLogic = async () => {
 };
 
 // Gère l'ajout au panier
-const handleAddToCart = async () => {
-  await displayProduitHTML();
-  let OneProductData = JSON.parse(localStorage.getItem("OneProductData"));
+function handleAddToCart (selectedProductData) {
+
   // Gestion de l'ajout de l'article au panier
   let btnAddToCart = document.querySelector(".addCart");
   let selectedValue = document.getElementById("select_choice");
@@ -51,10 +56,10 @@ const handleAddToCart = async () => {
     let chosenQuantity = parseInt(quantity.innerText);
     // stockage de la valeur sélectionné dans un objet
     let cartItem = {
-      _id: OneProductData._id,
-      imageUrl: OneProductData.imageUrl,
-      name: OneProductData.name,
-      price: OneProductData.price,
+      id: selectedProductData._id,
+      imageUrl: selectedProductData.imageUrl,
+      name: selectedProductData.name,
+      price: selectedProductData.price,
       chosenQuantity: chosenQuantity,
       selectedColor: selectedColor,
     };
@@ -66,7 +71,7 @@ const handleAddToCart = async () => {
         let messageEl = document.querySelector(".message");
         
         messageEl.innerText =
-          OneProductData.name + " est déjà dans votre panier";
+        selectedProductData.name + " est déjà dans votre panier";
         window.scrollTo(0, 0);
         setTimeout(() => {  messageEl.innerText = '' }, 2000);
         //Action SI le panier ne contient PAS cet ours
@@ -75,7 +80,7 @@ const handleAddToCart = async () => {
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         let messageEl = document.querySelector(".message");
-        messageEl.innerText = OneProductData.name + " ajouté au panier ";
+        messageEl.innerText = selectedProductData.name + " ajouté au panier ";
         window.scrollTo(0, 0);
         setTimeout(() => {  messageEl.innerText = '' }, 2000);
       }
@@ -85,7 +90,7 @@ const handleAddToCart = async () => {
       productInLocalStorage.push(cartItem);
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
       let messageEl = document.querySelector(".message");
-      messageEl.innerText = OneProductData.name + " ajouté au panier ";
+      messageEl.innerText = selectedProductData.name + " ajouté au panier ";
       window.scrollTo(0, 0);
       setTimeout(() => {  messageEl.innerText = '' }, 2000);
     }
