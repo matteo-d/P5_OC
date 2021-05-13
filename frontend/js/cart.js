@@ -1,21 +1,36 @@
+;(async () => {
+    displayCartHTML(); 
+    displayNbsItemsInCart();
+    displayTotalValueOfTheCart();
+    displayTotalPriceDynamically();
+    deleteOneElOfCart();
+    deleteAllCart();
+    chooseYourQuantityMinus();
+    chooseYourQuantityPlus();
+    handleForm();
+  })()
+  
+
+
+
 
 // S'il existe, Vide localStorage d'1 produit (généré par page produits.html). source: request.js
-cleanOneProductData();
+//cleanOneProductData();
 // S'il y a un produit dans le panier, affiche le HTML. source: vue.js
-displayCartHTML();
+//displayCartHTML();
 // S'il y a un produit dans le panier, affiche le nombre d'articles. source: utils.js 
-displayNbsItemsInCart();
+//displayNbsItemsInCart();
 // S'il y a un produit dans le panier, affiche le nombre d'articles. source: utils.js 
-displayTotalValueOfTheCart();
+//displayTotalValueOfTheCart();
 //  S'il y a un produit dans le panier, affiche le prix total du panier. source: utils.js 
-displayTotalPriceDynamically();
+//displayTotalPriceDynamically();
 // Logique supression d'un élément du panier. source: utils.js 
-deleteOneElOfCart();
+//deleteOneElOfCart();
 // Logique vider tout le panier. source: utils.js 
-deleteAllCart();
+//deleteAllCart();
 // Logique gestion du boutons quantité moins. source: utils.js 
-chooseYourQuantityMinus();
+//chooseYourQuantityMinus();
 // Logique gestion du boutons quantité plus. source: utils.js 
-chooseYourQuantityPlus();
+//chooseYourQuantityPlus();
 // Gestion du formulaire et de l'envoi des données au serveur. source: utils.js 
-handleForm();
+//handleForm();

@@ -124,6 +124,6 @@ function displayProductHTML (product) {
     }
   }
   else {
-    alert("Impossible d'afficher l'HTML de la page produit, Data non disponible")
+    alert("Votre panier est vide !")
   }
     }
