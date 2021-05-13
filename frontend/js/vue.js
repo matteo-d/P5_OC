@@ -1,14 +1,10 @@
 
 //////////////////////////////////////////////// Display Index HTML
-const displayIndexHTML = async () => {
-  await getProductsData();
-  if (JSON.parse(localStorage.getItem("ProductsData"))) {
-    let ProductsData = JSON.parse(localStorage.getItem("ProductsData"));
-    console.log(ProductsData);
+function displayIndexHTML (products) {
+
     //Je créer ma variable que je vais ajouter à mes elements
     let html = "";
-    ProductsData.forEach((productElement) => {
-      console.log(productElement.name);
+    products.forEach((productElement) => {
       //Html pur , Créer les élément, clone prototype
       html += `
       <div class="product">
@@ -35,10 +31,8 @@ const displayIndexHTML = async () => {
       document.getElementById("main").innerHTML = html;
     });
   }
-    else {
-      alert("Impossible d'afficher l'HTML de la page d'acceuil, Data non disponible")
-    }
-  };
+
+  
 
 
 //////////////////////////////////////////////// Display HTML PRODUIT
