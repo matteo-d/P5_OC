@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////// OUTILS GLOBAUX
 
 // Gère l'affichage du nombre de produits dans le panier
-const displayNbsItemsInCart = () => {
+function displayNbsItemsInCart()  {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     let numberOfArticleInCart = productInLocalStorage.length;
@@ -21,7 +21,7 @@ function getProductId() {
 }
 
 
-function buttonsLogic ()  {
+function handleQuantity ()  {
     
   let btnPlus = document.getElementById("btnPlus");
   let btnMinus = document.getElementById("btnMinus");
@@ -67,9 +67,8 @@ function handleAddToCart (selectedProductData) {
     // Action si local storage contient dejà un article
     if (productInLocalStorage) {
       // Action SI le panier contient déjà cet ours
-      if (productInLocalStorage.some((el) => el._id == cartItem._id) == true) {
+      if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
         let messageEl = document.querySelector(".message");
-        
         messageEl.innerText =
         selectedProductData.name + " est déjà dans votre panier";
         window.scrollTo(0, 0);

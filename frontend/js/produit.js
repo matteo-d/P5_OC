@@ -3,9 +3,10 @@
     console.log(productId)
     const selectedProductData = await getProductData(productId);
    displayProductHTML(selectedProductData);
+   displayNbsItemsInCart()
    handleAddToCart(selectedProductData);
-  buttonsLogic();
-   
+    handleQuantity();
+
   })()
   
 
@@ -23,4 +24,4 @@
 // Gère l'ajout du produit séléctionné au panier si ce dernier n'y est pas déjà. source: utils.js
 // handleAddToCart();
 // Gère logique des boutons + et - et l'affichage de la quantité. source: request.js
-// buttonsLogic();
+// handleQuantity();
