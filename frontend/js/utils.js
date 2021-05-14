@@ -22,27 +22,27 @@ function formatPrice(price) {
 // Logique quantité + et - des boutons
 
 function getProductId() {
-  
+
   return new URL(window.location.href).searchParams.get('id')
-  
+
 }
 
 
 
 
-async function verifyProductIdValidity () {
-  
+async function verifyProductIdValidity() {
+
   const productId = getProductId();
   const products = await getProductsData();
 
   let ValidsIdsArray = [];
   products.forEach((product) => {
     let product_id = product._id;
-    ValidsIdsArray.push(product_id); 
-})
-if (!ValidsIdsArray.includes(productId)) {
-  alert("Le produit séléctionné n'est pas disponible")
-}
+    ValidsIdsArray.push(product_id);
+  })
+  if (!ValidsIdsArray.includes(productId)) {
+    alert("Le produit séléctionné n'est pas disponible")
+  }
 }
 
 function handleQuantity() {
@@ -124,52 +124,44 @@ function handleAddToCart(selectedProductData) {
 ///////////////////////////////////// FONCTIONS PAGE PANIER
 
 const displayCartTotal = () => {
-  
-
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
   let arrayOfPrices = [];
-
   for (let d = 0; d < elPriceNodeList.length; d++) {
     let a = parseInt(elPriceNodeList[d].innerText);
-    
     let b = parseInt(elQuantityNodeList[d].innerText);
-   
     let sum = a * b;
     arrayOfPrices.push(sum);
   }
-
   const add = (a, b) => a + b;
   let result = arrayOfPrices.reduce(add);
-  
   let resultFloat = (result).toFixed(2).replace(".", ",");
-
   totalText.innerHTML = resultFloat;
 }
- function handleQuantityProduct() {
-  
-let ProductsNodeList = document.querySelectorAll(".oneProductEl")
-ProductsNodeList.forEach((Product) => {
-  let btnPlus = Product.querySelector(".btnPlus");
-  let btnMinus = Product.querySelector(".btnMinus");
-  let quantity = Product.querySelector(".quantityOfProduct");
-  let compteur = parseInt(quantity.innerText);
 
-  btnPlus.addEventListener("click", () => {
-    compteur++;
-    quantity.innerHTML = compteur;
-    displayCartTotal();
-  });
-  btnMinus.addEventListener("click", () => {
-    if (compteur > 1) {
-      compteur--;
-    }
-    quantity.innerHTML = compteur;
-    displayCartTotal();
-  });
-})
 
+function handleQuantityProduct() {
+  let ProductsNodeList = document.querySelectorAll(".oneProductEl")
+  ProductsNodeList.forEach((Product) => {
+    let btnPlus = Product.querySelector(".btnPlus");
+    let btnMinus = Product.querySelector(".btnMinus");
+    let quantity = Product.querySelector(".quantityOfProduct");
+    let compteur = parseInt(quantity.innerText);
+
+    btnPlus.addEventListener("click", () => {
+      compteur++;
+      quantity.innerHTML = compteur;
+      displayCartTotal();
+    });
+    btnMinus.addEventListener("click", () => {
+      if (compteur > 1) {
+        compteur--;
+      }
+      quantity.innerHTML = compteur;
+      displayCartTotal();
+    });
+  })
 };
 
 
@@ -189,7 +181,7 @@ const deleteOneElOfCart = () => {
   let btnDelete = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-  btnDelete.forEach((btnDelete) =>  {
+  btnDelete.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       if (productInLocalStorage.length > 1) {
         // Au clic supprime l'élément dynamiquement l'élément parent
@@ -218,12 +210,15 @@ const deleteOneElOfCart = () => {
 };
 
 
-///********************* */ Gestion formulaire
+
+
+
+/// Gestion formulaire
 const handleForm = () => {
   let form = document.getElementById("form");
-
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     //récupérer les id présents dans le panier pour le tableau produit
     let productsArray = [];
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -234,18 +229,33 @@ const handleForm = () => {
         productsArray.push(product_id);
       }
     });
-    // Création de l'objet a envoyé au server
-    let order = {
-      contact: {
-       firstname : form.firstName.value,
-       lastname : form.lastName.value,
-       address : form.adress.value,
-      email : form.email.value,
-       city : form.city.value,
-      },
-      products: productsArray,
-    };
-    // Envoi de l'objet de commande / Retourne n id de commande 
-    sendOrder(order);
+
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    if (
+      form.firstName.value.length > 1
+      && form.lastName.value.length > 1
+      && form.address.value.length > 6
+      && form.city.value.length > 1
+      && emailRegex.test(email.value)
+    ) {
+       // Création de l'objet a envoyé au server
+      let order = {
+        contact: {
+          firstName: form.firstName.value,
+          lastName: form.lastName.value,
+          address: form.address.value,
+          city: form.city.value,
+          email: form.email.value,
+        },
+        products: productsArray,
+      };
+      // Envoi de l'objet de commande / Retourne n id de commande 
+      sendOrder(order);
+    }
+    else {
+    alert("Veuillez remplir les champs correctements avant de procéder au paiement")
+  }
   })
 }
+
+
