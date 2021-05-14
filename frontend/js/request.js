@@ -1,12 +1,19 @@
 
 
+
+
 ////////////////////////////// Get Product Data index
-async function getProductsData(params) {
-  try {
-    if (typeof (params) == 'undefined') {
-      params = "";
+async function getProductsData(param, secondParam) {
+  
+    if (typeof (param) == 'undefined') {
+      param = "";
     }
-    const response = await fetch(`http://localhost:3000/api/teddies/${params}`);
+   
+      if (typeof (secondParam) == 'undefined') {
+        secondParam= "";
+      }
+      try {
+    const response = await fetch(`http://localhost:3000/api/teddies/${param}${secondParam}`);
     const products = await response.json();
     console.log(" Connexion au serveur OK !");
  
@@ -17,6 +24,8 @@ async function getProductsData(params) {
     console.log(e)
   }
 };
+
+
 
 async function sendOrder (order){
   const settings = {
@@ -32,8 +41,7 @@ async function sendOrder (order){
     localStorage.setItem("orderId", JSON.stringify(data.orderId));
     let cartTotalPrice = document.getElementById("totalPrice").innerText;
     localStorage.setItem("cartTotalPrice", JSON.stringify(cartTotalPrice));
-    window.location.href = `${window.location.origin}/confirmation.html?orderId=${data.orderId}`
-    return new URL(window.location.href).searchParams.get('orderId')
+    window.location.href = "http://localhost:3000/frontend/html/confirmation.html"
     // console.log(window.location.origin)
     //   window.location.href = `${window.location.origin}/confirmation.html?orderId=${data.orderId}`
   } catch (error) {

@@ -65,7 +65,7 @@ body main {
   background-color: #f9f9f9;
 }
 body main .product {
-  height: 45rem;
+  height: 80%;
   padding: 2rem 0rem 2rem 0rem;
   border-radius: 33px;
   cursor: pointer;
@@ -74,7 +74,7 @@ body main .product {
   cursor: pointer;
 }
 body main .product img {
-  width: 45rem;
+  width: 35rem;
   border-top-left-radius: 33px;
   border-bottom-left-radius: 33px;
 }

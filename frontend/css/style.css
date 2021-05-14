@@ -82,7 +82,7 @@ body main div.product {
   border-radius: 33px;
   cursor: pointer;
   display: flex;
-  height: 35rem;
+  height: 90%;
 }
 body main div.product img.ourspic {
   border-top-left-radius: 33px;

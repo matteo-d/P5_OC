@@ -71,7 +71,7 @@ function displayProductHTML(product) {
 
 
 //////////////////////////////////////////////// Display HTML CART
-function displayCartHTML() {
+async function displayCartHTML() {
 
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     // On recupère l'array contenant les objets du local sotrage
@@ -101,7 +101,8 @@ function displayCartHTML() {
         <button class="btnPlus">+</button>
     </li>
     <li class="totalElPrice" id="totalElprice">
-    <span id="price">${formatPrice(el.price)} </span>
+    <span class="price">${ (Math.round(el.price) / 100
+      ).toFixed(2).replace(".", ",")} </span>€
   
     </li>
     <li >

@@ -1,12 +1,10 @@
 ;(async () => {
     displayCartHTML(); 
     displayNbsItemsInCart();
-    displayTotalPriceOnLoad();
-    displayTotalPriceDynamically();
+    displayCartTotal();
     deleteOneElOfCart();
     deleteAllCart();
-    chooseYourQuantityMinus();
-    chooseYourQuantityPlus();
+  
     handleForm();
   })()
   
