@@ -123,7 +123,7 @@ body main .product article option {
 body main .product article div#container_quantity {
   padding: 0.9rem 0rem 0.5rem 1.5rem;
 }
-body main .product article div#container_quantity #btnMinus {
+body main .product article div#container_quantity .btnMinus {
   border: none;
   background-color: #f1cbcb;
   color: #d0a1a1;
@@ -131,14 +131,14 @@ body main .product article div#container_quantity #btnMinus {
   padding: 0.5rem 0.8rem 0.5rem 0.8rem;
   border-radius: 50px;
 }
-body main .product article div#container_quantity #btnMinus:hover {
+body main .product article div#container_quantity .btnMinus:hover {
   transform: scale(1.05);
   cursor: pointer;
 }
 body main .product article div#container_quantity span {
   margin: 1rem;
 }
-body main .product article div#container_quantity #btnPlus {
+body main .product article div#container_quantity .btnPlus {
   border: none;
   color: #946262;
   background-color: #f2cccc;
@@ -146,7 +146,7 @@ body main .product article div#container_quantity #btnPlus {
   padding: 0.5rem 0.7rem 0.5rem 0.7rem;
   border-radius: 50px;
 }
-body main .product article div#container_quantity #btnPlus:hover {
+body main .product article div#container_quantity .btnPlus:hover {
   transform: scale(1.05);
   cursor: pointer;
 }

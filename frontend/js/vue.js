@@ -48,9 +48,9 @@ function displayProductHTML(product) {
         </select>        
         <!-- Personalisation de la quantité -->
         <div id="container_quantity">
-            <button id="btnMinus">-</button>
-            <span id="quantityOfProduct">1</span>
-            <button id="btnPlus">+</button>
+            <button class="btnMinus">-</button>
+            <span class="quantityOfProduct">1</span>
+            <button class="btnPlus">+</button>
         </div>
      
             <button id="addToCart" class="addCart">Ajouter</button>
@@ -90,13 +90,13 @@ async function displayCartHTML() {
         TotalPriceOnLoad.push(result);
 
         html += `
-    <ul>
+    <ul class="oneProductEl">
     <li><img id="${el._id}" src="${el.imageUrl}" alt="Ours ${el.name}">
     </li>
     <li class="selectedColor">${el.selectedColor}
     </li>
     <li>
-        <span class="quantityOfProduct" id="quantityOfProduct"> ${el.chosenQuantity}</span>
+        <span class="quantityOfProduct" > ${el.chosenQuantity}</span>
         <button class="btnMinus">-</button>         
         <button class="btnPlus">+</button>
     </li>

@@ -47,9 +47,9 @@ if (!ValidsIdsArray.includes(productId)) {
 
 function handleQuantity() {
 
-  let btnPlus = document.getElementById("btnPlus");
-  let btnMinus = document.getElementById("btnMinus");
-  let quantity = document.getElementById("quantityOfProduct");
+  let btnPlus = document.querySelector(".btnPlus");
+  let btnMinus = document.querySelector(".btnMinus");
+  let quantity = document.querySelector(".quantityOfProduct");
   let compteur = parseInt(quantity.innerText);
 
   btnPlus.addEventListener("click", () => {
@@ -71,7 +71,7 @@ function handleAddToCart(selectedProductData) {
   let btnAddToCart = document.querySelector(".addCart");
   let selectedValue = document.getElementById("select_choice");
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-  let quantity = document.getElementById("quantityOfProduct");
+  let quantity = document.querySelector(".quantityOfProduct");
   btnAddToCart.addEventListener("click", (e) => {
     e.preventDefault();
     // trouver la valeur selectionée par l'utilisateur
@@ -123,33 +123,55 @@ function handleAddToCart(selectedProductData) {
 
 ///////////////////////////////////// FONCTIONS PAGE PANIER
 
-displayCartTotal = async () => {
-  await displayCartHTML;
+const displayCartTotal = () => {
+  
 
   let totalText = document.getElementById("totalPrice");
-
   let elPriceNodeList = document.querySelectorAll(".price");
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
-
   let arrayOfPrices = [];
 
   for (let d = 0; d < elPriceNodeList.length; d++) {
     let a = parseInt(elPriceNodeList[d].innerText);
-    console.log(a)
+    
     let b = parseInt(elQuantityNodeList[d].innerText);
-    console.log(b)
+   
     let sum = a * b;
-
     arrayOfPrices.push(sum);
   }
-  console.log(arrayOfPrices)
+
   const add = (a, b) => a + b;
   let result = arrayOfPrices.reduce(add);
-  console.log(result)
+  
   let resultFloat = (result).toFixed(2).replace(".", ",");
 
   totalText.innerHTML = resultFloat;
 }
+ function handleQuantityProduct() {
+  
+let ProductsNodeList = document.querySelectorAll(".oneProductEl")
+ProductsNodeList.forEach((Product) => {
+  let btnPlus = Product.querySelector(".btnPlus");
+  let btnMinus = Product.querySelector(".btnMinus");
+  let quantity = Product.querySelector(".quantityOfProduct");
+  let compteur = parseInt(quantity.innerText);
+
+  btnPlus.addEventListener("click", () => {
+    compteur++;
+    quantity.innerHTML = compteur;
+    displayCartTotal();
+  });
+  btnMinus.addEventListener("click", () => {
+    if (compteur > 1) {
+      compteur--;
+    }
+    quantity.innerHTML = compteur;
+    displayCartTotal();
+  });
+})
+
+};
+
 
 const deleteAllCart = () => {
   let clearAll = document.querySelector(".clearAll");
@@ -212,20 +234,14 @@ const handleForm = () => {
         productsArray.push(product_id);
       }
     });
-    // Récupérer values du formulaire
-    const firstname = form.firstName.value;
-    const lastname = form.lastName.value;
-    const adress = form.adress.value;
-    const email = form.email.value;
-    const city = form.city.value;
     // Création de l'objet a envoyé au server
     let order = {
       contact: {
-        firstName: firstname,
-        lastName: lastname,
-        address: adress,
-        city: city,
-        email: email,
+       firstname : form.firstName.value,
+       lastname : form.lastName.value,
+       address : form.adress.value,
+      email : form.email.value,
+       city : form.city.value,
       },
       products: productsArray,
     };
