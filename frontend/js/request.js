@@ -30,16 +30,19 @@ async function sendOrder(order) {
       settings
     );
     const data = await fetchResponse.json();
-  
+
     localStorage.setItem("orderId", JSON.stringify(data.orderId));
     let cartTotalPrice = document.getElementById("totalPrice").innerText;
     localStorage.setItem("cartTotalPrice", JSON.stringify(cartTotalPrice));
 
     console.log(window.location)
-    window.location.href = `file:///C:/Users/matte/OneDrive/Bureau/P5_OC/frontend/html/confirmation.html?orderId=${data.orderId}`
- 
+    // Récupère URL sans query string 
 
-
+    let URL = window.location.href.split('?')[0];
+    console.log(URL)
+    cleanedURL = URL.replace('panier.html','');
+    window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`
+    
   } catch (error) {
     alert("Impossible d'envoyer la commande au serveur !");
     console.log(error);
