@@ -18,11 +18,9 @@ function formatPrice(price) {
     currency: "EUR",
   }).format(price / 100);
 }
-
 ///////////////////////////////////////////////////////////////// FUNCTIONS USED PAGES PAGE PRODUIT
 function getProductId() {
   return new URL(window.location.href).searchParams.get("id");
-
 }
 
 async function verifyProductIdValidity() {
@@ -34,7 +32,7 @@ async function verifyProductIdValidity() {
     ValidsIdsArray.push(product_id);
   });
   if (!ValidsIdsArray.includes(productId)) {
-    alert("Le produit séléctionné n'est pas disponible");
+    alert("L'ID du produit séléctionné est incorrect");
   }
 }
 
@@ -43,9 +41,19 @@ function setURLparam () {
   console.log(queryString)
   const urlParams = new URLSearchParams(queryString);
   urlParams.append('page', '2');
- 
 }
 
+
+  // Affichage des choix de couleurs
+  function displayColorsOptions(product) {
+    let choice = document.querySelector(".section_choice");
+  product.colors.forEach((colors) => {
+    let option = document.createElement("option");
+    option.value = colors;
+    option.textContent = colors;
+    choice.appendChild(option);
+  });
+  } 
 // Logique quantité + et - des boutons
 function handleQuantity() {
   let btnPlus = document.querySelector(".btnPlus");
@@ -216,6 +224,7 @@ function handleForm() {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    
     //récupérer les id présents dans le panier pour le tableau produit
     let productsArray = [];
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -251,7 +260,7 @@ function handleForm() {
       sendOrder(order);
     } else {
       alert(
-        "Veuillez remplir les champs correctements avant de procéder au paiement"
+        "Veuillez remplir les champs correctements"
       );
     }
   });

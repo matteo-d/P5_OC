@@ -18,6 +18,7 @@ async function getProductsData(param) {
 }
 
 
+
 async function sendOrder(order) {
   const settings = {
     method: "POST",
@@ -35,16 +36,12 @@ async function sendOrder(order) {
     let cartTotalPrice = document.getElementById("totalPrice").innerText;
     localStorage.setItem("cartTotalPrice", JSON.stringify(cartTotalPrice));
 
-    console.log(window.location)
     // Récupère URL sans query string 
-
     let URL = window.location.href.split('?')[0];
-    console.log(URL)
     cleanedURL = URL.replace('panier.html','');
     window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`
     
   } catch (error) {
     alert("Impossible d'envoyer la commande au serveur !");
-    console.log(error);
   }
 }

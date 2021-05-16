@@ -61,35 +61,19 @@ function displayProductHTML(product) {
         `;
 
   document.getElementById("main").innerHTML = html;
-
   // Affichage des choix de couleurs
-  let choice = document.querySelector(".section_choice");
-  product.colors.forEach((colors) => {
-    let option = document.createElement("option");
-    option.value = colors;
-    option.textContent = colors;
-    choice.appendChild(option);
-  });
+  displayColorsOptions(product);
 }
 
 //////////////////////////////////////////////// Display HTML CART
-async function displayCartHTML() {
+ function displayCartHTML() {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     // On recupère l'array contenant les objets du local sotrage
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     //////////////////////// Display des articles présents dans le panier
     let html = "";
-    // Tableau vide pour acceuillir tout les prix
-    let TotalPriceOnLoad = [];
     if (productInLocalStorage) {
       productInLocalStorage.forEach((el) => {
-        //  Display the right price Onload
-        let number = el.chosenQuantity;
-        let multiplicator = el.price / 100;
-        let result = number * multiplicator;
-        //  Display the right TOTAL price Onload
-        TotalPriceOnLoad.push(result);
-
         html += `
     <ul class="oneProductEl">
     <li><img id="${el._id}" src="${el.imageUrl}" alt="Ours ${el.name}">

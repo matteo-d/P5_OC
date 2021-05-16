@@ -1,10 +1,8 @@
 
-
-
-
-
 let idText = localStorage.getItem("orderId");
-idText.slice(1, -1);
+
+console.log(idText)
+
 console.log(typeof idText);
 let main = document.getElementById("main");
 let price = localStorage.getItem("cartTotalPrice").slice(1, -1);
