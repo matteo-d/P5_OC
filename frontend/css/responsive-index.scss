@@ -1,5 +1,5 @@
 @mixin responsiveIndex {
-  @media only screen and (max-width: 1240px) and (min-width: 1001px) {
+  @media only screen and (max-width: 1240px) and (min-width: 1026px) {
     body {
       main {
         div.product {
@@ -17,7 +17,7 @@
     }
   }
 
-  @media only screen and (max-width: 1001px) and (min-width: 840px) {
+  @media only screen and (max-width: 1026px) and (min-width: 840px) {
     body {
       main {
         div.product {
@@ -39,13 +39,13 @@
     }
   }
 
-  @media only screen and (max-width: 840px) and (min-width: 710px) {
+  @media only screen and (max-width: 840px) and (min-width: 732px) {
     body {
       main {
         div.product {
           height: 22rem;
           img.ourspic {
-            width: 22rem;
+            width: 25rem;
           }
           article {
             h2 {
@@ -61,7 +61,7 @@
     }
   }
 
-  @media only screen and (max-width: 710px) and (min-width: 550px) {
+  @media only screen and (max-width: 732px) and (min-width: 550px) {
     body {
       main {
         div.product {

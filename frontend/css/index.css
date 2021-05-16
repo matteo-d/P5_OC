@@ -42,14 +42,6 @@ body nav .cartSvg {
   justify-self: flex-end;
   padding-top: 0.5rem;
 }
-body nav .cartSvg span.message {
-  position: fixed;
-  margin-top: 20.1rem;
-  color: black;
-  background-color: #F9F9F9;
-  transform: translateX(-1.6em);
-  border: solid 1px #f1cbcb;
-}
 body nav .cartSvg span.itemsInCart {
   font-size: 0.6rem;
   background-color: #f1cbcb;
@@ -134,7 +126,7 @@ body footer ul {
   padding: 1rem 0rem 1rem 2rem;
 }
 
-@media only screen and (max-width: 1240px) and (min-width: 1001px) {
+@media only screen and (max-width: 1240px) and (min-width: 1026px) {
   body main div.product {
     height: 22rem;
   }
@@ -145,7 +137,7 @@ body footer ul {
     padding: 0rem 3rem 0.5rem 2rem;
   }
 }
-@media only screen and (max-width: 1001px) and (min-width: 840px) {
+@media only screen and (max-width: 1026px) and (min-width: 840px) {
   body main div.product {
     height: 22rem;
   }
@@ -160,12 +152,12 @@ body footer ul {
     font-size: 1rem;
   }
 }
-@media only screen and (max-width: 840px) and (min-width: 710px) {
+@media only screen and (max-width: 840px) and (min-width: 732px) {
   body main div.product {
     height: 22rem;
   }
   body main div.product img.ourspic {
-    width: 22rem;
+    width: 25rem;
   }
   body main div.product article h2 {
     font-size: 2.2rem;
@@ -175,7 +167,7 @@ body footer ul {
     font-size: 1rem;
   }
 }
-@media only screen and (max-width: 710px) and (min-width: 550px) {
+@media only screen and (max-width: 732px) and (min-width: 550px) {
   body main div.product {
     height: auto;
     display: flex;
@@ -364,4 +356,4 @@ body footer ul {
   body main div.product article a.btnGoTo:hover {
     padding: 0.7rem 0.6rem 0.7rem 0.6rem;
   }
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=index.css.map */

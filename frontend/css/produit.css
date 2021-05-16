@@ -42,14 +42,6 @@ body nav .cartSvg {
   justify-self: flex-end;
   padding-top: 0.5rem;
 }
-body nav .cartSvg span.message {
-  position: fixed;
-  margin-top: 20.1rem;
-  color: black;
-  background-color: #F9F9F9;
-  transform: translateX(-1.6em);
-  border: solid 1px #f1cbcb;
-}
 body nav .cartSvg span.itemsInCart {
   font-size: 0.6rem;
   background-color: #f1cbcb;
@@ -156,9 +148,14 @@ body main .product article button#addToCart {
   padding: 2.3rem 1.5rem 2.3rem 1.5rem;
   border: solid 3px #f2cccc;
   border-radius: 50px;
-  margin: 1rem 0rem 0rem 1.8rem;
+  margin: 1rem 0rem 0rem 2rem;
   transition: all ease-in-out 0.2s;
   cursor: pointer;
+}
+body main .product article span.message {
+  color: black;
+  background-color: #F9F9F9;
+  margin-left: 2rem;
 }
 body footer {
   background-color: #2c1f62;
@@ -268,7 +265,7 @@ body footer ul {
     cursor: pointer;
   }
   body main .product article button#addToCart {
-    margin-left: 2rem;
+    margin-left: 2.6rem;
     margin-top: 0.7rem;
     color: #855f5f;
     background-color: #f9f9f9;
@@ -280,8 +277,9 @@ body footer ul {
     transition: 0.1s ease-in-out;
   }
   body main .product article .message {
-    padding-top: 3em;
-    position: absolute;
-    transform: translate(70%, 0%);
+    padding-top: 0em;
+    position: relative;
+    transform: translate(5rem, -2rem);
+    width: 60%;
   }
 }/*# sourceMappingURL=produit.css.map */

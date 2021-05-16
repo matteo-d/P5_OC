@@ -10,7 +10,6 @@
           height: auto;
           img {
             width: 14rem;
-
             width: 100%;
             border: solid 1px rgb(215, 215, 215);
             border-bottom: 0px;
@@ -21,7 +20,6 @@
           }
           article {
             padding: 1rem 0.5rem 1rem 0.5rem;
-
             border: solid 1px rgb(215, 215, 215);
             border-top: 0px;
             border-top-right-radius: 0px;
@@ -48,7 +46,6 @@
             }
             label {
               padding-left: 1rem;
-
               h3 {
                 padding-top: 0.5rem;
                 padding-left: 0rem;
@@ -68,11 +65,9 @@
               padding-top: 1rem;
               background-color: #f4e1e1;
             }
-
             div#container_quantity {
               padding: 0.9rem 0rem 0rem 0rem;
               margin-left: 1.5rem;
-
               #btnMinus {
                 border: none;
                 background-color: #f1cbcb;
@@ -80,7 +75,6 @@
                 outline: none;
                 padding: 0.2rem 0.5rem 0.2rem 0.5rem;
                 border-radius: 50px;
-
                 &:hover {
                   transform: scale(1.05);
                   cursor: pointer;
@@ -97,38 +91,33 @@
                 outline: none;
                 padding: 0.2rem 0.5rem 0.2rem 0.5rem;
                 border-radius: 50px;
-
                 &:hover {
                   transform: scale(1.05);
                   cursor: pointer;
                 }
               }
             }
-
             button#addToCart {
-              margin-left: 2rem;
+              margin-left: 2.6rem;
               margin-top: 0.7rem;
               color: #855f5f;
               background-color: #f9f9f9;
               padding: 1rem 0rem 1rem 0rem;
               border: solid 2px #f2cccc;
               border-radius: 50px;
-             
               width: 3.3rem;
               cursor: pointer;
-            
               transition: 0.1s ease-in-out;
-          
             }
             .message {
-              padding-top: 3em;
-              position: absolute;
-              transform: translate(70%, 0%);
+              padding-top: 0em;
+              position: relative;
+              transform: translate(5rem, -2rem);
+              width: 60%;
             }
           }
         }
       }
     }
   }
-  
 }
