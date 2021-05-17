@@ -32,7 +32,7 @@ async function verifyProductIdValidity() {
     ValidsIdsArray.push(product_id);
   });
   if (!ValidsIdsArray.includes(productId)) {
-    alert("L'ID du produit séléctionné est incorrect");
+    displayIdError()
   }
 }
 
@@ -190,7 +190,6 @@ function deleteOneElOfCart() {
   let btnDelete = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-
   btnDelete.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       if (productInLocalStorage.length > 1) {
@@ -238,22 +237,20 @@ function handleForm() {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let productsArray = [];
+    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
 
-   
-      let productsArray = [];
-      let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-    
-    
-    getIdsArray(productsArray, productInLocalStorage); // Return productsArray to send to the APi 
+    getIdsArray(productsArray, productInLocalStorage); // Return productsArray to send to the APi
 
-    const emailRegex =
-      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    // Condition sur les inputs du formulaire
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (
       form.firstName.value.length > 1 &&
       form.lastName.value.length > 1 &&
       form.address.value.length > 6 &&
       form.city.value.length > 1 &&
-      emailRegex.test(email.value)
+      emailRegex.test(email.value) &&
+      productsArray.length > 0 
     ) {
       // Création de l'objet a envoyé au server
       let order = {
@@ -277,8 +274,8 @@ function handleForm() {
 ////////////////////// ///////////////////////////////////// FONCTIONS PAGE CONFIRMATION
 
 // Vider local storage complet
-function emptyAllLocalStorage ()  {
+function emptyAllLocalStorage() {
   localStorage.removeItem("cartItem");
   localStorage.removeItem("orderId");
   localStorage.removeItem("cartTotalPrice");
-};
+}

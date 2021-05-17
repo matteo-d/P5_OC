@@ -12,7 +12,7 @@ async function getProductsData(param) {
 
     return products;
   } catch (e) {
-    alert("Serveur non connecté !");
+    displayServerError() 
     console.log(e);
   }
 }
@@ -42,6 +42,6 @@ async function sendOrder(order) {
     window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`
     
   } catch (error) {
-    alert("Impossible d'envoyer la commande au serveur !");
+    displayServerError() 
   }
 }

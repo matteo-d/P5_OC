@@ -363,4 +363,7 @@ body footer ul {
     justify-content: space-around;
     align-items: center;
   }
+  nav .cartSvg {
+    padding-right: 0rem !important;
+  }
 }/*# sourceMappingURL=index.css.map */
