@@ -233,10 +233,10 @@ body footer ul {
     margin-top: 0.5rem;
     margin-left: 0.9rem;
     padding: 0.5rem;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     border-radius: 33px;
     cursor: pointer;
-    width: 25%;
+    width: 5rem;
   }
   body main .product article option {
     padding-top: 1rem;
@@ -244,7 +244,7 @@ body footer ul {
   }
   body main .product article div#container_quantity {
     padding: 0.9rem 0rem 0rem 0rem;
-    margin-left: 1.5rem;
+    margin-left: 0.8rem;
   }
   body main .product article div#container_quantity #btnMinus {
     border: none;
@@ -275,7 +275,7 @@ body footer ul {
     cursor: pointer;
   }
   body main .product article button#addToCart {
-    margin-left: 2.6rem;
+    margin-left: 1.9rem;
     margin-top: 0.7rem;
     color: #855f5f;
     background-color: #f9f9f9;

@@ -7,6 +7,34 @@
   nav .cartSvg {
     padding-right: 0rem !important;
   }
+
+  section.selectedProduct {
+    align-items: center;
+  }
+  section.selectedProduct ul :nth-child(1) {
+    grid-area: 1/1/7/6;
+  }
+  section.selectedProduct ul :nth-child(1) img {
+    width: 100%;
+    height: auto;
+    font-size: 1rem;
+  }
+  section.selectedProduct ul :nth-child(2) {
+    grid-area: 7/1/9/2;
+    font-size: 1rem;
+  }
+  section.selectedProduct ul :nth-child(3) {
+    grid-area: 7/2/9/3;
+    font-size: 1rem;
+  }
+  section.selectedProduct ul :nth-child(4) {
+    grid-area: 7/3/9/4;
+    font-size: 1rem;
+  }
+  section.selectedProduct ul :nth-child(5) {
+    grid-area: 7/4/9/5;
+    font-size: 1rem;
+  }
 }
 * {
   margin: 0;
@@ -96,7 +124,7 @@ body main section.selectedProduct ul li {
   display: flex;
   align-items: center;
   font-size: 1.4rem;
-  padding-left: 1.5rem;
+  padding-left: 0.5rem;
 }
 body main section.selectedProduct ul li img {
   width: 12rem;
@@ -207,25 +235,40 @@ body footer ul {
     display: none;
   }
   body main section.options svg {
-    margin-left: 4rem;
+    margin-left: 0rem;
   }
   body main section.selectedProduct {
     align-items: center;
   }
   body main section.selectedProduct ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     width: 93%;
-    align-items: center;
   }
-  body main section.selectedProduct ul li {
-    padding-top: 0.4rem;
-    width: 100%;
+  body main section.selectedProduct ul :nth-child(1) {
+    grid-area: 1/1/7/6;
   }
-  body main section.selectedProduct ul li img {
+  body main section.selectedProduct ul :nth-child(1) img {
     width: 100%;
     height: auto;
+  }
+  body main section.selectedProduct ul :nth-child(2) {
+    grid-area: 7/1/9/2;
+  }
+  body main section.selectedProduct ul :nth-child(3) {
+    grid-area: 7/2/9/3;
+  }
+  body main section.selectedProduct ul :nth-child(4) {
+    grid-area: 7/3/9/4;
+  }
+  body main section.selectedProduct ul :nth-child(5) {
+    grid-area: 7/4/9/5;
+  }
+  body main section.selectedProduct ul :nth-child(5) p {
+    padding: 0.5rem;
   }
   body main section.total p {
     text-align: center;
@@ -233,5 +276,42 @@ body footer ul {
   }
   body main form input {
     width: 80%;
+  }
+}
+@media screen and (max-width: 810px) and (max-width: 440px) {
+  body main section.options p {
+    display: none;
+  }
+  body main section.options svg {
+    margin-left: 0rem;
+  }
+  body main section.selectedProduct {
+    align-items: center;
+  }
+  body main section.selectedProduct ul :nth-child(1) {
+    grid-area: 1/1/7/6;
+  }
+  body main section.selectedProduct ul :nth-child(1) img {
+    width: 100%;
+    height: auto;
+  }
+  body main section.selectedProduct ul :nth-child(2) {
+    grid-area: 7/1/9/2;
+  }
+  body main section.selectedProduct ul :nth-child(3) {
+    grid-area: 7/2/9/3;
+  }
+  body main section.selectedProduct ul :nth-child(4) {
+    grid-area: 7/3/9/4;
+  }
+  body main section.selectedProduct ul :nth-child(5) {
+    grid-area: 7/4/9/5;
+  }
+  body main section.total p {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  body main form input {
+    width: 85%;
   }
 }/*# sourceMappingURL=panier.css.map */
