@@ -356,4 +356,11 @@ body footer ul {
   body main div.product article a.btnGoTo:hover {
     padding: 0.7rem 0.6rem 0.7rem 0.6rem;
   }
+}
+@media only screen and (max-width: 330px) and (min-width: 0px) {
+  nav {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+  }
 }/*# sourceMappingURL=index.css.map */

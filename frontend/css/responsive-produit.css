@@ -1,2 +1,10 @@
-
-/*# sourceMappingURL=responsive-produit.css.map *//*# sourceMappingURL=responsive-produit.css.map */
+@media only screen and (max-width: 330px) and (min-width: 0px) {
+  nav {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+  }
+  nav .cartSvg {
+    padding-right: 0rem !important;
+  }
+}/*# sourceMappingURL=responsive-produit.css.map */

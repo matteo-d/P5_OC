@@ -75,3 +75,15 @@
     }
   }
 
+  @media only screen and (max-width: 330px) and (min-width: 0px) {
+    nav {
+      display: flex !important;
+      justify-content: space-around;
+      align-items: center;
+      .cartSvg {
+        padding-right: 0rem !important;
+     
+       
+      }
+    }
+  }

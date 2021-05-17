@@ -44,14 +44,6 @@ body nav .cartSvg {
   justify-self: flex-end;
   padding-top: 0.5rem;
 }
-body nav .cartSvg span.message {
-  position: fixed;
-  margin-top: 20.1rem;
-  color: black;
-  background-color: #F9F9F9;
-  transform: translateX(-1.6em);
-  border: solid 1px #f1cbcb;
-}
 body nav .cartSvg span.itemsInCart {
   font-size: 0.6rem;
   background-color: #f1cbcb;
@@ -72,4 +64,15 @@ body main p {
 body main a {
   border: solid 2px;
   padding: 0.5rem;
+}
+
+@media only screen and (max-width: 330px) and (min-width: 0px) {
+  nav {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+  }
+  nav .cartSvg {
+    padding-right: 0rem !important;
+  }
 }/*# sourceMappingURL=confirmation.css.map */
