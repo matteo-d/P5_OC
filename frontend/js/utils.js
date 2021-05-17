@@ -18,7 +18,7 @@ function formatPrice(price) {
     currency: "EUR",
   }).format(price / 100);
 }
-///////////////////////////////////////////////////////////////// FUNCTIONS USED PAGES PAGE PRODUIT
+///////////////////////////////////////////////////////////////// FUNCTIONS PAGE PRODUIT
 function getProductId() {
   return new URL(window.location.href).searchParams.get("id");
 }
@@ -36,24 +36,23 @@ async function verifyProductIdValidity() {
   }
 }
 
-function setURLparam () {
-  const queryString = window.location.href
-  console.log(queryString)
+function setURLparam() {
+  const queryString = window.location.href;
+  console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
-  urlParams.append('page', '2');
+  urlParams.append("page", 2);
 }
 
-
-  // Affichage des choix de couleurs
-  function displayColorsOptions(product) {
-    let choice = document.querySelector(".section_choice");
+// Affichage des choix de couleurs
+function displayColorsOptions(product) {
+  let choice = document.querySelector(".section_choice");
   product.colors.forEach((colors) => {
     let option = document.createElement("option");
     option.value = colors;
     option.textContent = colors;
     choice.appendChild(option);
   });
-  } 
+}
 // Logique quantité + et - des boutons
 function handleQuantity() {
   let btnPlus = document.querySelector(".btnPlus");
@@ -112,7 +111,7 @@ function handleAddToCart(selectedProductData) {
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         let messageEl = document.querySelector(".message");
-        messageEl.innerText = selectedProductData.name + " ajouté  ";
+        messageEl.innerText = selectedProductData.name + "    est  ajouté  ";
 
         setTimeout(() => {
           messageEl.innerText = "";
@@ -124,7 +123,7 @@ function handleAddToCart(selectedProductData) {
       productInLocalStorage.push(cartItem);
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
       let messageEl = document.querySelector(".message");
-      messageEl.innerText = selectedProductData.name + "ajouté";
+      messageEl.innerText = selectedProductData.name + " est ajouté";
 
       setTimeout(() => {
         messageEl.innerText = "";
@@ -191,6 +190,7 @@ function deleteOneElOfCart() {
   let btnDelete = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+
   btnDelete.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       if (productInLocalStorage.length > 1) {
@@ -219,22 +219,32 @@ function deleteOneElOfCart() {
   });
 }
 
+function getIdsArray(productsArray, productInLocalStorage) {
+  //récupérer les id présents dans le panier pour le tableau produit
+  // Si produit dans le panier
+  if (productInLocalStorage) {
+    Object.values(productInLocalStorage).forEach((val) =>
+      productsArray.push(val.id)
+    );
+  } else {
+    alert(
+      "le panier est vide, Veuillez séléctionné des articles avant de commander"
+    );
+  }
+}
+
 /// Gestion formulaire
 function handleForm() {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    if (JSON.parse(localStorage.getItem("cartItem"))) {
+      let productsArray = [];
+      let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+    }
     
-    //récupérer les id présents dans le panier pour le tableau produit
-    let productsArray = [];
-    let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-    productInLocalStorage.forEach((el) => {
-      let product_id = el._id;
-      // Si id envoyé est bien de type string on l'ajoute au tableau produits
-      if (typeof product_id === "string") {
-        productsArray.push(product_id);
-      }
-    });
+    getIdsArray(productsArray, productInLocalStorage); // Return productsArray to send to the APi 
 
     const emailRegex =
       /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
@@ -259,9 +269,7 @@ function handleForm() {
       // Envoi de l'objet de commande / Retourne n id de commande
       sendOrder(order);
     } else {
-      alert(
-        "Veuillez remplir les champs correctements"
-      );
+      alert("Veuillez remplir les champs correctements");
     }
   });
 }
