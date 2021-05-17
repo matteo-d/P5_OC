@@ -239,10 +239,10 @@ function handleForm() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if (JSON.parse(localStorage.getItem("cartItem"))) {
+   
       let productsArray = [];
       let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-    }
+    
     
     getIdsArray(productsArray, productInLocalStorage); // Return productsArray to send to the APi 
 
