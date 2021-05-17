@@ -273,3 +273,12 @@ function handleForm() {
     }
   });
 }
+
+////////////////////// ///////////////////////////////////// FONCTIONS PAGE CONFIRMATION
+
+// Vider local storage complet
+function emptyAllLocalStorage ()  {
+  localStorage.removeItem("cartItem");
+  localStorage.removeItem("orderId");
+  localStorage.removeItem("cartTotalPrice");
+};
