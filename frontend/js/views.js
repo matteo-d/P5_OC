@@ -100,7 +100,7 @@ function displayProductHTML(product) {
       });
     }
   } else {
-    alert("Votre panier est vide !");
+    displayEmptyCart();
   }
 }
 
@@ -197,4 +197,40 @@ function displayConfirmationHTML() {
       body.innerHTML = html;  
       }
   
+      function displayEmptyCart() {
+        let body = document.querySelector("body");
+        body.innerHTML = "" ; 
+        let html = "";
+        // Affichage du produit
+        html = `<style>
+        body {
+          position : absolute;
+          min-width : 100%;
+          min-height : 100%;
+          font-family : Roboto;
+          display: flex;
+          flex-direction : column;
+          justify-content : center ; 
+          align-items: center; 
+          font-size : 2rem; 
+        }
+        p {
+          font-size: 1rem;
+          text-align : center;
+        }
+        a {
+          padding: 1rem;
+          margin-top: 1rem;
+        font-size : 1rem;
+          border: solid 2px black; 
+        }
+      </style>   
+        <h1> OUPS ! </h1>
+        
+        <p> Le panier est vide </p>
+        
+        <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
+        `;
+        body.innerHTML = html;  
+        }
     
