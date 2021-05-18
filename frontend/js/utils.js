@@ -222,8 +222,14 @@ function getIdsArray(productsArray, productInLocalStorage) {
   //récupérer les id présents dans le panier pour le tableau produit
   // Si produit dans le panier
   if (productInLocalStorage) {
-    Object.values(productInLocalStorage).forEach((val) =>
+    Object.values(productInLocalStorage).forEach((val) => {
+      if (typeof product_id === "string") {
       productsArray.push(val.id)
+      }
+      else {
+        console.log(" type Ids envoyé à l'objet order =/ string ")
+      }
+    }
     );
   } else {
     alert(
@@ -264,7 +270,7 @@ function handleForm() {
         products: productsArray,
       };
       // Envoi de l'objet de commande / Retourne n id de commande
-      sendOrder(order);
+      postOrder(order);
     } else {
       alert("Veuillez remplir les champs correctements");
     }

@@ -1,4 +1,4 @@
-////////////////////////////// Get Product Data index
+////////////////////////////// Get Product Data 
 async function getProductsData(param) {
   if (typeof param == "undefined") {
     param = "";
@@ -18,8 +18,8 @@ async function getProductsData(param) {
 }
 
 
-
-async function sendOrder(order) {
+////////////////////////////// Post Order  
+async function postOrder(order) {
   const settings = {
     method: "POST",
     body: JSON.stringify(order),
