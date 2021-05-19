@@ -1,11 +1,11 @@
 (async () => {
   const productId = getProductId();
-  verifyProductIdValidity();
+  verifyProductIdValidity(); 
   const selectedProductData = await getProductsData(productId);
   displayProductHTML(selectedProductData);
-  displayNbsItemsInCart();
   handleAddToCart(selectedProductData);
-  handleQuantity();
+  displayNbsItemsInCart();
+  handleChooseQuantity();
   setURLparam () 
 })();
 

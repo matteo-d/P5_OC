@@ -70,7 +70,7 @@ function displayProductHTML(product) {
   displayColorsOptions(product);
 }
 else {
-  displayIdError()
+  displayServerError()
 }
 }
 

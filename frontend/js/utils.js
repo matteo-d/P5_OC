@@ -54,7 +54,7 @@ function displayColorsOptions(product) {
   });
 }
 // Logique quantité + et - des boutons
-function handleQuantity() {
+function handleChooseQuantity() {
   let btnPlus = document.querySelector(".btnPlus");
   let btnMinus = document.querySelector(".btnMinus");
   let quantity = document.querySelector(".quantityOfProduct");
@@ -222,9 +222,9 @@ function getIdsArray(productsArray, productInLocalStorage) {
   //récupérer les id présents dans le panier pour le tableau produit
   // Si produit dans le panier
   if (productInLocalStorage) {
-    Object.values(productInLocalStorage).forEach((val) => {
-      if (typeof product_id === "string") {
-      productsArray.push(val.id)
+    Object.values(productInLocalStorage).forEach((product) => {
+      if (typeof product.id === "string") {
+      productsArray.push(product.id)
       }
       else {
         console.log(" type Ids envoyé à l'objet order =/ string ")
