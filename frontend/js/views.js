@@ -1,18 +1,19 @@
 //////////////////////////////////////////////// Display Index HTML
 function displayIndexHTML(products) {
-  //Je créer ma variable que je vais ajouter à mes elements
-  let html = "";
-  products.forEach((productElement) => {
-    //Html pur , Créer les élément, clone prototype
-    html += `
+  if (products !== undefined) { // Si data produit existe 
+   
+    let html = "";
+    products.forEach((productElement) => {
+      // Affichage des produits 
+      html += `
       <div class="product">
           <img src="${productElement.imageUrl}" alt="Ours ${
-      productElement.name
-    }" class="ourspic">
+        productElement.name
+      }" class="ourspic">
           <article class="product_infos">
                 <h2 id="name_product_${productElement.name}">${
-      productElement.name
-    }</h2>
+        productElement.name
+      }</h2>
                 <p class="product_description" id="description_product_${
                   productElement.name
                 }">${productElement.description}</p>   
@@ -24,12 +25,16 @@ function displayIndexHTML(products) {
                 }" class="btnGoTo">Voir</a>
         </div >
   `;
-    document.getElementById("main").innerHTML = html;
-  });
+      document.getElementById("main").innerHTML = html;
+    });
+  } else {
+    displayServerError();
+  }
 }
 
 //////////////////////////////////////////////// Display HTML PRODUIT
 function displayProductHTML(product) {
+  if (product !== undefined) { // Si data produit existe 
   // Affichage du produit
   html = `<div class="product">
     <img src="${product.imageUrl}" alt="Ours ${product.name}">
@@ -64,9 +69,13 @@ function displayProductHTML(product) {
   // Affichage des choix de couleurs
   displayColorsOptions(product);
 }
+else {
+  displayIdError()
+}
+}
 
 //////////////////////////////////////////////// Display HTML CART
- function displayCartHTML() {
+function displayCartHTML() {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     // On recupère l'array contenant les objets du local sotrage
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -104,12 +113,12 @@ function displayProductHTML(product) {
   }
 }
 
-//////////////////////////////////////////////// Display HTML CONFIRMATION 
+//////////////////////////////////////////////// Display HTML CONFIRMATION
 function displayConfirmationHTML() {
   let idText = localStorage.getItem("orderId");
   let main = document.getElementById("main");
   let price = localStorage.getItem("cartTotalPrice").slice(1, -1);
-  price.slice(1, -1); // Retire les guillemets 
+  price.slice(1, -1); // Retire les guillemets
   let html = "";
   // Affichage du produit
   html = `<h1> Votre commande d'un montant de ${price}€ à bien été prise en compte ! </h1>
@@ -119,16 +128,16 @@ function displayConfirmationHTML() {
   <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
   `;
   main.innerHTML = html;
-  }
+}
 
-  //////////////////////////////////////// Display ERROR 
+//////////////////////////////////////// Display ERROR
 
-  function displayServerError() {
-    let body = document.querySelector("body");
-    body.innerHTML = "" ; 
-    let html = "";
-    // Affichage du produit
-    html = `<style>
+function displayServerError() {
+  let body = document.querySelector("body");
+  body.innerHTML = "";
+  let html = "";
+  // Affichage du produit
+  html = `<style>
     body {
       position : absolute;
       min-width : 100%;
@@ -157,15 +166,15 @@ function displayConfirmationHTML() {
     
     <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
     `;
-    body.innerHTML = html;  
-    }
+  body.innerHTML = html;
+}
 
-    function displayIdError() {
-      let body = document.querySelector("body");
-      body.innerHTML = "" ; 
-      let html = "";
-      // Affichage du produit
-      html = `<style>
+function displayIdError() {
+  let body = document.querySelector("body");
+  body.innerHTML = "";
+  let html = "";
+  // Affichage du produit
+  html = `<style>
       body {
         position : absolute;
         min-width : 100%;
@@ -194,15 +203,15 @@ function displayConfirmationHTML() {
       
       <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
       `;
-      body.innerHTML = html;  
-      }
-  
-      function displayEmptyCart() {
-        let body = document.querySelector("body");
-        body.innerHTML = "" ; 
-        let html = "";
-        // Affichage du produit
-        html = `<style>
+  body.innerHTML = html;
+}
+
+function displayEmptyCart() {
+  let body = document.querySelector("body");
+  body.innerHTML = "";
+  let html = "";
+  // Affichage du produit
+  html = `<style>
         body {
           position : absolute;
           min-width : 100%;
@@ -231,6 +240,5 @@ function displayConfirmationHTML() {
         
         <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
         `;
-        body.innerHTML = html;  
-        }
-    
+  body.innerHTML = html;
+}
