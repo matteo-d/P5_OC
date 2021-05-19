@@ -36,11 +36,11 @@ async function verifyProductIdValidity() {
   }
 }
 
-function setURLparam() {
+function setURLparam(key, value) {
   const queryString = window.location.href;
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
-  urlParams.append("page", 2);
+  urlParams.append(key, value);
 }
 
 // Affichage des choix de couleurs
@@ -80,6 +80,7 @@ function messageAddToCart(selectedProductData ,message) {
     messageEl.innerText = "";
   }, 2000);
 }
+
 // Gère l'ajout au panier
 function handleAddToCart(selectedProductData) {
   // Gestion de l'ajout de l'article au panier
@@ -184,31 +185,27 @@ function deleteOneElOfCart() {
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
   btnDelete.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
-      if (productInLocalStorage.length > 1) {
+   
         // Au clic supprime l'élément dynamiquement l'élément parent
         btnDelete.parentElement.parentElement.remove();
         // Au clic supprime le bon élément du local storage en "local"
         productInLocalStorage.splice(btnDelete, 1);
         // On renvoie au local storage le tableau sans l'élément supprimé
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+
+        if (productInLocalStorage.length >= 1) {
         displayNbsItemsInCart();
         displayCartTotal();
-        // Total Items dans le panier
-        window.scroll(0, 0);
-      } else {
-        btnDelete.parentElement.parentElement.remove();
-        localStorage.removeItem("cartItem");
-        let totalText = document.getElementById("totalPrice");
-        totalText.innerText = "0";
-        let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
-        numberOfArticleInCartEl.innerText = "0";
-        displayCartTotal();
-        displayNbsItemsInCart();
-        window.scroll(0, 0);
-      }
+        }
+        else {
+  // reload la page
+window.location.href = "cart.html";
+        }
+    
+      })
     });
-  });
-}
+  };
+
 
 function getIdsArray(productsArray, productInLocalStorage) {
   //récupérer les id présents dans le panier pour le tableau produit
