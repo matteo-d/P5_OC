@@ -30,7 +30,7 @@ async function postOrder(order) {
     localStorage.setItem("cartTotalPrice", JSON.stringify(cartTotalPrice));
 
     let URL = window.location.href.split("?")[0]; // Récupère URL sans query string
-    cleanedURL = URL.replace("panier.html", ""); // Retire panier.html du L'URl
+    cleanedURL = URL.replace("cart.html", ""); // Retire panier.html du L'URl
     window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`; // Envoi page confirmation
   } catch (e) {
     console.log(e)

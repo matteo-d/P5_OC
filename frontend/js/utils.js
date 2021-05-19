@@ -32,7 +32,7 @@ async function verifyProductIdValidity() {
     ValidsIdsArray.push(product_id);
   });
   if (!ValidsIdsArray.includes(productId)) {
-    displayIdError()
+    displayIdError();
   }
 }
 
@@ -181,7 +181,7 @@ function deleteAllCart() {
     // vide le local storage
     localStorage.removeItem("cartItem");
     // reload la page
-    window.location.href = "panier.html";
+    window.location.href = "cart.html";
   });
 }
 
@@ -224,17 +224,82 @@ function getIdsArray(productsArray, productInLocalStorage) {
   if (productInLocalStorage) {
     Object.values(productInLocalStorage).forEach((product) => {
       if (typeof product.id === "string") {
-      productsArray.push(product.id)
+        productsArray.push(product.id);
+      } else {
+        console.log(" type Ids envoyé à l'objet order =/ string ");
       }
-      else {
-        console.log(" type Ids envoyé à l'objet order =/ string ")
-      }
-    }
-    );
+    });
   } else {
     alert(
       "le panier est vide, Veuillez séléctionné des articles avant de commander"
     );
+  }
+}
+
+
+function isEmail(email) {
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
+}
+
+function formInputValidation() {
+  // trim to remove the whitespaces
+  const firstName = form.firstName;
+  const lastName = form.lastName
+  const adress = form.address;
+  const city = form.city;
+  const email = form.email;
+
+  const firstNameValue = form.firstName.value.trim();
+  const lastNameValue = form.lastName.value.trim();
+  const adressValue = address.value.trim();
+  const cityValue = form.city.value.trim();
+  const emailValue = form.email.value.trim();
+
+  console.log(firstName)
+
+  if (firstNameValue.length < 1 ) {
+    setErrorFor(firstName, "Entrer votre prénom");
+  } else {
+    setSuccessFor(firstName);
+  }
+
+  if (lastNameValue.length < 1) {
+    setErrorFor(lastName, "Entrer votre nom");
+  } else {
+    setSuccessFor(lastName);
+  }
+
+  if (adressValue.length < 6) {
+    setErrorFor(adress, "Doit faire + de 6 caractères");
+  } else {
+    setSuccessFor(adress);
+  }
+
+  if (cityValue.length < 1) {
+    setErrorFor(city, "Entrer votre ville ");
+  } else {
+    setSuccessFor(city);
+  }
+  if (emailValue === "") {
+    setErrorFor(email, "Entrer votre e-mail");
+  } else if (!isEmail(emailValue)) {
+    setErrorFor(email, "e-mail invalide");
+  } else {
+    setSuccessFor(email);
+  }
+
+  function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector("small");
+    formControl.className = "form-control error";
+    small.innerText = message;
+  }
+
+  function setSuccessFor(input) {
+    const formControl = input.parentElement;
+    formControl.className = "form-control success";
   }
 }
 
@@ -248,15 +313,16 @@ function handleForm() {
 
     getIdsArray(productsArray, productInLocalStorage); // Return productsArray to send to the APi
 
+    formInputValidation();
     // Condition sur les inputs du formulaire
-    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
     if (
       form.firstName.value.length > 1 &&
       form.lastName.value.length > 1 &&
       form.address.value.length > 6 &&
       form.city.value.length > 1 &&
-      emailRegex.test(email.value) &&
-      productsArray.length > 0 
+      isEmail(form.email.value) &&
+      productsArray.length > 0
     ) {
       // Création de l'objet a envoyé au server
       let order = {
@@ -269,10 +335,8 @@ function handleForm() {
         },
         products: productsArray,
       };
-      // Envoi de l'objet de commande / Retourne n id de commande
       postOrder(order);
-    } else {
-      alert("Veuillez remplir les champs correctements");
+      // Envoi de l'objet de commande / Retourne n id de commande
     }
   });
 }
