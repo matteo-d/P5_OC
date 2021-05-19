@@ -72,6 +72,14 @@ function handleChooseQuantity() {
   });
 }
 
+function messageAddToCart(selectedProductData ,message) {
+  let messageEl = document.querySelector(".message");
+  messageEl.innerText = `${selectedProductData.name} ${message}`;
+
+  setTimeout(() => {
+    messageEl.innerText = "";
+  }, 2000);
+}
 // Gère l'ajout au panier
 function handleAddToCart(selectedProductData) {
   // Gestion de l'ajout de l'article au panier
@@ -99,35 +107,19 @@ function handleAddToCart(selectedProductData) {
     if (productInLocalStorage) {
       // Action SI le panier contient déjà cet ours
       if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
-        let messageEl = document.querySelector(".message");
-        messageEl.innerText =
-          selectedProductData.name + " déjà dans votre panier";
-
-        setTimeout(() => {
-          messageEl.innerText = "";
-        }, 2000);
+        messageAddToCart(selectedProductData ," déjà dans le panier") 
         //Action SI le panier ne contient PAS cet ours
       } else {
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-        let messageEl = document.querySelector(".message");
-        messageEl.innerText = selectedProductData.name + "    est  ajouté  ";
-
-        setTimeout(() => {
-          messageEl.innerText = "";
-        }, 2000);
+        messageAddToCart(selectedProductData ," ajouté ") 
       }
       // SI c'est le premier article
     } else {
       productInLocalStorage = [];
       productInLocalStorage.push(cartItem);
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-      let messageEl = document.querySelector(".message");
-      messageEl.innerText = selectedProductData.name + " est ajouté";
-
-      setTimeout(() => {
-        messageEl.innerText = "";
-      }, 2000);
+      messageAddToCart(selectedProductData ," ajouté ") 
     }
     displayNbsItemsInCart();
   });
@@ -244,13 +236,14 @@ function isEmail(email) {
 }
 
 function formInputValidation() {
-  // trim to remove the whitespaces
+  // Cible les inputs 
   const firstName = form.firstName;
   const lastName = form.lastName
   const adress = form.address;
   const city = form.city;
   const email = form.email;
-
+  // Cible les valeurs inputs 
+// trim = remove space 
   const firstNameValue = form.firstName.value.trim();
   const lastNameValue = form.lastName.value.trim();
   const adressValue = address.value.trim();
@@ -285,7 +278,7 @@ function formInputValidation() {
   if (emailValue === "") {
     setErrorFor(email, "Entrer votre e-mail");
   } else if (!isEmail(emailValue)) {
-    setErrorFor(email, "e-mail invalide");
+    setErrorFor(email, "E-mail invalide");
   } else {
     setSuccessFor(email);
   }
