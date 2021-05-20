@@ -16,9 +16,27 @@ a {
 }
 
 body {
-  min-height: 100vh;
   width: 100vw;
   font-family: "Roboto", sans-serif;
+}
+body .heart {
+  position: fixed;
+  top: -1vh;
+  z-index: -1;
+  font-size: 2rem;
+  transform: translateY(0);
+  -webkit-animation: fall 3s linear forwards;
+          animation: fall 3s linear forwards;
+}
+@-webkit-keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
+}
+@keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
 }
 body nav {
   display: grid;
@@ -51,19 +69,36 @@ body nav .cartSvg span.itemsInCart {
   border-radius: 30px;
 }
 body main {
-  text-align: center;
+  height: 95vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 body main h1 {
-  padding-top: 3rem;
-  font-size: 1.2rem;
-  padding-bottom: 1rem;
+  width: 75%;
+  text-align: center;
+  padding-top: 0rem;
+  font-size: 1.8rem;
+  padding-bottom: 2rem;
+  color: black;
 }
 body main p {
-  padding-bottom: 2rem;
+  text-align: center;
+  width: 65%;
+  padding-bottom: 1rem;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  color: black;
 }
 body main a {
-  border: solid 2px;
-  padding: 0.5rem;
+  text-align: center;
+  width: 30%;
+  border: solid 2px #e8adad;
+  border-radius: 50px;
+  padding: 0.8rem 0.6rem 0.8rem 0.6rem;
+  color: black;
+  font-size: 1rem;
 }
 
 @media only screen and (max-width: 330px) and (min-width: 0px) {

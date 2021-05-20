@@ -327,6 +327,7 @@ function handleForm() {
         products: productsArray,
       };
       postOrder(order);
+      
       // Envoi de l'objet de commande / Retourne n id de commande
     }
   });
