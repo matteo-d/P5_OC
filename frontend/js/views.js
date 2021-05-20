@@ -125,7 +125,7 @@ function displayConfirmationHTML() {
   
   <p> Votre identifiant de commande est : ${idText} </p>
   
-  <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
+  <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
   `;
   main.innerHTML = html;
 }
@@ -164,7 +164,7 @@ function displayServerError() {
     
     <p> Le serveur n'est pas connecté, Veuillez réessayer ultérieurement</p>
     
-    <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
+    <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
     `;
   body.innerHTML = html;
 }
@@ -201,7 +201,7 @@ function displayIdError() {
       
       <p> L'Id séléctionné est invalide </p>
       
-      <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
+      <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
       `;
   body.innerHTML = html;
 }
@@ -238,7 +238,7 @@ function displayEmptyCart() {
         
         <p> Le panier est vide </p>
         
-        <a id="goToIndex" href="index.html"> Retour à la page d'acceuil </a>
+        <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
         `;
   body.innerHTML = html;
 }
