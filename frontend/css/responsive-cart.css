@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
   }
-  nav .cartSvg {
+  nav .clearAll {
     padding-right: 0rem !important;
   }
 
@@ -15,7 +15,7 @@
     grid-area: 1/1/7/6;
   }
   section.selectedProduct ul :nth-child(1) img {
-    width: 100%;
+    width: 80%;
     height: auto;
     font-size: 1rem;
   }

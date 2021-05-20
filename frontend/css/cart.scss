@@ -32,14 +32,18 @@ body {
       padding-bottom: 2rem;
       padding-left: 2rem;
       
-     svg{  
-    
-        cursor: pointer;  
-       margin-left: 3rem;
-       &:hover {
+     .clearAll{  
+       text-align: center;
+    width: 8rem;
+    font-size: 1.4rem;
+      border: solid 2px;
+      cursor: pointer;
+      padding: 0.6rem;
+      background-color: white;
+      &:hover {
         transform: scale(1.05);
       }
-      }
+     }
     }
     section.selectedProduct {
       display: flex;

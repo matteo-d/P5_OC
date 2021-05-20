@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
   }
-  nav .cartSvg {
+  nav .clearAll {
     padding-right: 0rem !important;
   }
 
@@ -15,7 +15,7 @@
     grid-area: 1/1/7/6;
   }
   section.selectedProduct ul :nth-child(1) img {
-    width: 100%;
+    width: 80%;
     height: auto;
     font-size: 1rem;
   }
@@ -100,11 +100,16 @@ body main section.options {
   padding-bottom: 2rem;
   padding-left: 2rem;
 }
-body main section.options svg {
+body main section.options .clearAll {
+  text-align: center;
+  width: 8rem;
+  font-size: 1.4rem;
+  border: solid 2px;
   cursor: pointer;
-  margin-left: 3rem;
+  padding: 0.6rem;
+  background-color: white;
 }
-body main section.options svg:hover {
+body main section.options .clearAll:hover {
   transform: scale(1.05);
 }
 body main section.selectedProduct {
@@ -262,21 +267,27 @@ footer ul {
   }
 }
 @media screen and (max-width: 810px) {
-  body main section.options p {
+  body main section.options :nth-child(1) {
     display: none;
   }
-  body main section.options svg {
-    margin-left: 4rem;
+  body main section.options :nth-child(2) {
+    display: none;
+  }
+  body main section.options :nth-child(3) {
+    display: none;
+  }
+  body main section.options :nth-child(4) {
+    display: none;
+  }
+  body main section.options :nth-child(5) {
+    margin-left: 0rem;
   }
   body main form input {
     width: 80%;
   }
 }
 @media screen and (max-width: 810px) and (max-width: 640px) {
-  body main section.options p {
-    display: none;
-  }
-  body main section.options svg {
+  body main section.options :nth-child(5) {
     margin-left: 0rem;
   }
   body main section.selectedProduct {
@@ -321,12 +332,6 @@ footer ul {
   }
 }
 @media screen and (max-width: 810px) and (max-width: 440px) {
-  body main section.options p {
-    display: none;
-  }
-  body main section.options svg {
-    margin-left: 0rem;
-  }
   body main section.selectedProduct {
     align-items: center;
   }
