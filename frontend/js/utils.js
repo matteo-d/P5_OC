@@ -193,13 +193,14 @@ function deleteOneElOfCart() {
         // On renvoie au local storage le tableau sans l'élément supprimé
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
 
-        if (productInLocalStorage.length >= 1) {
+        if (productInLocalStorage.length > 0 ) {
         displayNbsItemsInCart();
         displayCartTotal();
         }
         else {
-  // reload la page
-window.location.href = "cart.html";
+          localStorage.removeItem("cartItem");
+          // reload la page
+          window.location.href = "cart.html";
         }
     
       })
