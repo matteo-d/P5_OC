@@ -20,7 +20,7 @@ function displayIndexHTML(products) {
                 <p class="price" id="price_product_${
                   productElement.name
                 }">${formatPrice(productElement.price)} </p>
-                <a href="./product.html?id=${
+                <a href="./frontend/html/product.html?id=${
                   productElement._id
                 }" class="btnGoTo">Voir</a>
         </div >

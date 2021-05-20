@@ -5,6 +5,5 @@
   handleQuantityProduct();
   deleteOneElOfCart();
   deleteAllCart();
-  handleForm();
-  
+  handleForm(); 
 })();
