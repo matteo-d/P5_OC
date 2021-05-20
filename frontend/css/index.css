@@ -50,16 +50,33 @@ body nav .cartSvg span.itemsInCart {
 }
 body header {
   background-image: url("../img/header.jpg");
-  height: 90vh;
+  height: 95vh;
   background-size: cover;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-body header article h2 {
+body header h2 {
   font-size: 3.5rem;
   color: whitesmoke;
   text-align: center;
+}
+body header a {
+  font-size: 1.5rem;
+  border: solid 3px #f3e8e8;
+  color: #ffffff;
+  background-color: #e2aeae;
+  position: absolute;
+  top: 85vh;
+  padding: 1.5rem;
+  border-radius: 50px;
+  transition: 0.2s ease-in-out;
+}
+body header a:hover {
+  border: solid 3px #e6e2e2;
+  color: #e48888;
+  background-color: #fcf8f8;
 }
 body main {
   background-color: #F9F9F9;
