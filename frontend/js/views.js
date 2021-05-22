@@ -133,6 +133,13 @@ function displayConfirmationHTML() {
 //////////////////////////////////////// Display ERROR
 
 function displayServerError() {
+  path = window.location.href
+  console.log(path)
+  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
+  console.log(cleanedPath)
+  pathGoToIndex = cleanedPath = 'index.html'
+
+
   let body = document.querySelector("body");
   body.innerHTML = "";
   let html = "";
@@ -164,7 +171,7 @@ function displayServerError() {
     
     <p> Le serveur n'est pas connecté, Veuillez réessayer ultérieurement</p>
     
-    <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
+    <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
     `;
   body.innerHTML = html;
 }

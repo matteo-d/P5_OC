@@ -233,6 +233,7 @@ function isEmail(email) {
   );
 }
 
+
 function formInputValidation() {
   // Cible les inputs 
   const firstName = form.firstName;
