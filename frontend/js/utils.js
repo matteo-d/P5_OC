@@ -180,8 +180,8 @@ function deleteAllCart() {
 
 // Supprime l'élément cliqué
 function deleteOneElOfCart() {
-  let allbtnDelete = document.querySelectorAll(".clearCart");
-  const arrayAllBtns = Array.from(allbtnDelete);
+  let arrayAllBtns = document.querySelectorAll(".clearCart");
+ 
   // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
@@ -191,11 +191,10 @@ function deleteOneElOfCart() {
         arrayAllBtns,
         btnDelete
       );
-console.log(indexOfClickedProduct);
-
+      console.log(indexOfClickedProduct);
 
       // Au clic supprime le bon élément du local storage en "local"
-      productInLocalStorage.splice(indexOfClickedProduct,1);
+      productInLocalStorage.splice(indexOfClickedProduct, 1);
       // On renvoie au local storage le tableau sans l'élément supprimé
 
       // Au clic supprime visuellement l'item que l'on veut supprimer
