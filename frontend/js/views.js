@@ -137,7 +137,7 @@ function displayServerError() {
   console.log(path)
   cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
   console.log(cleanedPath)
-  pathGoToIndex = cleanedPath = 'index.html'
+  pathGoToIndex = cleanedPath +'index.html'
 
 
   let body = document.querySelector("body");
@@ -177,6 +177,13 @@ function displayServerError() {
 }
 
 function displayIdError() {
+  path = window.location.href
+  console.log(path)
+  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
+  console.log(cleanedPath)
+  pathGoToIndex = cleanedPath + 'index.html'
+
+
   let body = document.querySelector("body");
   body.innerHTML = "";
   let html = "";
@@ -208,12 +215,19 @@ function displayIdError() {
       
       <p> L'Id séléctionné est invalide </p>
       
-      <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
+      <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
       `;
   body.innerHTML = html;
 }
 
 function displayEmptyCart() {
+  path = window.location.href
+  console.log(path)
+  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
+  console.log(cleanedPath)
+  pathGoToIndex = cleanedPath + 'index.html'
+console.log(pathGoToIndex)
+
   let body = document.querySelector("body");
   body.innerHTML = "";
   let html = "";
@@ -245,7 +259,7 @@ function displayEmptyCart() {
         
         <p> Le panier est vide </p>
         
-        <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
+        <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
         `;
   body.innerHTML = html;
 }
