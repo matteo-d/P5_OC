@@ -72,7 +72,7 @@ function handleChooseQuantity() {
   });
 }
 
-function messageAddToCart(selectedProductData ,message) {
+function messageAddToCart(selectedProductData, message) {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
 
@@ -108,19 +108,19 @@ function handleAddToCart(selectedProductData) {
     if (productInLocalStorage) {
       // Action SI le panier contient déjà cet ours
       if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
-        messageAddToCart(selectedProductData ," déjà dans le panier") 
+        messageAddToCart(selectedProductData, " déjà dans le panier");
         //Action SI le panier ne contient PAS cet ours
       } else {
         productInLocalStorage.push(cartItem);
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-        messageAddToCart(selectedProductData ," ajouté ") 
+        messageAddToCart(selectedProductData, " ajouté ");
       }
       // SI c'est le premier article
     } else {
       productInLocalStorage = [];
       productInLocalStorage.push(cartItem);
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-      messageAddToCart(selectedProductData ," ajouté ") 
+      messageAddToCart(selectedProductData, " ajouté ");
     }
     displayNbsItemsInCart();
   });
@@ -180,33 +180,41 @@ function deleteAllCart() {
 
 // Supprime l'élément cliqué
 function deleteOneElOfCart() {
-  let btnDelete = document.querySelectorAll(".clearCart");
+  let allbtnDelete = document.querySelectorAll(".clearCart");
+  const arrayAllBtns = Array.from(allbtnDelete);
   // on va chercher le local storage
-  let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-  btnDelete.forEach((btnDelete) => {
+  arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
-   
-        // Au clic supprime l'élément dynamiquement l'élément parent
-        btnDelete.parentElement.parentElement.remove();
-        // Au clic supprime le bon élément du local storage en "local"
-        productInLocalStorage.splice(btnDelete, 1);
-        // On renvoie au local storage le tableau sans l'élément supprimé
-        localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+      let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
+      console.log(productInLocalStorage);
+      let indexOfClickedProduct = Array.prototype.indexOf.call(
+        arrayAllBtns,
+        btnDelete
+      );
+console.log(indexOfClickedProduct);
 
-        if (productInLocalStorage.length > 0 ) {
+
+      // Au clic supprime le bon élément du local storage en "local"
+      productInLocalStorage.splice(indexOfClickedProduct,1);
+      // On renvoie au local storage le tableau sans l'élément supprimé
+
+      // Au clic supprime visuellement l'item que l'on veut supprimer
+      btnDelete.parentElement.parentElement.remove();
+
+      // On renvoie au local storage le tableau sans l'élément supprimé
+      localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+
+      if (productInLocalStorage.length > 0) {
         displayNbsItemsInCart();
         displayCartTotal();
-        }
-        else {
-          localStorage.removeItem("cartItem");
-          // reload la page
-          window.location.href = "cart.html";
-        }
-    
-      })
+      } else {
+        localStorage.removeItem("cartItem");
+        // reload la page
+        window.location.href = "cart.html";
+      }
     });
-  };
-
+  });
+}
 
 function getIdsArray(productsArray, productInLocalStorage) {
   //récupérer les id présents dans le panier pour le tableau produit
@@ -226,32 +234,30 @@ function getIdsArray(productsArray, productInLocalStorage) {
   }
 }
 
-
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
   );
 }
 
-
 function formInputValidation() {
-  // Cible les inputs 
+  // Cible les inputs
   const firstName = form.firstName;
-  const lastName = form.lastName
+  const lastName = form.lastName;
   const adress = form.address;
   const city = form.city;
   const email = form.email;
-  // Cible les valeurs inputs 
-// trim = remove space 
+  // Cible les valeurs inputs
+  // trim = remove space
   const firstNameValue = form.firstName.value.trim();
   const lastNameValue = form.lastName.value.trim();
   const adressValue = address.value.trim();
   const cityValue = form.city.value.trim();
   const emailValue = form.email.value.trim();
 
-  console.log(firstName)
+  console.log(firstName);
 
-  if (firstNameValue.length < 1 ) {
+  if (firstNameValue.length < 1) {
     setErrorFor(firstName, "Entrer votre prénom");
   } else {
     setSuccessFor(firstName);
@@ -328,7 +334,7 @@ function handleForm() {
         products: productsArray,
       };
       postOrder(order);
-      
+
       // Envoi de l'objet de commande / Retourne n id de commande
     }
   });
