@@ -1,3 +1,19 @@
+@-webkit-keyframes progressive_appearence {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes progressive_appearence {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -61,8 +77,12 @@ body header h2 {
   font-size: 3.5rem;
   color: whitesmoke;
   text-align: center;
+  -webkit-animation: progressive_appearence 0.5s ease-in-out;
+          animation: progressive_appearence 0.5s ease-in-out;
 }
 body header a {
+  -webkit-animation: progressive_appearence 0.5s ease-in-out;
+          animation: progressive_appearence 0.5s ease-in-out;
   font-size: 1.5rem;
   border: solid 3px #f3e8e8;
   color: #ffffff;

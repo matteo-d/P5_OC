@@ -1,5 +1,6 @@
 @import "mixins.scss";
 @import"responsive-index.scss";
+@include progressive_appearence;
 * {
   margin: 0;
   padding: 0;
@@ -31,8 +32,10 @@ justify-content: center;
         font-size: 3.5rem;
         color: whitesmoke;
 text-align: center;
+animation: progressive_appearence 0.5s ease-in-out  ;
       }
   a {
+    animation: progressive_appearence 0.5s ease-in-out ;
     font-size: 1.5rem;
   border: solid 3px #f3e8e8;
   color: #ffffff;

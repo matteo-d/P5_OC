@@ -1,5 +1,6 @@
 @import "mixins.scss";
 @import "responsive-product.scss";
+@include progressive_appearence;
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +27,7 @@ body {
     justify-content: center;
     background-color: #f9f9f9;
     .product {
+      animation: progressive_appearence 0.4s ease-in-out ;
       height: 80%;
       padding: 2rem 0rem 2rem 0rem;
       border-radius: 33px;
@@ -34,10 +36,12 @@ body {
       width: 92%;
       cursor: pointer;
 
-      img {
+      img.img-product {
+   
         width: 35rem;
         border-top-left-radius: 33px;
         border-bottom-left-radius: 33px;
+    
       }
       article {
         border-top: solid 1px rgb(215, 215, 215);
@@ -47,15 +51,18 @@ body {
         border-top-right-radius: 33px;
         border-bottom-right-radius: 33px;
         h2 {
+     
           color: rgb(66, 47, 47);
           padding: 0rem 0rem 1rem 2rem;
           font-size: 2rem;
         }
         p.product_description {
+     
           font-size: 1em;
           padding: 0rem 2rem 1rem 2rem;
         }
         p.price {
+     
           color: rgb(75, 53, 53);
           font-size: 1.2em;
           padding-left: 2rem;
@@ -63,11 +70,14 @@ body {
         }
         label {
           padding-left: 2rem;
+   
           h3 {
+            animation: progressive_appearence 0.4s ease-in-out  ;
             padding-left: 1.8rem;
           }
         }
         select {
+          animation: progressive_appearence 0.4s ease-in-out  ;
           margin-top: 0.9rem;
           margin-left: 1.5rem;
           padding: 0.5rem;
@@ -83,6 +93,7 @@ body {
         div#container_quantity {
           padding: 0.9rem 0rem 0.5rem 1.5rem;
           .btnMinus {
+       
             border: none;
             background-color: #f1cbcb;
             color: #d0a1a1;
@@ -95,9 +106,11 @@ body {
             }
           }
           span {
+       
             margin: 1rem;
           }
           .btnPlus {
+       
             border: none;
             color: #946262;
             background-color: #f2cccc;
@@ -119,6 +132,7 @@ body {
           margin: 1rem 0rem 0rem 2rem;
           transition: all ease-in-out 0.2s;
           cursor: pointer;
+     
         }
         span.message {
           color: black;

@@ -37,7 +37,7 @@ function displayProductHTML(product) {
   if (product !== undefined) { // Si data produit existe 
   // Affichage du produit
   html = `<div class="product">
-    <img src="${product.imageUrl}" alt="Ours ${product.name}">
+    <img src="${product.imageUrl}" class="img-product" alt="Ours ${product.name}">
     <article class="product_infos">
       <h2 id="name_product_${product.name}">${product.name}</h2>
         <p class="product_description" id="description_product_${

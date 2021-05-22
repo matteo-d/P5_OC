@@ -43,3 +43,14 @@ nav {
 }
 
 }
+@mixin progressive_appearence {
+  @keyframes progressive_appearence {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+  
