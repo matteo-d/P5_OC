@@ -88,6 +88,7 @@ function handleAddToCart(selectedProductData) {
   let selectedValue = document.getElementById("select_choice");
   let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
   let quantity = document.querySelector(".quantityOfProduct");
+
   btnAddToCart.addEventListener("click", (e) => {
     e.preventDefault();
     // trouver la valeur selectionée par l'utilisateur
@@ -108,7 +109,12 @@ function handleAddToCart(selectedProductData) {
     if (productInLocalStorage) {
       // Action SI le panier contient déjà cet ours
       if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
-        messageAddToCart(selectedProductData, " déjà dans le panier");
+      //retourne index se trouve le produit avec le même ID https://stackoverflow.com/questions/11258077/how-to-find-index-of-an-object-by-key-and-value-in-an-javascript-array/39810268
+      var index = productInLocalStorage.findIndex(el => el.id == cartItem.id);
+      console.log(index)
+      productInLocalStorage[index].chosenQuantity += cartItem.chosenQuantity
+      localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+        messageAddToCart(selectedProductData, " ajouté ");
         //Action SI le panier ne contient PAS cet ours
       } else {
         productInLocalStorage.push(cartItem);
