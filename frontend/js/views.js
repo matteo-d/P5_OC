@@ -123,8 +123,8 @@ function displayConfirmationHTML() {
   let html = "";
   // Affichage du produit
   html = `<h1> Merci d'avoir effectué vos achats chez Orinoco !  </h1>
-  <p>Votre commande d'un montant de ${price}€ à bien été prise en compte. </p>
-  <p> Votre identifiant de commande est : ${idText} </p>
+  <p>Votre commande d'un montant de <strong> ${price}€</strong>  à bien été prise en compte. </p>
+  <p> Votre identifiant de commande est :<strong>  ${idText} </strong> </p>
   
   <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
   `;
