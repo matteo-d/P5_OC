@@ -115,6 +115,7 @@ function displayCartHTML() {
 
 //////////////////////////////////////////////// Display HTML CONFIRMATION
 function displayConfirmationHTML() {
+  try {
   let idText = localStorage.getItem("orderId");
   let main = document.getElementById("main");
   let price = localStorage.getItem("cartTotalPrice").slice(1, -1);
@@ -127,7 +128,11 @@ function displayConfirmationHTML() {
   
   <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
   `;
-  main.innerHTML = html;
+  main.innerHTML = html;}
+  catch (e) {
+    console.log(e);
+    displayCantAccess();
+  }
 }
 
 //////////////////////////////////////// Display ERROR
@@ -261,5 +266,52 @@ console.log(pathGoToIndex)
         
         <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
         `;
+  body.innerHTML = html;
+}
+
+
+function displayCantAccess() {
+  path = window.location.href
+  console.log(path)
+  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
+  console.log(cleanedPath)
+  pathGoToIndex = cleanedPath +'index.html'
+
+
+  let body = document.querySelector("body");
+  body.innerHTML = "";
+  let html = "";
+  // Affichage du produit
+  html = `<style>
+    body {
+      position : absolute;
+      min-width : 100%;
+      min-height : 100%;
+      font-family : Roboto;
+      display: flex;
+      flex-direction : column;
+      justify-content : center ; 
+      align-items: center; 
+      font-size : 2rem; 
+    }
+    p {
+      font-size: 1rem;
+      text-align : center;
+    }
+    a {
+      padding: 1rem;
+      margin-top: 1rem;
+    font-size : 1rem;
+      border: solid 2px black; 
+    }
+  </style>   
+    <h1> OUPS ! </h1>
+    
+    <p> Vous ne pouvez plus accéder à cette page </p>
+
+    <p> Pour y accéder de nouveaux veuillez réaliser une nouvelle commande  ;) </p>
+    
+    <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
+    `;
   body.innerHTML = html;
 }
