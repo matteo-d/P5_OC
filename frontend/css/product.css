@@ -181,8 +181,16 @@ body main .product article button#addToCart {
   border: solid 3px #f2cccc;
   border-radius: 50px;
   margin: 1rem 0rem 0rem 2rem;
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.4s;
   cursor: pointer;
+  font-weight: bold;
+}
+body main .product article button#addToCart:hover {
+  border: solid 3px #ffffff;
+  background-color: #fdcccc;
+  transform: rotateX(360deg);
+  transform: rotateY(360deg);
+  transform: rotateZ(360deg);
 }
 body main .product article span.message {
   color: black;
