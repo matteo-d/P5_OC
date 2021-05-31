@@ -109,11 +109,13 @@ function handleAddToCart(selectedProductData) {
     if (productInLocalStorage) {
       // Action SI le panier contient déjà cet ours
       if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
-      //retourne index se trouve le produit avec le même ID https://stackoverflow.com/questions/11258077/how-to-find-index-of-an-object-by-key-and-value-in-an-javascript-array/39810268
-      var index = productInLocalStorage.findIndex(el => el.id == cartItem.id);
-      console.log(index)
-      productInLocalStorage[index].chosenQuantity += cartItem.chosenQuantity
-      localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
+        //retourne index se trouve le produit avec le même ID https://stackoverflow.com/questions/11258077/how-to-find-index-of-an-object-by-key-and-value-in-an-javascript-array/39810268
+        var index = productInLocalStorage.findIndex(
+          (el) => el.id == cartItem.id
+        );
+        console.log(index);
+        productInLocalStorage[index].chosenQuantity += cartItem.chosenQuantity;
+        localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         messageAddToCart(selectedProductData, " ajouté ");
         //Action SI le panier ne contient PAS cet ours
       } else {
@@ -187,7 +189,7 @@ function deleteAllCart() {
 // Supprime l'élément cliqué
 function deleteOneElOfCart() {
   let arrayAllBtns = document.querySelectorAll(".clearCart");
- 
+
   // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
@@ -245,6 +247,10 @@ function isEmail(email) {
   );
 }
 
+function isName(name) {
+  return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/.test(name);
+}
+
 function formInputValidation() {
   // Cible les inputs
   const firstName = form.firstName;
@@ -260,16 +266,17 @@ function formInputValidation() {
   const cityValue = form.city.value.trim();
   const emailValue = form.email.value.trim();
 
-  console.log(firstName);
-
-  if (firstNameValue.length < 1) {
-    setErrorFor(firstName, "Entrer votre prénom");
+  if (firstNameValue === "") {
+    setErrorFor(firstName, "Prénom invalide");
+  } else if (!isName(firstNameValue)) {
+    setErrorFor(firstName, "Prénom invalide");
   } else {
     setSuccessFor(firstName);
   }
-
-  if (lastNameValue.length < 1) {
-    setErrorFor(lastName, "Entrer votre nom");
+  if (lastNameValue === "") {
+    setErrorFor(lastName, "Nom invalide");
+  } else if (!isName(lastNameValue)) {
+    setErrorFor(lastName, "Nom invalide");
   } else {
     setSuccessFor(lastName);
   }
@@ -320,8 +327,8 @@ function handleForm() {
     // Condition sur les inputs du formulaire
 
     if (
-      form.firstName.value.length > 1 &&
-      form.lastName.value.length > 1 &&
+      isName(form.firstName.value) &&
+      isName(form.lastName.value) &&
       form.address.value.length > 6 &&
       form.city.value.length > 1 &&
       isEmail(form.email.value) &&
