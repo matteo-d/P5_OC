@@ -250,6 +250,12 @@ function isEmail(email) {
 function isName(name) {
   return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/.test(name);
 }
+function isAdress(adress) {
+  return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
+}
+function isCity(city) {
+  return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/.test(city);
+}
 
 function formInputValidation() {
   // Cible les inputs
@@ -281,14 +287,18 @@ function formInputValidation() {
     setSuccessFor(lastName);
   }
 
-  if (adressValue.length < 6) {
-    setErrorFor(adress, "Doit faire + de 6 caractères");
+  if (adressValue === "") {
+    setErrorFor(adress, "Adresse invalide");
+  } else if (!isAdress(adressValue)) {
+    setErrorFor(adress, "Adresse invalide");
   } else {
     setSuccessFor(adress);
   }
 
-  if (cityValue.length < 1) {
-    setErrorFor(city, "Entrer votre ville ");
+  if (cityValue === "") {
+    setErrorFor(city, "Ville invalide");
+  } else if (!isCity(cityValue)) {
+    setErrorFor(city, "Ville invalide");
   } else {
     setSuccessFor(city);
   }
@@ -329,8 +339,8 @@ function handleForm() {
     if (
       isName(form.firstName.value) &&
       isName(form.lastName.value) &&
-      form.address.value.length > 6 &&
-      form.city.value.length > 1 &&
+      isAdress(form.address.value) &&
+      isCity(form.city.value) &&
       isEmail(form.email.value) &&
       productsArray.length > 0
     ) {
