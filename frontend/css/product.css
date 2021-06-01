@@ -187,9 +187,8 @@ body main .product article button#addToCart {
 }
 body main .product article button#addToCart:hover {
   border: solid 3px #ffffff;
-  background-color: #fdcccc;
-  transform: rotateX(360deg);
-  transform: rotateY(360deg);
+  background-color: #F2CCCC;
+  color: white;
   transform: rotateZ(360deg);
 }
 body main .product article span.message {

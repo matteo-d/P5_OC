@@ -22,7 +22,7 @@ function displayIndexHTML(products) {
                 }">${formatPrice(productElement.price)} </p>
                 <a href="./frontend/html/product.html?id=${
                   productElement._id
-                }" class="btnGoTo">Voir</a>
+                }" class="btnGoTo"><strong>Voir</strong></a>
         </div >
   `;
       document.getElementById("main").innerHTML = html;
