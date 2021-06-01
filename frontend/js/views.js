@@ -28,7 +28,7 @@ function displayIndexHTML(products) {
       document.getElementById("main").innerHTML = html;
     });
   } else {
-    displayServerError();
+    displayError("Le serveur n'est pas connecté, Veuillez réessayer ultérieurement");
   }
 }
 
@@ -70,7 +70,7 @@ function displayProductHTML(product) {
   displayColorsOptions(product);
 }
 else {
-  displayServerError()
+  displayError("Le serveur n'est pas connecté, Veuillez réessayer ultérieurement")
 }
 }
 
@@ -109,7 +109,7 @@ function displayCartHTML() {
       });
     }
   } else {
-    displayEmptyCart();
+    displayError("Le panier est vide ");
   }
 }
 
@@ -131,13 +131,13 @@ function displayConfirmationHTML() {
   main.innerHTML = html;}
   catch (e) {
     console.log(e);
-    displayCantAccess();
+    displayError("Cette page n'est plus accessible");
   }
 }
 
 //////////////////////////////////////// Display ERROR
 
-function displayServerError() {
+function displayError(errorMessage) {
   path = window.location.href
   console.log(path)
   cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
@@ -174,142 +174,7 @@ function displayServerError() {
   </style>   
     <h1> OUPS ! </h1>
     
-    <p> Le serveur n'est pas connecté, Veuillez réessayer ultérieurement</p>
-    
-    <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
-    `;
-  body.innerHTML = html;
-}
-
-function displayIdError() {
-  path = window.location.href
-  console.log(path)
-  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
-  console.log(cleanedPath)
-  pathGoToIndex = cleanedPath + 'index.html'
-
-
-  let body = document.querySelector("body");
-  body.innerHTML = "";
-  let html = "";
-  // Affichage du produit
-  html = `<style>
-      body {
-        position : absolute;
-        min-width : 100%;
-        min-height : 100%;
-        font-family : Roboto;
-        display: flex;
-        flex-direction : column;
-        justify-content : center ; 
-        align-items: center; 
-        font-size : 2rem; 
-      }
-      p {
-        font-size: 1rem;
-        text-align : center;
-      }
-      a {
-        padding: 1rem;
-        margin-top: 1rem;
-      font-size : 1rem;
-        border: solid 2px black; 
-      }
-    </style>   
-      <h1> OUPS ! </h1>
-      
-      <p> L'Id séléctionné est invalide </p>
-      
-      <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
-      `;
-  body.innerHTML = html;
-}
-
-function displayEmptyCart() {
-  path = window.location.href
-  console.log(path)
-  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
-  console.log(cleanedPath)
-  pathGoToIndex = cleanedPath + 'index.html'
-console.log(pathGoToIndex)
-
-  let body = document.querySelector("body");
-  body.innerHTML = "";
-  let html = "";
-  // Affichage du produit
-  html = `<style>
-        body {
-          position : absolute;
-          min-width : 100%;
-          min-height : 100%;
-          font-family : Roboto;
-          display: flex;
-          flex-direction : column;
-          justify-content : center ; 
-          align-items: center; 
-          font-size : 2rem; 
-        }
-        p {
-          font-size: 1rem;
-          text-align : center;
-        }
-        a {
-          padding: 1rem;
-          margin-top: 1rem;
-        font-size : 1rem;
-          border: solid 2px black; 
-        }
-      </style>   
-        <h1> OUPS ! </h1>
-        
-        <p> Le panier est vide </p>
-        
-        <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
-        `;
-  body.innerHTML = html;
-}
-
-
-function displayCantAccess() {
-  path = window.location.href
-  console.log(path)
-  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
-  console.log(cleanedPath)
-  pathGoToIndex = cleanedPath +'index.html'
-
-
-  let body = document.querySelector("body");
-  body.innerHTML = "";
-  let html = "";
-  // Affichage du produit
-  html = `<style>
-    body {
-      position : absolute;
-      min-width : 100%;
-      min-height : 100%;
-      font-family : Roboto;
-      display: flex;
-      flex-direction : column;
-      justify-content : center ; 
-      align-items: center; 
-      font-size : 2rem; 
-    }
-    p {
-      font-size: 1rem;
-      text-align : center;
-    }
-    a {
-      padding: 1rem;
-      margin-top: 1rem;
-    font-size : 1rem;
-      border: solid 2px black; 
-    }
-  </style>   
-    <h1> OUPS ! </h1>
-    
-    <p> Vous ne pouvez plus accéder à cette page </p>
-
-    <p> Pour y accéder de nouveaux veuillez réaliser une nouvelle commande  ;) </p>
+    <p> ${errorMessage}</p>
     
     <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
     `;

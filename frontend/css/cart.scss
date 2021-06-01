@@ -23,8 +23,7 @@ body {
   main {
     animation: progressive_appearence 0.4s ease-in-out ;
     padding-top: 3rem;
-    section.options {
-     
+    section.options {    
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: 1fr;
@@ -129,6 +128,8 @@ body {
     
 .form {
 	padding: 30px 40px;	
+  width:60%;
+  margin :auto;
 }
 
 .form-control {

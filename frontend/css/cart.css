@@ -204,6 +204,8 @@ body main h2 {
 }
 body main .form {
   padding: 30px 40px;
+  width: 60%;
+  margin: auto;
 }
 body main .form-control {
   margin-bottom: 10px;
@@ -300,8 +302,8 @@ footer ul {
   body main section.options :nth-child(5) {
     margin-left: 0rem;
   }
-  body main form input {
-    width: 80%;
+  body main .form {
+    width: 50%;
   }
 }
 @media screen and (max-width: 810px) and (max-width: 640px) {
@@ -345,7 +347,7 @@ footer ul {
     text-align: center;
     font-size: 1rem;
   }
-  body main form input {
+  body main .form {
     width: 80%;
   }
 }
@@ -376,7 +378,7 @@ footer ul {
     text-align: center;
     font-size: 1.3rem;
   }
-  body main form input {
-    width: 85%;
+  body main .form {
+    width: 90%;
   }
 }/*# sourceMappingURL=cart.css.map */
