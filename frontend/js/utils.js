@@ -236,7 +236,7 @@ function getIdsArray(productsArray, productInLocalStorage) {
     );
   }
 }
-
+// REGEX FORMULAIRE
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
@@ -252,7 +252,7 @@ function isAdress(adress) {
 function isCity(city) {
   return /^[\w'\-][^0-9_!¡?÷?¿,./\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/.test(city);
 }
-
+// Validation des données formulaire 
 function formInputValidation() {
   // Cible les inputs
   const firstName = form.firstName;

@@ -128,13 +128,17 @@ body {
     
 .form {
 	padding: 30px 40px;	
-  width:60%;
-  margin :auto;
+
+  display: flex;
+  justify-content:center;
+align-items: center;
+flex-direction: column;
 }
 
 .form-control {
 	margin-bottom: 10px;
 	padding-bottom: 20px;
+  width: 60%;
 	position: relative;
 }
 

@@ -204,12 +204,15 @@ body main h2 {
 }
 body main .form {
   padding: 30px 40px;
-  width: 60%;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 body main .form-control {
   margin-bottom: 10px;
   padding-bottom: 20px;
+  width: 60%;
   position: relative;
 }
 body main .form-control label {
@@ -302,9 +305,6 @@ footer ul {
   body main section.options :nth-child(5) {
     margin-left: 0rem;
   }
-  body main .form {
-    width: 50%;
-  }
 }
 @media screen and (max-width: 810px) and (max-width: 640px) {
   body main section.options :nth-child(5) {
@@ -347,9 +347,6 @@ footer ul {
     text-align: center;
     font-size: 1rem;
   }
-  body main .form {
-    width: 80%;
-  }
 }
 @media screen and (max-width: 810px) and (max-width: 440px) {
   body main section.selectedProduct {
@@ -377,8 +374,5 @@ footer ul {
   body main section.total p {
     text-align: center;
     font-size: 1.3rem;
-  }
-  body main .form {
-    width: 90%;
   }
 }/*# sourceMappingURL=cart.css.map */

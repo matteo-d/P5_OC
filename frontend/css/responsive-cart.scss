@@ -30,9 +30,7 @@
             margin-left: 0rem;
           }
         }
-        .form {
-          width: 50%;
-        }
+     
       }
     }
     @media screen and (max-width: 640px) {
@@ -83,9 +81,7 @@
               font-size: 1rem;
             }
           }
-          .form {
-            width: 80%;
-        }
+    
           
         }
       }
@@ -123,10 +119,11 @@
               font-size: 1.3rem;
             }
           }
-          .form {
-            width: 90%;
-      
-        }
+          .form-control {
+     
+          padding: 1rem 0rem 1rem 0rem;
+           
+          }
         }
       }
     }
