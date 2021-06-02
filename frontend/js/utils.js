@@ -191,7 +191,6 @@ function deleteOneElOfCart() {
   arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-      console.log(productInLocalStorage);
       let indexOfClickedProduct = Array.prototype.indexOf.call(
         arrayAllBtns,
         btnDelete

@@ -1,6 +1,6 @@
 
 (async () => {
-  const products =  await getProductsData(); // return products 
+  const products =  await getProductsData(); 
   displayIndexHTML(products);
   displayNbsItemsInCart();
 })();
