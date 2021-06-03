@@ -1,4 +1,4 @@
-(async () => {
+( () => {
   displayCartHTML();
   displayNbsItemsInCart();
   displayCartTotal();

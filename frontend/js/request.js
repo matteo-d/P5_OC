@@ -34,6 +34,6 @@ async function postOrder(order) {
     window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`; // Envoi page confirmation
   } catch (e) {
     console.log(e)
-    displayServerError()
+    displayError("Le serveur est inaccessible")
   }
 }
