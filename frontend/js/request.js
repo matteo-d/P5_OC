@@ -4,13 +4,13 @@ async function getProductsData(param) {
     param = "";
   }
   try {
-  const response = await fetch(`${APIurl}${param}`);
-  const products = await response.json();
-  console.log(" Connexion au serveur OK !");
+    const response = await fetch(`${APIurl}${param}`);
+    const products = await response.json();
+    console.log(" Connexion au serveur OK !");
 
-  return products;}
-  catch(e) {
-    console.log(e)
+    return products;
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -33,7 +33,6 @@ async function postOrder(order) {
     cleanedURL = URL.replace("cart.html", ""); // Retire panier.html du L'URl
     window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`; // Envoi page confirmation
   } catch (e) {
-    console.log(e)
-    displayError("Le serveur est inaccessible")
+    console.log(e);
   }
 }

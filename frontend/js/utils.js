@@ -1,4 +1,4 @@
-///////////////////////////////////////////////// FUNCTIONS USED MULTIPLE PAGES
+// FUNCTIONS USED MULTIPLE PAGES
 
 // Gère l'affichage du nombre de produits dans le panier
 function displayNbsItemsInCart() {
@@ -16,11 +16,12 @@ function formatPrice(price) {
     currency: "EUR",
   }).format(price / 100);
 }
-///////////////////////////////////////////////////////////////// FUNCTIONS PAGE PRODUIT
+// FUNCTIONS PAGE PRODUIT
+// Retourne l'ID présent dans l'URL
 function getProductId() {
   return new URL(window.location.href).searchParams.get("id");
 }
-
+// Vérifie que l'ID présent dans l'URL soit un ID valide 
 async function verifyProductIdValidity() {
   const productId = getProductId();
   const products = await getProductsData();
@@ -33,7 +34,7 @@ async function verifyProductIdValidity() {
     displayError("L'Id séléctionné est invalide");
   }
 }
-
+// Mets en place une paire key value dans les params de l'URL 
 function setURLparam(key, value) {
   const queryString = window.location.href;
   console.log(queryString);
@@ -69,7 +70,7 @@ function handleChooseQuantity() {
     quantity.innerHTML = compteur;
   });
 }
-
+// Affiche le message ajouté au panier
 function messageAddToCart(selectedProductData, message) {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
@@ -107,7 +108,7 @@ function handleAddToCart(selectedProductData) {
       // Action SI le panier contient déjà cet ours
       if (productInLocalStorage.some((el) => el.id === cartItem.id) === true) {
         //retourne index se trouve le produit avec le même ID
-        var index = productInLocalStorage.findIndex(
+        let index = productInLocalStorage.findIndex(
           (el) => el.id == cartItem.id
         );
         console.log(index);
@@ -131,20 +132,20 @@ function handleAddToCart(selectedProductData) {
   });
 }
 
-///////////////////////////////////// FONCTIONS PAGE PANIER
+// FONCTIONS PAGE PANIER
 
 function displayCartTotal() {
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
   let arrayOfPrices = [];
-  for (let d = 0; d < elPriceNodeList.length; d++) {
-    let a = parseInt(elPriceNodeList[d].innerText);
-    let b = parseInt(elQuantityNodeList[d].innerText);
-    let sum = a * b;
+  for (let priceEl = 0; priceEl < elPriceNodeList.length; priceEl++) {
+    let  priceElText= parseInt(elPriceNodeList[priceEl].innerText);
+    let quantiteElText = parseInt(elQuantityNodeList[priceEl].innerText);
+    let sum = priceElText * quantiteElText;
     arrayOfPrices.push(sum);
   }
-  const add = (a, b) => a + b;
+  const add = (priceElText, quantiteElText) => priceElText + quantiteElText;
   let result = arrayOfPrices.reduce(add);
   let resultFloat = result.toFixed(2).replace(".", ",");
   totalText.innerHTML = resultFloat;
@@ -157,7 +158,6 @@ function handleQuantityProduct() {
     let btnMinus = Product.querySelector(".btnMinus");
     let quantity = Product.querySelector(".quantityOfProduct");
     let compteur = parseInt(quantity.innerText);
-
     btnPlus.addEventListener("click", () => {
       compteur++;
       quantity.innerHTML = compteur;
@@ -186,7 +186,6 @@ function deleteAllCart() {
 // Supprime l'élément cliqué
 function deleteOneElOfCart() {
   let arrayAllBtns = document.querySelectorAll(".clearCart");
-
   // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
@@ -195,18 +194,13 @@ function deleteOneElOfCart() {
         arrayAllBtns,
         btnDelete
       );
-      console.log(indexOfClickedProduct);
-
       // Au clic supprime le bon élément du local storage en "local"
       productInLocalStorage.splice(indexOfClickedProduct, 1);
       // On renvoie au local storage le tableau sans l'élément supprimé
-
       // Au clic supprime visuellement l'item que l'on veut supprimer
       btnDelete.parentElement.parentElement.remove();
-
       // On renvoie au local storage le tableau sans l'élément supprimé
       localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-
       if (productInLocalStorage.length > 0) {
         displayNbsItemsInCart();
         displayCartTotal();
@@ -252,7 +246,7 @@ function isAdress(adress) {
 function isCity(city) {
   return /^[\w'\-][^0-9_!¡?÷?¿,./\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/.test(city);
 }
-// Validation des données formulaire 
+// Validation des données formulaire
 function formInputValidation() {
   // Cible les inputs
   const firstName = form.firstName;
@@ -275,6 +269,7 @@ function formInputValidation() {
   } else {
     setSuccessFor(firstName);
   }
+
   if (lastNameValue === "") {
     setErrorFor(lastName, "Nom invalide");
   } else if (!isName(lastNameValue)) {
@@ -298,6 +293,7 @@ function formInputValidation() {
   } else {
     setSuccessFor(city);
   }
+
   if (emailValue === "") {
     setErrorFor(email, "Entrer votre e-mail");
   } else if (!isEmail(emailValue)) {
@@ -353,9 +349,8 @@ function handleForm() {
       };
       postOrder(order);
       // Envoi de l'objet de commande / Retourne n id de commande
-    }
-    else {
-      displayError("Le serveur est inaccessible")
+    } else {
+      displayError("Le serveur est inaccessible");
     }
   });
 }
