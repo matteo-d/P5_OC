@@ -34,7 +34,9 @@ function displayIndexHTML(products) {
 
 //////////////////////////////////////////////// Display HTML PRODUIT
 function displayProductHTML(product) {
+
   if (product !== undefined) { // Si data produit existe 
+    verifyProductIdValidity();
   // Affichage du produit
   html = `<div class="product">
     <img src="${product.imageUrl}" class="img-product" alt="Ours ${product.name}">
@@ -111,6 +113,7 @@ function displayCartHTML() {
   } else {
     displayError("Le panier est vide ");
   }
+
 }
 
 //////////////////////////////////////////////// Display HTML CONFIRMATION
@@ -145,15 +148,15 @@ function displayError(errorMessage) {
   pathGoToIndex = cleanedPath +'index.html'
 
 
-  let body = document.querySelector("body");
-  body.innerHTML = "";
+  let main = document.querySelector("main");
+  main.innerHTML = "";
   let html = "";
   // Affichage du produit
   html = `<style>
-    body {
-      position : absolute;
+ main {
+      z-index : 100;
       min-width : 100%;
-      min-height : 100%;
+      min-height : 100vh;
       font-family : Roboto;
       display: flex;
       flex-direction : column;
@@ -165,7 +168,7 @@ function displayError(errorMessage) {
       font-size: 1rem;
       text-align : center;
     }
-    a {
+    #goToIndex {
       padding: 1rem;
       margin-top: 1rem;
     font-size : 1rem;
@@ -178,5 +181,5 @@ function displayError(errorMessage) {
     
     <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
     `;
-  body.innerHTML = html;
+  main.innerHTML = html;
 }

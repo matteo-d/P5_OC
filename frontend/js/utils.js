@@ -17,11 +17,12 @@ function formatPrice(price) {
   }).format(price / 100);
 }
 // FUNCTIONS PAGE PRODUIT
+
 // Retourne l'ID présent dans l'URL
 function getProductId() {
   return new URL(window.location.href).searchParams.get("id");
 }
-// Vérifie que l'ID présent dans l'URL soit un ID valide 
+// Vérifie que l'ID présent dans l'URL soit un ID valide
 async function verifyProductIdValidity() {
   const productId = getProductId();
   const products = await getProductsData();
@@ -29,12 +30,14 @@ async function verifyProductIdValidity() {
   products.forEach((product) => {
     let product_id = product._id;
     ValidsIdsArray.push(product_id);
+  
   });
   if (!ValidsIdsArray.includes(productId)) {
-    displayError("L'Id séléctionné est invalide");
+    displayError('ID incorrect')
+    
   }
 }
-// Mets en place une paire key value dans les params de l'URL 
+// Mets en place une paire key value dans les params de l'URL
 function setURLparam(key, value) {
   const queryString = window.location.href;
   console.log(queryString);
@@ -140,7 +143,7 @@ function displayCartTotal() {
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
   let arrayOfPrices = [];
   for (let priceEl = 0; priceEl < elPriceNodeList.length; priceEl++) {
-    let  priceElText= parseInt(elPriceNodeList[priceEl].innerText);
+    let priceElText = parseInt(elPriceNodeList[priceEl].innerText);
     let quantiteElText = parseInt(elQuantityNodeList[priceEl].innerText);
     let sum = priceElText * quantiteElText;
     arrayOfPrices.push(sum);
@@ -238,7 +241,7 @@ function isEmail(email) {
 }
 
 function isName(name) {
-  return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/.test(name);
+  return /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(name);
 }
 function isAdress(adress) {
   return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
@@ -349,8 +352,6 @@ function handleForm() {
       };
       postOrder(order);
       // Envoi de l'objet de commande / Retourne n id de commande
-    } else {
-      displayError("Le serveur est inaccessible");
     }
   });
 }
