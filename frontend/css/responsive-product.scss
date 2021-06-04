@@ -8,8 +8,8 @@
           display: flex;
           flex-direction: column;
           height: auto;
-          
-          img.img-product  {
+
+          img.img-product {
             width: 14rem;
             width: 100%;
             border: solid 1px rgb(215, 215, 215);
@@ -61,7 +61,6 @@
               border-radius: 33px;
               cursor: pointer;
               width: 5rem;
-
             }
             option {
               padding-top: 1rem;
@@ -130,8 +129,6 @@
     align-items: center;
     .cartSvg {
       padding-right: 0rem !important;
-   
-     
     }
   }
 }

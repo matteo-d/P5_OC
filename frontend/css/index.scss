@@ -1,5 +1,5 @@
 @import "mixins.scss";
-@import"responsive-index.scss";
+@import "responsive-index.scss";
 @include progressive_appearence;
 * {
   margin: 0;
@@ -17,7 +17,6 @@ a {
 }
 
 body {
-
   font-family: "Roboto", sans-serif;
   @include styleNavbar;
   header {
@@ -27,41 +26,39 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-justify-content: center;
-      h2 {
-        font-size: 3.5rem;
-        color: whitesmoke;
-text-align: center;
-animation: progressive_appearence 0.5s ease-in-out  ;
+    justify-content: center;
+    h2 {
+      font-size: 3.5rem;
+      color: whitesmoke;
+      text-align: center;
+      animation: progressive_appearence 0.5s ease-in-out;
+    }
+    a {
+      animation: progressive_appearence 0.5s ease-in-out;
+      font-size: 1.5rem;
+      border: solid 3px #f3e8e8;
+      color: #ffffff;
+      background-color: rgb(226, 174, 174);
+      position: absolute;
+      top: 85vh;
+      padding: 1.5rem;
+      border-radius: 50px;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        border: solid 3px #e6e2e2;
+        color: #e48888;
+        background-color: rgb(252, 248, 248);
       }
-  a {
-    animation: progressive_appearence 0.5s ease-in-out ;
-    font-size: 1.5rem;
-  border: solid 3px #f3e8e8;
-  color: #ffffff;
-  background-color: rgb(226, 174, 174);
-    position: absolute;
-    top: 85vh;
-padding: 1.5rem;
-border-radius: 50px;
-transition: 0.2s ease-in-out;
-&:hover {
-  border: solid 3px #e6e2e2;
-  color: #e48888;
-  background-color: rgb(252, 248, 248);
-
-}
-  }
-    
+    }
   }
 
   main {
-   background-color: #F9F9F9;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem 0rem 2rem 0rem;
-   
+
     div.product {
       width: 93%;
       margin: 2rem 0rem 2rem 0rem;
@@ -70,23 +67,20 @@ transition: 0.2s ease-in-out;
       display: flex;
       height: 90%;
       img.ourspic {
-      
         border-top-left-radius: 33px;
-      width: 40rem;
+        width: 40rem;
 
         border-bottom-left-radius: 33px;
-       
       }
       article {
-     
         border-top: solid 1px rgb(215, 215, 215);
         border-bottom: solid 1px rgb(215, 215, 215);
         border-right: solid 1px rgb(215, 215, 215);
         padding: 2rem 0rem 2rem 0rem;
         border-top-right-radius: 33px;
-  
+
         border-bottom-right-radius: 33px;
-      
+
         h2 {
           color: rgb(66, 47, 47);
           padding: 0rem 0rem 1rem 2rem;
@@ -102,18 +96,17 @@ transition: 0.2s ease-in-out;
           padding-left: 2rem;
           padding-bottom: 3rem;
           font-weight: bold;
-      
         }
         a.btnGoTo {
           color: rgb(133, 95, 95);
           padding: 1.7rem 1.5rem 1.7rem 1.5rem;
-          border: solid 3px #F2CCCC;
+          border: solid 3px #f2cccc;
           border-radius: 50px;
           outline: none;
           margin-left: 1.2rem;
           transition: all ease-in-out 0.2s;
           &:hover {
-        padding: 2rem 1.8rem 2rem 1.8rem ;
+            padding: 2rem 1.8rem 2rem 1.8rem;
           }
         }
       }

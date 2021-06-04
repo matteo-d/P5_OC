@@ -1,6 +1,6 @@
 // FUNCTIONS USED MULTIPLE PAGES
 
-// Gère l'affichage du nombre de produits dans le panier
+// Gère l'affichage du nombre de produits dans le panier à côté de l'icone panier
 function displayNbsItemsInCart() {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -10,33 +10,36 @@ function displayNbsItemsInCart() {
   }
 }
 
+// Formate le prix aux standard €
 function formatPrice(price) {
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",
   }).format(price / 100);
 }
+
 // FUNCTIONS PAGE PRODUIT
 
 // Retourne l'ID présent dans l'URL
 function getProductId() {
   return new URL(window.location.href).searchParams.get("id");
 }
-// Vérifie que l'ID présent dans l'URL soit un ID valide
+
+// Vérifie que l'ID présent dans l'URL soit un ID de produit valide
 async function verifyProductIdValidity() {
-  const productId = getProductId();
+  const productId = getProductId(); // ID présent dans l'URL
   const products = await getProductsData();
   let ValidsIdsArray = [];
   products.forEach((product) => {
     let product_id = product._id;
-    ValidsIdsArray.push(product_id);
-  
+    ValidsIdsArray.push(product_id); // Tableaux des ID valables
   });
   if (!ValidsIdsArray.includes(productId)) {
-    displayError('ID incorrect')
-    
+    // Si l'ID dans l'URL ne correspond a aucun article valable
+    displayError("ID incorrect");
   }
 }
+
 // Mets en place une paire key value dans les params de l'URL
 function setURLparam(key, value) {
   const queryString = window.location.href;
@@ -55,13 +58,13 @@ function displayColorsOptions(product) {
     choice.appendChild(option);
   });
 }
+
 // Logique quantité + et - des boutons
 function handleChooseQuantity() {
   let btnPlus = document.querySelector(".btnPlus");
   let btnMinus = document.querySelector(".btnMinus");
   let quantity = document.querySelector(".quantityOfProduct");
   let compteur = parseInt(quantity.innerText);
-
   btnPlus.addEventListener("click", () => {
     compteur++;
     quantity.innerHTML = compteur;
@@ -73,11 +76,11 @@ function handleChooseQuantity() {
     quantity.innerHTML = compteur;
   });
 }
+
 // Affiche le message ajouté au panier
 function messageAddToCart(selectedProductData, message) {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
-
   setTimeout(() => {
     messageEl.innerText = "";
   }, 2000);
@@ -105,7 +108,6 @@ function handleAddToCart(selectedProductData) {
       chosenQuantity: chosenQuantity,
       selectedColor: selectedColor,
     };
-    // Local Storage
     // Action si local storage contient dejà un article
     if (productInLocalStorage) {
       // Action SI le panier contient déjà cet ours
@@ -137,6 +139,7 @@ function handleAddToCart(selectedProductData) {
 
 // FONCTIONS PAGE PANIER
 
+// Affiche le pri total du panier
 function displayCartTotal() {
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
@@ -154,6 +157,7 @@ function displayCartTotal() {
   totalText.innerHTML = resultFloat;
 }
 
+// Gère l'incrémentation / décrémentation de la quantité séléctionné
 function handleQuantityProduct() {
   let ProductsNodeList = document.querySelectorAll(".oneProductEl");
   ProductsNodeList.forEach((Product) => {
@@ -176,12 +180,11 @@ function handleQuantityProduct() {
   });
 }
 
+// Vide le panier complet
 function deleteAllCart() {
   let clearAll = document.querySelector(".clearAll");
   clearAll.addEventListener("click", () => {
-    // vide le local storage
     localStorage.removeItem("cartItem");
-    // reload la page
     window.location.href = "cart.html";
   });
 }
@@ -209,16 +212,14 @@ function deleteOneElOfCart() {
         displayCartTotal();
       } else {
         localStorage.removeItem("cartItem");
-        // reload la page
         window.location.href = "cart.html";
       }
     });
   });
 }
-
+// Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs sont bien de type "string"
 function getIdsArray(productsArray, productInLocalStorage) {
   //récupérer les id présents dans le panier pour le tableau produit
-  // Si produit dans le panier
   if (productInLocalStorage) {
     Object.values(productInLocalStorage).forEach((product) => {
       if (typeof product.id === "string") {
@@ -227,29 +228,24 @@ function getIdsArray(productsArray, productInLocalStorage) {
         console.log(" type Ids envoyé à l'objet order =/ string ");
       }
     });
-  } else {
-    alert(
-      "le panier est vide, Veuillez séléctionné des articles avant de commander"
-    );
   }
 }
-// REGEX FORMULAIRE
+// REGEXs FORMULAIRE
 function isEmail(email) {
-  return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-  .test(
+  return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
     email
   );
 }
-
 function isOnlyText(input) {
-  return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/
-  .test(input);
+  return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ-\s]+$/.test(
+    input
+  );
 }
 function isAdress(adress) {
   return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
 }
 
-// Validation des données formulaire
+// Validation des données formulaire ( Visuellement )
 function formInputValidation() {
   // Cible les inputs
   const firstName = form.firstName;
@@ -318,19 +314,16 @@ function formInputValidation() {
   }
 }
 
-/// Gestion formulaire
+/// Gestion formulaire ( pour l'envoi de la commande )
 function handleForm() {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let productsArray = [];
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-
     getIdsArray(productsArray, productInLocalStorage); // Return productsArray to send to the APi
-
     formInputValidation();
     // Condition sur les inputs du formulaire
-
     if (
       isOnlyText(form.firstName.value) &&
       isOnlyText(form.lastName.value) &&
@@ -351,12 +344,12 @@ function handleForm() {
         products: productsArray,
       };
       postOrder(order);
-      // Envoi de l'objet de commande / Retourne n id de commande
+      // Envoi de l'objet de commande / Retourne  id de commande
     }
   });
 }
 
-////////////////////// ///////////////////////////////////// FONCTIONS PAGE CONFIRMATION
+   // FONCTIONS PAGE CONFIRMATION
 
 // Vider local storage complet
 function emptyAllLocalStorage() {

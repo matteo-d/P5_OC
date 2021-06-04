@@ -16,28 +16,27 @@ a {
 }
 
 body {
-  
-.heart {
-  position: fixed;
-  top: -1vh;
-  z-index: -1;
-  font-size: 2rem;
-  transform: translateY(0);
-  animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(105vh);
+  .heart {
+    position: fixed;
+    top: -1vh;
+    z-index: -1;
+    font-size: 2rem;
+    transform: translateY(0);
+    animation: fall 3s linear forwards;
   }
-}
+
+  @keyframes fall {
+    to {
+      transform: translateY(105vh);
+    }
+  }
 
   width: 100vw;
   font-family: "Roboto", sans-serif;
   @include styleNavbar;
   main {
     height: 95vh;
-   align-items: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,7 +46,7 @@ body {
       padding-top: 0rem;
       font-size: 1.8rem;
       padding-bottom: 2rem;
-      color: black
+      color: black;
     }
     p {
       text-align: center;
@@ -65,10 +64,8 @@ body {
       padding: 0.8rem 0.6rem 0.8rem 0.6rem;
       color: black;
       font-size: 1rem;
-   
     }
   }
- 
 }
 @media only screen and (max-width: 330px) and (min-width: 0px) {
   nav {
@@ -77,8 +74,6 @@ body {
     align-items: center;
     .cartSvg {
       padding-right: 0rem !important;
-   
-     
     }
   }
 }

@@ -34,7 +34,6 @@ function displayIndexHTML(products) {
 
 //////////////////////////////////////////////// Display HTML PRODUIT
 function displayProductHTML(product) {
-
   if (product !== undefined) { // Si data produit existe 
     verifyProductIdValidity();
   // Affichage du produit

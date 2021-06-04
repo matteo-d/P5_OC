@@ -21,9 +21,9 @@ body {
   font-family: "Roboto", sans-serif;
   @include styleNavbar;
   main {
-    animation: progressive_appearence 0.4s ease-in-out ;
+    animation: progressive_appearence 0.4s ease-in-out;
     padding-top: 3rem;
-    section.options {    
+    section.options {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: 1fr;
@@ -33,45 +33,43 @@ body {
       font-size: 1.6rem;
       padding-bottom: 2rem;
       padding-left: 2rem;
-      
-     .clearAll{  
-       text-align: center;
-    width: 8rem;
-    font-size: 1.4rem;
-      border: solid 2px;
-      cursor: pointer;
-      padding: 0.6rem;
-      background-color: white;
-      &:hover {
-        transform: scale(1.05);
+
+      .clearAll {
+        text-align: center;
+        width: 8rem;
+        font-size: 1.4rem;
+        border: solid 2px;
+        cursor: pointer;
+        padding: 0.6rem;
+        background-color: white;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
-     }
     }
     section.selectedProduct {
       display: flex;
       flex-direction: column;
       padding: 3rem 0rem 1rem 0rem;
       ul {
-     
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-template-rows: 1fr;
-          grid-column-gap: 0px;
-          grid-row-gap: 0px;
-          padding-bottom: 2rem;
-          
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        padding-bottom: 2rem;
+
         li {
-        
           display: flex;
           align-items: center;
           font-size: 1.4rem;
           padding-left: 0.5rem;
-          
+
           img {
             width: 12rem;
             height: 9rem;
             border: solid 1px black;
-                 }
+          }
           .btnMinus {
             border: none;
             background-color: #f1cbcb;
@@ -100,13 +98,13 @@ body {
           }
           .clearCart {
             border: solid 2px;
-        cursor: pointer;
-        padding: 1rem;
-       
-        background-color: white;
-        &:hover {
-          transform: scale(1.05);
-        }
+            cursor: pointer;
+            padding: 1rem;
+
+            background-color: white;
+            &:hover {
+              transform: scale(1.05);
+            }
           }
         }
       }
@@ -125,93 +123,93 @@ body {
       text-align: center;
       padding: 2rem 0rem 1rem 0rem;
     }
-    
-.form {
-	padding: 30px 40px;	
 
-  display: flex;
-  justify-content:center;
-align-items: center;
-flex-direction: column;
-}
+    .form {
+      padding: 30px 40px;
 
-.form-control {
-	margin-bottom: 10px;
-	padding-bottom: 20px;
-  width: 60%;
-	position: relative;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-.form-control label {
-	display: inline-block;
-	margin-bottom: 5px;
-}
+    .form-control {
+      margin-bottom: 10px;
+      padding-bottom: 20px;
+      width: 60%;
+      position: relative;
+    }
 
-.form-control input {
-	border: 2px solid #f0f0f0;
-	border-radius: 4px;
-	display: block;
-	font-family: inherit;
-	font-size: 14px;
-	padding: 10px;
-	width: 100%;
-}
+    .form-control label {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
 
-.form-control input:focus {
-	outline: 0;
-	border-color: #777;
-}
+    .form-control input {
+      border: 2px solid #f0f0f0;
+      border-radius: 4px;
+      display: block;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px;
+      width: 100%;
+    }
 
-.form-control.success input {
-	border-color: #2ecc71;
-}
+    .form-control input:focus {
+      outline: 0;
+      border-color: #777;
+    }
 
-.form-control.error input {
-	border-color: #e74c3c;
-}
+    .form-control.success input {
+      border-color: #2ecc71;
+    }
 
-.form-control i {
-	visibility: hidden;
-	position: absolute;
-	top: 40px;
-	right: 10px;
-}
+    .form-control.error input {
+      border-color: #e74c3c;
+    }
 
-.form-control.success i.fa-check-circle {
-	color: #2ecc71;
-	visibility: visible;
-}
+    .form-control i {
+      visibility: hidden;
+      position: absolute;
+      top: 40px;
+      right: 10px;
+    }
 
-.form-control.error i.fa-exclamation-circle {
-	color: #e74c3c;
-	visibility: visible;
-}
+    .form-control.success i.fa-check-circle {
+      color: #2ecc71;
+      visibility: visible;
+    }
 
-.form-control small {
-	color: #e74c3c;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
-}
+    .form-control.error i.fa-exclamation-circle {
+      color: #e74c3c;
+      visibility: visible;
+    }
 
-.form-control.error small {
-	visibility: visible;
-}
-       #submit {
-        margin-top: 1rem;
-        padding: 1rem 3rem 1rem 3rem;
-        background-color: #2c1f62;
-          color: rgb(248, 247, 247);
-        text-align: center;
-        border-radius: 33px;
-        cursor: pointer;
-        &:hover {
-         transform: scale(1.05)
-        }
+    .form-control small {
+      color: #e74c3c;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      visibility: hidden;
+    }
+
+    .form-control.error small {
+      visibility: visible;
+    }
+    #submit {
+      margin-top: 1rem;
+      padding: 1rem 3rem 1rem 3rem;
+      background-color: #2c1f62;
+      color: rgb(248, 247, 247);
+      text-align: center;
+      border-radius: 33px;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }
- @include styleFooter;
+}
+@include styleFooter;
 
-@include responsivePanier
+@include responsivePanier;
