@@ -241,16 +241,14 @@ function isEmail(email) {
   );
 }
 
-function isName(name) {
+function isOnlyText(input) {
   return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/
-  .test(name);
+  .test(input);
 }
 function isAdress(adress) {
   return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
 }
-function isCity(city) {
-  return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/.test(city);
-}
+
 // Validation des données formulaire
 function formInputValidation() {
   // Cible les inputs
@@ -269,7 +267,7 @@ function formInputValidation() {
 
   if (firstNameValue === "") {
     setErrorFor(firstName, "Prénom invalide");
-  } else if (!isName(firstNameValue)) {
+  } else if (!isOnlyText(firstNameValue)) {
     setErrorFor(firstName, "Prénom invalide");
   } else {
     setSuccessFor(firstName);
@@ -277,7 +275,7 @@ function formInputValidation() {
 
   if (lastNameValue === "") {
     setErrorFor(lastName, "Nom invalide");
-  } else if (!isName(lastNameValue)) {
+  } else if (!isOnlyText(lastNameValue)) {
     setErrorFor(lastName, "Nom invalide");
   } else {
     setSuccessFor(lastName);
@@ -293,7 +291,7 @@ function formInputValidation() {
 
   if (cityValue === "") {
     setErrorFor(city, "Ville invalide");
-  } else if (!isCity(cityValue)) {
+  } else if (!isOnlyText(cityValue)) {
     setErrorFor(city, "Ville invalide");
   } else {
     setSuccessFor(city);
@@ -334,10 +332,10 @@ function handleForm() {
     // Condition sur les inputs du formulaire
 
     if (
-      isName(form.firstName.value) &&
-      isName(form.lastName.value) &&
+      isOnlyText(form.firstName.value) &&
+      isOnlyText(form.lastName.value) &&
       isAdress(form.address.value) &&
-      isCity(form.city.value) &&
+      isOnlyText(form.city.value) &&
       isEmail(form.email.value) &&
       productsArray.length > 0
     ) {
