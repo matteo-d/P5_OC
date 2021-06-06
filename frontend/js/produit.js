@@ -5,6 +5,5 @@
   handleAddToCart(selectedProductData);
   displayNbsItemsInCart();
   handleChooseQuantity();
-  setURLparam ("page",2) 
-})();
-
+  setURLparam("page", 2);
+})()

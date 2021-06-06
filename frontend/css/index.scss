@@ -53,7 +53,7 @@ body {
   }
 
   main {
-    background-color: #f9f9f9;
+    background-color: #f6f6ed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +78,7 @@ body {
         border-right: solid 1px rgb(215, 215, 215);
         padding: 2rem 0rem 2rem 0rem;
         border-top-right-radius: 33px;
-
+        background-color: #f9f9f9;
         border-bottom-right-radius: 33px;
 
         h2 {

@@ -1,10 +1,11 @@
-//////////////////////////////////////////////// Display Index HTML
+// Display Index HTML
 function displayIndexHTML(products) {
-  if (products !== undefined) { // Si data produit existe 
-   
+  if (products !== undefined) {
+    // Si data produit existe
+
     let html = "";
     products.forEach((productElement) => {
-      // Affichage des produits 
+      // Affichage des produits
       html += `
       <div class="product">
           <img src="${productElement.imageUrl}" alt="Ours ${
@@ -28,25 +29,30 @@ function displayIndexHTML(products) {
       document.getElementById("main").innerHTML = html;
     });
   } else {
-    displayError("Le serveur n'est pas connecté, Veuillez réessayer ultérieurement");
+    displayError(
+      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement"
+    );
   }
 }
 
-//////////////////////////////////////////////// Display HTML PRODUIT
+/// Display HTML PRODUIT
 function displayProductHTML(product) {
-  if (product !== undefined) { // Si data produit existe 
+  if (product !== undefined) {
+    // Si data produit existe
     verifyProductIdValidity();
-  // Affichage du produit
-  html = `<div class="product">
-    <img src="${product.imageUrl}" class="img-product" alt="Ours ${product.name}">
+    // Affichage du produit
+    html = `<div class="product">
+    <img src="${product.imageUrl}" class="img-product" alt="Ours ${
+      product.name
+    }">
     <article class="product_infos">
       <h2 id="name_product_${product.name}">${product.name}</h2>
         <p class="product_description" id="description_product_${
           product.name
         }">${product.description}</p>   
         <p class="price" id="price_product_${product.name}">${formatPrice(
-    product.price
-  )}</p>    
+      product.price
+    )}</p>    
         <label for="select__color">
             <h3>Personnaliser votre ours</h3>
         </label>
@@ -66,21 +72,22 @@ function displayProductHTML(product) {
             </article>
         `;
 
-  document.getElementById("main").innerHTML = html;
-  // Affichage des choix de couleurs
-  displayColorsOptions(product);
-}
-else {
-  displayError("Le serveur n'est pas connecté, Veuillez réessayer ultérieurement")
-}
+    document.getElementById("main").innerHTML = html;
+    // Affichage des choix de couleurs
+    displayColorsOptions(product);
+  } else {
+    displayError(
+      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement"
+    );
+  }
 }
 
-//////////////////////////////////////////////// Display HTML CART
+/// Display HTML CART
 function displayCartHTML() {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     // On recupère l'array contenant les objets du local sotrage
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-    //////////////////////// Display des articles présents dans le panier
+    // Display des articles présents dans le panier
     let html = "";
     if (productInLocalStorage) {
       productInLocalStorage.forEach((el) => {
@@ -112,40 +119,36 @@ function displayCartHTML() {
   } else {
     displayError("Le panier est vide ");
   }
-
 }
 
-//////////////////////////////////////////////// Display HTML CONFIRMATION
+// Display HTML CONFIRMATION
 function displayConfirmationHTML() {
   try {
-  let idText = localStorage.getItem("orderId");
-  let main = document.getElementById("main");
-  let price = localStorage.getItem("cartTotalPrice").slice(1, -1);
-  price.slice(1, -1); // Retire les guillemets
-  let html = "";
-  // Affichage du produit
-  html = `<h1> Merci d'avoir effectué vos achats chez Orinoco !  </h1>
+    let idText = localStorage.getItem("orderId");
+    let main = document.getElementById("main");
+    let price = localStorage.getItem("cartTotalPrice").slice(1, -1);
+    price.slice(1, -1); // Retire les guillemets
+    let html = "";
+    // Affichage du produit
+    html = `<h1> Merci d'avoir effectué vos achats chez Orinoco !  </h1>
   <p>Votre commande d'un montant de <strong> ${price}€</strong>  à bien été prise en compte. </p>
   <p> Votre identifiant de commande est :<strong>  ${idText} </strong> </p>
   
-  <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
+  <a id="goToIndex" href="//index.html"> Retour à la page d'acceuil </a>
   `;
-  main.innerHTML = html;}
-  catch (e) {
+    main.innerHTML = html;
+  } catch (e) {
     console.log(e);
     displayError("Cette page n'est plus accessible");
   }
 }
 
-//////////////////////////////////////// Display ERROR
+// Display ERROR
 
 function displayError(errorMessage) {
-  path = window.location.href
-  console.log(path)
-  cleanedPath = path.substring(0, path.indexOf('P5_OC/') + 'P5_OC/'.length);
-  console.log(cleanedPath)
-  pathGoToIndex = cleanedPath +'index.html'
-
+ 
+  pathGoToIndex = "../../index.html";
+  console.log(pathGoToIndex)
 
   let main = document.querySelector("main");
   main.innerHTML = "";

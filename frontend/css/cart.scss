@@ -23,6 +23,7 @@ body {
   main {
     animation: progressive_appearence 0.4s ease-in-out;
     padding-top: 3rem;
+    background-color: #F6F6ED;
     section.options {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -126,7 +127,6 @@ body {
 
     .form {
       padding: 30px 40px;
-
       display: flex;
       justify-content: center;
       align-items: center;

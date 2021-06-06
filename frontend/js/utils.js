@@ -1,4 +1,4 @@
-// FUNCTIONS USED MULTIPLE PAGES
+// FONCTIONS UTILISEES DANS PLUSIEURS PAGES
 
 // Gère l'affichage du nombre de produits dans le panier à côté de l'icone panier
 function displayNbsItemsInCart() {
@@ -18,7 +18,7 @@ function formatPrice(price) {
   }).format(price / 100);
 }
 
-// FUNCTIONS PAGE PRODUIT
+// FONCTIONS PAGE PRODUIT
 
 // Retourne l'ID présent dans l'URL
 function getProductId() {
@@ -77,7 +77,7 @@ function handleChooseQuantity() {
   });
 }
 
-// Affiche le message ajouté au panier
+// Affiche le message "ajouté au panier"
 function messageAddToCart(selectedProductData, message) {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
@@ -139,7 +139,7 @@ function handleAddToCart(selectedProductData) {
 
 // FONCTIONS PAGE PANIER
 
-// Affiche le pri total du panier
+// Affiche le prix total du panier
 function displayCartTotal() {
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
@@ -217,7 +217,7 @@ function deleteOneElOfCart() {
     });
   });
 }
-// Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs sont bien de type "string"
+// Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs soit bien de type "string" avant envoie 
 function getIdsArray(productsArray, productInLocalStorage) {
   //récupérer les id présents dans le panier pour le tableau produit
   if (productInLocalStorage) {
@@ -349,7 +349,7 @@ function handleForm() {
   });
 }
 
-   // FONCTIONS PAGE CONFIRMATION
+// FONCTIONS PAGE CONFIRMATION
 
 // Vider local storage complet
 function emptyAllLocalStorage() {

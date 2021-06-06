@@ -25,7 +25,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #f9f9f9;
+
+    background-color: #f6f6ed;
     .product {
       animation: progressive_appearence 0.4s ease-in-out;
       height: 80%;
@@ -48,6 +49,8 @@ body {
         padding: 2rem 0rem 2rem 0rem;
         border-top-right-radius: 33px;
         border-bottom-right-radius: 33px;
+        background-color: #f9f9f9;
+
         h2 {
           color: rgb(66, 47, 47);
           padding: 0rem 0rem 1rem 2rem;

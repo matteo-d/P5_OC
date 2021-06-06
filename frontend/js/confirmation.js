@@ -1,5 +1,5 @@
-( () => {
-displayConfirmationHTML() 
-emptyAllLocalStorage();
-setInterval(createHeart, 350);
-})();
+(() => {
+  displayConfirmationHTML();
+  emptyAllLocalStorage();
+  setInterval(createHeart, 350);
+})()

@@ -99,7 +99,7 @@ body header a:hover {
   background-color: #fcf8f8;
 }
 body main {
-  background-color: #F9F9F9;
+  background-color: #f6f6ed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,6 +124,7 @@ body main div.product article {
   border-right: solid 1px #d7d7d7;
   padding: 2rem 0rem 2rem 0rem;
   border-top-right-radius: 33px;
+  background-color: #f9f9f9;
   border-bottom-right-radius: 33px;
 }
 body main div.product article h2 {
@@ -145,7 +146,7 @@ body main div.product article p.price {
 body main div.product article a.btnGoTo {
   color: #855f5f;
   padding: 1.7rem 1.5rem 1.7rem 1.5rem;
-  border: solid 3px #F2CCCC;
+  border: solid 3px #f2cccc;
   border-radius: 50px;
   outline: none;
   margin-left: 1.2rem;

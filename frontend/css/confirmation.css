@@ -74,6 +74,7 @@ body main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #F6F6ED;
 }
 body main h1 {
   width: 75%;
