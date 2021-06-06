@@ -1,8 +1,6 @@
-// Display Index HTML
- displayIndexHTML = (products) => {
-  if (products !== undefined) {
-    // Si data produit existe
-
+// Affiche l'HTML de la page d'acceuil
+displayIndexHTML = (products) => {
+  if (products !== undefined) {   // Si data produit existe 
     let html = "";
     products.forEach((productElement) => {
       // Affichage des produits
@@ -30,13 +28,14 @@
     });
   } else {
     displayError(
-      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement", "index.html"
+      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement",
+      "index.html"
     );
   }
-}
+};
 
-/// Display HTML PRODUIT
- displayProductHTML = (product) => {
+///  Affiche l'HTML de la page produit
+displayProductHTML = (product) => {
   if (product !== undefined) {
     // Si data produit existe
     verifyProductIdValidity();
@@ -77,12 +76,13 @@
     displayColorsOptions(product);
   } else {
     displayError(
-      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement","../../index.html"
+      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement",
+      "../../index.html"
     );
   }
-}
+};
 
-/// Display HTML CART
+///  Affiche l'HTML de la page panier
 displayCartHTML = () => {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     // On recupère l'array contenant les objets du local sotrage
@@ -117,17 +117,16 @@ displayCartHTML = () => {
       });
     }
   } else {
-    displayError("Le panier est vide ","../../index.html");
+    displayError("Le panier est vide ", "../../index.html");
   }
-}
+};
 
-// Display HTML CONFIRMATION
- displayConfirmationHTML = () => {
+//  Affiche l'HTML de la confirmation
+displayConfirmationHTML = () => {
   try {
     let idText = localStorage.getItem("orderId");
     let main = document.getElementById("main");
     let price = localStorage.getItem("cartTotalPrice").slice(1, -1);
-    price.slice(1, -1); // Retire les guillemets
     let html = "";
     // Affichage du produit
     html = `<h1> Merci d'avoir effectué vos achats chez Orinoco !  </h1>
@@ -139,13 +138,16 @@ displayCartHTML = () => {
     main.innerHTML = html;
   } catch (e) {
     console.log(e);
-    displayError("Cette page n'est plus accessible, effectuez un nouvel achat pour y accéder de nouveau ;)","../../index.html");
+    displayError(
+      "Cette page n'est plus accessible, effectuez un nouvel achat pour y accéder de nouveau ;)",
+      "../../index.html"
+    );
   }
-}
+};
 
 // Display ERROR
 
- displayError = (errorMessage, path) => {
+displayError = (errorMessage, path) => {
   let main = document.querySelector("main");
   main.innerHTML = "";
   let html = "";
@@ -179,4 +181,4 @@ displayCartHTML = () => {
     <a id="goToIndex" href="${path}"> Retour à la page d'acceuil </a>
     `;
   main.innerHTML = html;
-}
+};
