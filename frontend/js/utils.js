@@ -1,7 +1,7 @@
 // FONCTIONS UTILISEES DANS PLUSIEURS PAGES
 
 // Gère l'affichage du nombre de produits dans le panier à côté de l'icone panier
-function displayNbsItemsInCart() {
+const displayNbsItemsInCart = () => {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     let numberOfArticleInCart = productInLocalStorage.length;
@@ -11,7 +11,7 @@ function displayNbsItemsInCart() {
 }
 
 // Formate le prix aux standard €
-function formatPrice(price) {
+const formatPrice = (price) => {
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",
@@ -21,12 +21,12 @@ function formatPrice(price) {
 // FONCTIONS PAGE PRODUIT
 
 // Retourne l'ID présent dans l'URL
-function getProductId() {
+const getProductId = () => {
   return new URL(window.location.href).searchParams.get("id");
 }
 
 // Vérifie que l'ID présent dans l'URL soit un ID de produit valide
-async function verifyProductIdValidity() {
+ const verifyProductIdValidity = async () => {
   const productId = getProductId(); // ID présent dans l'URL
   const products = await getProductsData();
   let ValidsIdsArray = [];
@@ -36,12 +36,12 @@ async function verifyProductIdValidity() {
   });
   if (!ValidsIdsArray.includes(productId)) {
     // Si l'ID dans l'URL ne correspond a aucun article valable
-    displayError("ID incorrect");
+    displayError("ID incorrect", "../../index.html");
   }
 }
 
 // Mets en place une paire key value dans les params de l'URL
-function setURLparam(key, value) {
+const setURLparam = (key, value) => {
   const queryString = window.location.href;
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
@@ -49,7 +49,7 @@ function setURLparam(key, value) {
 }
 
 // Affichage des choix de couleurs
-function displayColorsOptions(product) {
+const displayColorsOptions = (product) =>{
   let choice = document.querySelector(".section_choice");
   product.colors.forEach((colors) => {
     let option = document.createElement("option");
@@ -59,8 +59,8 @@ function displayColorsOptions(product) {
   });
 }
 
-// Logique quantité + et - des boutons
-function handleChooseQuantity() {
+// Gère le choix de quantité page produit
+const handleChooseQuantity = () => {
   let btnPlus = document.querySelector(".btnPlus");
   let btnMinus = document.querySelector(".btnMinus");
   let quantity = document.querySelector(".quantityOfProduct");
@@ -78,7 +78,7 @@ function handleChooseQuantity() {
 }
 
 // Affiche le message "ajouté au panier"
-function messageAddToCart(selectedProductData, message) {
+const messageAddToCart = (selectedProductData, message) => {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
   setTimeout(() => {
@@ -87,7 +87,7 @@ function messageAddToCart(selectedProductData, message) {
 }
 
 // Gère l'ajout au panier
-function handleAddToCart(selectedProductData) {
+const handleAddToCart = (selectedProductData) =>  {
   // Gestion de l'ajout de l'article au panier
   let btnAddToCart = document.querySelector(".addCart");
   let selectedValue = document.getElementById("select_choice");
@@ -140,7 +140,7 @@ function handleAddToCart(selectedProductData) {
 // FONCTIONS PAGE PANIER
 
 // Affiche le prix total du panier
-function displayCartTotal() {
+const displayCartTotal = () => {
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
@@ -157,8 +157,8 @@ function displayCartTotal() {
   totalText.innerHTML = resultFloat;
 }
 
-// Gère l'incrémentation / décrémentation de la quantité séléctionné
-function handleQuantityProduct() {
+// Gère le choix de quantité pour la page panier 
+const handleQuantityProduct = () => {
   let ProductsNodeList = document.querySelectorAll(".oneProductEl");
   ProductsNodeList.forEach((Product) => {
     let btnPlus = Product.querySelector(".btnPlus");
@@ -181,7 +181,7 @@ function handleQuantityProduct() {
 }
 
 // Vide le panier complet
-function deleteAllCart() {
+const deleteAllCart = () => {
   let clearAll = document.querySelector(".clearAll");
   clearAll.addEventListener("click", () => {
     localStorage.removeItem("cartItem");
@@ -190,7 +190,7 @@ function deleteAllCart() {
 }
 
 // Supprime l'élément cliqué
-function deleteOneElOfCart() {
+const deleteOneElOfCart = () => {
   let arrayAllBtns = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
@@ -218,7 +218,7 @@ function deleteOneElOfCart() {
   });
 }
 // Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs soit bien de type "string" avant envoie 
-function getIdsArray(productsArray, productInLocalStorage) {
+const getIdsArray = (productsArray, productInLocalStorage) => {
   //récupérer les id présents dans le panier pour le tableau produit
   if (productInLocalStorage) {
     Object.values(productInLocalStorage).forEach((product) => {
@@ -231,22 +231,22 @@ function getIdsArray(productsArray, productInLocalStorage) {
   }
 }
 // REGEXs FORMULAIRE
-function isEmail(email) {
+const isEmail = (email) => {
   return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
     email
   );
 }
-function isOnlyText(input) {
+const isOnlyText = (input) => {
   return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ-\s]+$/.test(
     input
   );
 }
-function isAdress(adress) {
+const isAdress = (adress) => {
   return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
 }
 
 // Validation des données formulaire ( Visuellement )
-function formInputValidation() {
+const formInputValidation = () => {
   // Cible les inputs
   const firstName = form.firstName;
   const lastName = form.lastName;
@@ -301,21 +301,21 @@ function formInputValidation() {
     setSuccessFor(email);
   }
 
-  function setErrorFor(input, message) {
+ const setErrorFor = (input, message) => {
     const formControl = input.parentElement;
     const small = formControl.querySelector("small");
     formControl.className = "form-control error";
     small.innerText = message;
   }
 
-  function setSuccessFor(input) {
+ const setSuccessFor = (input) =>{
     const formControl = input.parentElement;
     formControl.className = "form-control success";
   }
 }
 
 /// Gestion formulaire ( pour l'envoi de la commande )
-function handleForm() {
+const handleForm = () => {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -352,7 +352,7 @@ function handleForm() {
 // FONCTIONS PAGE CONFIRMATION
 
 // Vider local storage complet
-function emptyAllLocalStorage() {
+const emptyAllLocalStorage = () => {
   localStorage.removeItem("cartItem");
   localStorage.removeItem("orderId");
   localStorage.removeItem("cartTotalPrice");

@@ -30,7 +30,7 @@ function displayIndexHTML(products) {
     });
   } else {
     displayError(
-      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement"
+      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement", "index.html"
     );
   }
 }
@@ -77,7 +77,7 @@ function displayProductHTML(product) {
     displayColorsOptions(product);
   } else {
     displayError(
-      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement"
+      "Le serveur n'est pas connecté, Veuillez réessayer ultérieurement","../../index.html"
     );
   }
 }
@@ -117,7 +117,7 @@ function displayCartHTML() {
       });
     }
   } else {
-    displayError("Le panier est vide ");
+    displayError("Le panier est vide ","../../index.html");
   }
 }
 
@@ -134,29 +134,24 @@ function displayConfirmationHTML() {
   <p>Votre commande d'un montant de <strong> ${price}€</strong>  à bien été prise en compte. </p>
   <p> Votre identifiant de commande est :<strong>  ${idText} </strong> </p>
   
-  <a id="goToIndex" href="//index.html"> Retour à la page d'acceuil </a>
+  <a id="goToIndex" href="../../index.html"> Retour à la page d'acceuil </a>
   `;
     main.innerHTML = html;
   } catch (e) {
     console.log(e);
-    displayError("Cette page n'est plus accessible");
+    displayError("Cette page n'est plus accessible, effectuez un nouvel achat pour y accéder de nouveau ;)","../../index.html");
   }
 }
 
 // Display ERROR
 
-function displayError(errorMessage) {
- 
-  pathGoToIndex = "../../index.html";
-  console.log(pathGoToIndex)
-
+function displayError(errorMessage, path) {
   let main = document.querySelector("main");
   main.innerHTML = "";
   let html = "";
-  // Affichage du produit
   html = `<style>
  main {
-      z-index : 100;
+      z-index : -100;
       min-width : 100%;
       min-height : 100vh;
       font-family : Roboto;
@@ -181,7 +176,7 @@ function displayError(errorMessage) {
     
     <p> ${errorMessage}</p>
     
-    <a id="goToIndex" href="${pathGoToIndex}"> Retour à la page d'acceuil </a>
+    <a id="goToIndex" href="${path}"> Retour à la page d'acceuil </a>
     `;
   main.innerHTML = html;
 }
