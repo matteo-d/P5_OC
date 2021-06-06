@@ -1,7 +1,7 @@
 // FONCTIONS UTILISEES DANS PLUSIEURS PAGES
 
 // Gère l'affichage du nombre de produits dans le panier à côté de l'icone panier
-const displayNbsItemsInCart = () => {
+ displayNbsItemsInCart = () => {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     let numberOfArticleInCart = productInLocalStorage.length;
@@ -11,7 +11,7 @@ const displayNbsItemsInCart = () => {
 }
 
 // Formate le prix aux standard €
-const formatPrice = (price) => {
+ formatPrice = (price) => {
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",
@@ -21,12 +21,12 @@ const formatPrice = (price) => {
 // FONCTIONS PAGE PRODUIT
 
 // Retourne l'ID présent dans l'URL
-const getProductId = () => {
+ getProductId = () => {
   return new URL(window.location.href).searchParams.get("id");
 }
 
 // Vérifie que l'ID présent dans l'URL soit un ID de produit valide
- const verifyProductIdValidity = async () => {
+  verifyProductIdValidity = async () => {
   const productId = getProductId(); // ID présent dans l'URL
   const products = await getProductsData();
   let ValidsIdsArray = [];
@@ -41,7 +41,7 @@ const getProductId = () => {
 }
 
 // Mets en place une paire key value dans les params de l'URL
-const setURLparam = (key, value) => {
+ setURLparam = (key, value) => {
   const queryString = window.location.href;
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
@@ -49,7 +49,7 @@ const setURLparam = (key, value) => {
 }
 
 // Affichage des choix de couleurs
-const displayColorsOptions = (product) =>{
+ displayColorsOptions = (product) =>{
   let choice = document.querySelector(".section_choice");
   product.colors.forEach((colors) => {
     let option = document.createElement("option");
@@ -60,7 +60,7 @@ const displayColorsOptions = (product) =>{
 }
 
 // Gère le choix de quantité page produit
-const handleChooseQuantity = () => {
+ handleChooseQuantity = () => {
   let btnPlus = document.querySelector(".btnPlus");
   let btnMinus = document.querySelector(".btnMinus");
   let quantity = document.querySelector(".quantityOfProduct");
@@ -78,7 +78,7 @@ const handleChooseQuantity = () => {
 }
 
 // Affiche le message "ajouté au panier"
-const messageAddToCart = (selectedProductData, message) => {
+ messageAddToCart = (selectedProductData, message) => {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
   setTimeout(() => {
@@ -87,7 +87,7 @@ const messageAddToCart = (selectedProductData, message) => {
 }
 
 // Gère l'ajout au panier
-const handleAddToCart = (selectedProductData) =>  {
+ handleAddToCart = (selectedProductData) =>  {
   // Gestion de l'ajout de l'article au panier
   let btnAddToCart = document.querySelector(".addCart");
   let selectedValue = document.getElementById("select_choice");
@@ -140,7 +140,7 @@ const handleAddToCart = (selectedProductData) =>  {
 // FONCTIONS PAGE PANIER
 
 // Affiche le prix total du panier
-const displayCartTotal = () => {
+ displayCartTotal = () => {
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
@@ -158,7 +158,7 @@ const displayCartTotal = () => {
 }
 
 // Gère le choix de quantité pour la page panier 
-const handleQuantityProduct = () => {
+ handleQuantityProduct = () => {
   let ProductsNodeList = document.querySelectorAll(".oneProductEl");
   ProductsNodeList.forEach((Product) => {
     let btnPlus = Product.querySelector(".btnPlus");
@@ -181,7 +181,7 @@ const handleQuantityProduct = () => {
 }
 
 // Vide le panier complet
-const deleteAllCart = () => {
+ deleteAllCart = () => {
   let clearAll = document.querySelector(".clearAll");
   clearAll.addEventListener("click", () => {
     localStorage.removeItem("cartItem");
@@ -190,7 +190,7 @@ const deleteAllCart = () => {
 }
 
 // Supprime l'élément cliqué
-const deleteOneElOfCart = () => {
+ deleteOneElOfCart = () => {
   let arrayAllBtns = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
@@ -218,7 +218,7 @@ const deleteOneElOfCart = () => {
   });
 }
 // Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs soit bien de type "string" avant envoie 
-const getIdsArray = (productsArray, productInLocalStorage) => {
+ getIdsArray = (productsArray, productInLocalStorage) => {
   //récupérer les id présents dans le panier pour le tableau produit
   if (productInLocalStorage) {
     Object.values(productInLocalStorage).forEach((product) => {
@@ -231,22 +231,22 @@ const getIdsArray = (productsArray, productInLocalStorage) => {
   }
 }
 // REGEXs FORMULAIRE
-const isEmail = (email) => {
+ isEmail = (email) => {
   return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
     email
   );
 }
-const isOnlyText = (input) => {
+ isOnlyText = (input) => {
   return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ-\s]+$/.test(
     input
   );
 }
-const isAdress = (adress) => {
+ isAdress = (adress) => {
   return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
 }
 
 // Validation des données formulaire ( Visuellement )
-const formInputValidation = () => {
+ formInputValidation = () => {
   // Cible les inputs
   const firstName = form.firstName;
   const lastName = form.lastName;
@@ -261,6 +261,19 @@ const formInputValidation = () => {
   const cityValue = form.city.value.trim();
   const emailValue = form.email.value.trim();
 
+  
+  setErrorFor = (input, message) => {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector("small");
+    formControl.className = "form-control error";
+    small.innerText = message;
+  }
+
+  setSuccessFor = (input) =>{
+    const formControl = input.parentElement;
+    formControl.className = "form-control success";
+  }
+  
   if (firstNameValue === "") {
     setErrorFor(firstName, "Prénom invalide");
   } else if (!isOnlyText(firstNameValue)) {
@@ -301,21 +314,10 @@ const formInputValidation = () => {
     setSuccessFor(email);
   }
 
- const setErrorFor = (input, message) => {
-    const formControl = input.parentElement;
-    const small = formControl.querySelector("small");
-    formControl.className = "form-control error";
-    small.innerText = message;
-  }
-
- const setSuccessFor = (input) =>{
-    const formControl = input.parentElement;
-    formControl.className = "form-control success";
-  }
 }
 
 /// Gestion formulaire ( pour l'envoi de la commande )
-const handleForm = () => {
+ handleForm = () => {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -352,7 +354,7 @@ const handleForm = () => {
 // FONCTIONS PAGE CONFIRMATION
 
 // Vider local storage complet
-const emptyAllLocalStorage = () => {
+ emptyAllLocalStorage = () => {
   localStorage.removeItem("cartItem");
   localStorage.removeItem("orderId");
   localStorage.removeItem("cartTotalPrice");

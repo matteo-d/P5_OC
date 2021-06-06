@@ -1,5 +1,5 @@
 // Animation coeurs
-const createHeart = () => {
+createHeart = () => {
   const heart = document.createElement("div");
   const main = document.getElementById("main");
   heart.classList.add("heart");

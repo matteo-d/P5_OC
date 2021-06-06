@@ -1,5 +1,5 @@
 // Get Product Data
-async function getProductsData(param) {
+  getProductsData = async (param) =>{
   if (typeof param == "undefined") {
     param = "";
   }
@@ -14,7 +14,7 @@ async function getProductsData(param) {
 }
 
 // Post Order
-async function postOrder(order) {
+  postOrder = async (order) => {
   const settings = {
     method: "POST",
     body: JSON.stringify(order),

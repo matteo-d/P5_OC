@@ -1,5 +1,5 @@
 // Display Index HTML
-function displayIndexHTML(products) {
+ displayIndexHTML = (products) => {
   if (products !== undefined) {
     // Si data produit existe
 
@@ -36,7 +36,7 @@ function displayIndexHTML(products) {
 }
 
 /// Display HTML PRODUIT
-function displayProductHTML(product) {
+ displayProductHTML = (product) => {
   if (product !== undefined) {
     // Si data produit existe
     verifyProductIdValidity();
@@ -83,7 +83,7 @@ function displayProductHTML(product) {
 }
 
 /// Display HTML CART
-function displayCartHTML() {
+displayCartHTML = () => {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     // On recupère l'array contenant les objets du local sotrage
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
@@ -122,7 +122,7 @@ function displayCartHTML() {
 }
 
 // Display HTML CONFIRMATION
-function displayConfirmationHTML() {
+ displayConfirmationHTML = () => {
   try {
     let idText = localStorage.getItem("orderId");
     let main = document.getElementById("main");
@@ -145,7 +145,7 @@ function displayConfirmationHTML() {
 
 // Display ERROR
 
-function displayError(errorMessage, path) {
+ displayError = (errorMessage, path) => {
   let main = document.querySelector("main");
   main.innerHTML = "";
   let html = "";
