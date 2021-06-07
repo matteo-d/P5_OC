@@ -8,30 +8,30 @@
     padding-right: 0rem !important;
   }
 
-  section.selectedProduct {
+  div.selectedProduct {
     align-items: center;
   }
-  section.selectedProduct ul :nth-child(1) {
+  div.selectedProduct ul :nth-child(1) {
     grid-area: 1/1/7/6;
   }
-  section.selectedProduct ul :nth-child(1) img {
+  div.selectedProduct ul :nth-child(1) img {
     width: 80%;
     height: auto;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(2) {
+  div.selectedProduct ul :nth-child(2) {
     grid-area: 7/1/9/2;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(3) {
+  div.selectedProduct ul :nth-child(3) {
     grid-area: 7/2/9/3;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(4) {
+  div.selectedProduct ul :nth-child(4) {
     grid-area: 7/3/9/4;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(5) {
+  div.selectedProduct ul :nth-child(5) {
     grid-area: 7/4/9/5;
     font-size: 1rem;
   }
@@ -108,7 +108,7 @@ body main {
   padding-top: 3rem;
   background-color: #F6F6ED;
 }
-body main section.options {
+body main div.options {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
@@ -119,7 +119,7 @@ body main section.options {
   padding-bottom: 2rem;
   padding-left: 2rem;
 }
-body main section.options .clearAll {
+body main div.options .clearAll {
   text-align: center;
   width: 8rem;
   font-size: 1.4rem;
@@ -128,15 +128,15 @@ body main section.options .clearAll {
   padding: 0.6rem;
   background-color: white;
 }
-body main section.options .clearAll:hover {
+body main div.options .clearAll:hover {
   transform: scale(1.05);
 }
-body main section.selectedProduct {
+body main div.selectedProduct {
   display: flex;
   flex-direction: column;
   padding: 3rem 0rem 1rem 0rem;
 }
-body main section.selectedProduct ul {
+body main div.selectedProduct ul {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
@@ -144,18 +144,18 @@ body main section.selectedProduct ul {
   grid-row-gap: 0px;
   padding-bottom: 2rem;
 }
-body main section.selectedProduct ul li {
+body main div.selectedProduct ul li {
   display: flex;
   align-items: center;
   font-size: 1.4rem;
   padding-left: 0.5rem;
 }
-body main section.selectedProduct ul li img {
+body main div.selectedProduct ul li img {
   width: 12rem;
   height: 9rem;
   border: solid 1px black;
 }
-body main section.selectedProduct ul li .btnMinus {
+body main div.selectedProduct ul li .btnMinus {
   border: none;
   background-color: #f1cbcb;
   color: #dcb1b1;
@@ -165,10 +165,10 @@ body main section.selectedProduct ul li .btnMinus {
   cursor: pointer;
   margin-left: 0.5rem;
 }
-body main section.selectedProduct ul li .btnMinus:hover {
+body main div.selectedProduct ul li .btnMinus:hover {
   transform: scale(1.05);
 }
-body main section.selectedProduct ul li .btnPlus {
+body main div.selectedProduct ul li .btnPlus {
   border: none;
   color: #7e5454;
   background-color: #f2cccc;
@@ -178,25 +178,25 @@ body main section.selectedProduct ul li .btnPlus {
   cursor: pointer;
   margin-left: 0.3rem;
 }
-body main section.selectedProduct ul li .btnPlus:hover {
+body main div.selectedProduct ul li .btnPlus:hover {
   transform: scale(1.05);
 }
-body main section.selectedProduct ul li .clearCart {
+body main div.selectedProduct ul li .clearCart {
   border: solid 2px;
   cursor: pointer;
   padding: 1rem;
   background-color: white;
 }
-body main section.selectedProduct ul li .clearCart:hover {
+body main div.selectedProduct ul li .clearCart:hover {
   transform: scale(1.05);
 }
-body main section.total {
+body main div.total {
   padding-top: 2rem;
   border-top: 1px solid;
   display: flex;
   justify-content: center;
 }
-body main section.total p {
+body main div.total p {
   font-size: 1.5rem;
 }
 body main h2 {
@@ -286,35 +286,35 @@ footer ul {
 }
 
 @media screen and (max-width: 960px) {
-  body main section.options p {
+  body main div.options p {
     padding-left: 2rem;
   }
 }
 @media screen and (max-width: 810px) {
-  body main section.options :nth-child(1) {
+  body main div.options :nth-child(1) {
     display: none;
   }
-  body main section.options :nth-child(2) {
+  body main div.options :nth-child(2) {
     display: none;
   }
-  body main section.options :nth-child(3) {
+  body main div.options :nth-child(3) {
     display: none;
   }
-  body main section.options :nth-child(4) {
+  body main div.options :nth-child(4) {
     display: none;
   }
-  body main section.options :nth-child(5) {
+  body main div.options :nth-child(5) {
     margin-left: 0rem;
   }
 }
 @media screen and (max-width: 810px) and (max-width: 640px) {
-  body main section.options :nth-child(5) {
+  body main div.options :nth-child(5) {
     margin-left: 0rem;
   }
-  body main section.selectedProduct {
+  body main div.selectedProduct {
     align-items: center;
   }
-  body main section.selectedProduct ul {
+  body main div.selectedProduct ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -322,57 +322,57 @@ footer ul {
     grid-row-gap: 0px;
     width: 93%;
   }
-  body main section.selectedProduct ul :nth-child(1) {
+  body main div.selectedProduct ul :nth-child(1) {
     grid-area: 1/1/7/6;
   }
-  body main section.selectedProduct ul :nth-child(1) img {
+  body main div.selectedProduct ul :nth-child(1) img {
     width: 100%;
     height: auto;
   }
-  body main section.selectedProduct ul :nth-child(2) {
+  body main div.selectedProduct ul :nth-child(2) {
     grid-area: 7/1/9/2;
   }
-  body main section.selectedProduct ul :nth-child(3) {
+  body main div.selectedProduct ul :nth-child(3) {
     grid-area: 7/2/9/3;
   }
-  body main section.selectedProduct ul :nth-child(4) {
+  body main div.selectedProduct ul :nth-child(4) {
     grid-area: 7/3/9/4;
   }
-  body main section.selectedProduct ul :nth-child(5) {
+  body main div.selectedProduct ul :nth-child(5) {
     grid-area: 7/4/9/5;
   }
-  body main section.selectedProduct ul :nth-child(5) p {
+  body main div.selectedProduct ul :nth-child(5) p {
     padding: 0.5rem;
   }
-  body main section.total p {
+  body main div.total p {
     text-align: center;
     font-size: 1rem;
   }
 }
 @media screen and (max-width: 810px) and (max-width: 440px) {
-  body main section.selectedProduct {
+  body main div.selectedProduct {
     align-items: center;
   }
-  body main section.selectedProduct ul :nth-child(1) {
+  body main div.selectedProduct ul :nth-child(1) {
     grid-area: 1/1/7/6;
   }
-  body main section.selectedProduct ul :nth-child(1) img {
+  body main div.selectedProduct ul :nth-child(1) img {
     width: 100%;
     height: auto;
   }
-  body main section.selectedProduct ul :nth-child(2) {
+  body main div.selectedProduct ul :nth-child(2) {
     grid-area: 7/1/9/2;
   }
-  body main section.selectedProduct ul :nth-child(3) {
+  body main div.selectedProduct ul :nth-child(3) {
     grid-area: 7/2/9/3;
   }
-  body main section.selectedProduct ul :nth-child(4) {
+  body main div.selectedProduct ul :nth-child(4) {
     grid-area: 7/3/9/4;
   }
-  body main section.selectedProduct ul :nth-child(5) {
+  body main div.selectedProduct ul :nth-child(5) {
     grid-area: 7/4/9/5;
   }
-  body main section.total p {
+  body main div.total p {
     text-align: center;
     font-size: 1.3rem;
   }

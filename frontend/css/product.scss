@@ -62,17 +62,14 @@ body {
         }
         p.price {
           color: rgb(75, 53, 53);
-          font-size: 1.3em;
+          font-size: 1.2em;
           padding-left: 2rem;
           font-weight: bold;
         }
         label {
           padding-left: 2rem;
-
-          h3 {
-            animation: progressive_appearence 0.4s ease-in-out;
-            padding-left: 1.8rem;
-          }
+          animation: progressive_appearence 0.4s ease-in-out;
+      
         }
         select {
           animation: progressive_appearence 0.4s ease-in-out;

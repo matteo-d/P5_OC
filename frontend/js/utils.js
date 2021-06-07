@@ -195,7 +195,6 @@ deleteOneElOfCart = () => {
     btnDelete.addEventListener("click", () => {
       let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
       const indexOfClickedProduct= [...btnDelete.parentElement.children].indexOf(btnDelete)
-
       btnDelete.parentElement.parentElement.remove();
       // On renvoie au local storage le tableau sans l'élément supprimé
       if (productInLocalStorage.length > 1) {

@@ -10,15 +10,11 @@ displayIndexHTML = (products) => {
         productElement.name
       }" class="ourspic">
           <article class="product_infos">
-                <h2 id="name_product_${productElement.name}">${
+                <h2>${
         productElement.name
       }</h2>
-                <p class="product_description" id="description_product_${
-                  productElement.name
-                }">${productElement.description}</p>   
-                <p class="price" id="price_product_${
-                  productElement.name
-                }">${formatPrice(productElement.price)} </p>
+                <p class="product_description" >${productElement.description}</p>   
+                <p class="price" >${formatPrice(productElement.price)} </p>
                 <a href="./frontend/html/product.html?id=${
                   productElement._id
                 }" class="btnGoTo"><strong>Voir</strong></a>
@@ -45,15 +41,13 @@ displayProductHTML = (product) => {
       product.name
     }">
     <article class="product_infos">
-      <h2 id="name_product_${product.name}">${product.name}</h2>
-        <p class="product_description" id="description_product_${
-          product.name
-        }">${product.description}</p>   
-        <p class="price" id="price_product_${product.name}">${formatPrice(
+      <h2 >${product.name}</h2>
+        <p class="product_description">${product.description}</p>   
+        <p class="price" >${formatPrice(
       product.price
     )}</p>    
-        <label for="select__color">
-            <h3>Personnaliser votre ours</h3>
+        <label>
+            Personnaliser votre ours
         </label>
         <select class="section_choice" name="colors" id="select_choice">
         <option disabled > Couleurs </option>

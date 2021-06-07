@@ -8,30 +8,30 @@
     padding-right: 0rem !important;
   }
 
-  section.selectedProduct {
+  div.selectedProduct {
     align-items: center;
   }
-  section.selectedProduct ul :nth-child(1) {
+  div.selectedProduct ul :nth-child(1) {
     grid-area: 1/1/7/6;
   }
-  section.selectedProduct ul :nth-child(1) img {
+  div.selectedProduct ul :nth-child(1) img {
     width: 80%;
     height: auto;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(2) {
+  div.selectedProduct ul :nth-child(2) {
     grid-area: 7/1/9/2;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(3) {
+  div.selectedProduct ul :nth-child(3) {
     grid-area: 7/2/9/3;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(4) {
+  div.selectedProduct ul :nth-child(4) {
     grid-area: 7/3/9/4;
     font-size: 1rem;
   }
-  section.selectedProduct ul :nth-child(5) {
+  div.selectedProduct ul :nth-child(5) {
     grid-area: 7/4/9/5;
     font-size: 1rem;
   }

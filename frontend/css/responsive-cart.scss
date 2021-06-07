@@ -2,7 +2,7 @@
   @media screen and (max-width: 960px) {
     body {
       main {
-        section.options {
+        div.options {
           p {
             padding-left: 2rem;
           }
@@ -13,7 +13,7 @@
   @media screen and (max-width: 810px) {
     body {
       main {
-        section.options {
+        div.options {
           :nth-child(1) {
             display: none;
           }
@@ -35,12 +35,12 @@
     @media screen and (max-width: 640px) {
       body {
         main {
-          section.options {
+          div.options {
             :nth-child(5) {
               margin-left: 0rem;
             }
           }
-          section.selectedProduct {
+          div.selectedProduct {
             align-items: center;
             ul {
               display: grid;
@@ -74,7 +74,7 @@
               }
             }
           }
-          section.total {
+          div.total {
             p {
               text-align: center;
               font-size: 1rem;
@@ -86,7 +86,7 @@
     @media screen and (max-width: 440px) {
       body {
         main {
-          section.selectedProduct {
+          div.selectedProduct {
             align-items: center;
             ul {
               :nth-child(1) {
@@ -110,7 +110,7 @@
               }
             }
           }
-          section.total {
+          div.total {
             p {
               text-align: center;
               font-size: 1.3rem;
@@ -134,7 +134,7 @@
       padding-right: 0rem !important;
     }
   }
-  section.selectedProduct {
+  div.selectedProduct {
     align-items: center;
     ul {
       :nth-child(1) {
