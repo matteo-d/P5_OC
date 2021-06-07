@@ -118,7 +118,7 @@ body main .product article p.product_description {
 }
 body main .product article p.price {
   color: #4b3535;
-  font-size: 1.2em;
+  font-size: 1.3em;
   padding-left: 2rem;
   font-weight: bold;
 }
@@ -247,7 +247,7 @@ body footer ul {
   }
   body main .product article p.price {
     color: #4b3535;
-    font-size: 0.7em;
+    font-size: 1.3em;
     padding-left: 1rem;
     font-weight: bold;
   }
@@ -314,7 +314,7 @@ body footer ul {
     border-radius: 50px;
     width: 3.3rem;
     cursor: pointer;
-    transition: 0.1s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
   body main .product article .message {
     padding-top: 0em;

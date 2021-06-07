@@ -1,32 +1,32 @@
 // FONCTIONS UTILISEES DANS PLUSIEURS PAGES
 
 // Gère l'affichage du nombre de produits dans le panier à côté de l'icone panier
- displayNbsItemsInCart = () => {
+displayNbsItemsInCart = () => {
   if (JSON.parse(localStorage.getItem("cartItem"))) {
     let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
     let numberOfArticleInCart = productInLocalStorage.length;
     let numberOfArticleInCartEl = document.querySelector(".itemsInCart");
     numberOfArticleInCartEl.innerText = numberOfArticleInCart;
   }
-}
+};
 
 // Formate le prix aux standard €
- formatPrice = (price) => {
+formatPrice = (price) => {
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",
   }).format(price / 100);
-}
+};
 
 // FONCTIONS PAGE PRODUIT
 
 // Retourne l'ID présent dans l'URL
- getProductId = () => {
+getProductId = () => {
   return new URL(window.location.href).searchParams.get("id");
-}
+};
 
 // Vérifie que l'ID présent dans l'URL soit un ID de produit valide
-  verifyProductIdValidity = async () => {
+verifyProductIdValidity = async () => {
   const productId = getProductId(); // ID présent dans l'URL
   const products = await getProductsData();
   let ValidsIdsArray = [];
@@ -38,18 +38,18 @@
     // Si l'ID dans l'URL ne correspond a aucun article valable
     displayError("ID incorrect", "../../index.html");
   }
-}
+};
 
 // Mets en place une paire key value dans les params de l'URL
- setURLparam = (key, value) => {
+setURLparam = (key, value) => {
   const queryString = window.location.href;
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
   urlParams.append(key, value);
-}
+};
 
 // Affichage des choix de couleurs
- displayColorsOptions = (product) =>{
+displayColorsOptions = (product) => {
   let choice = document.querySelector(".section_choice");
   product.colors.forEach((colors) => {
     let option = document.createElement("option");
@@ -57,10 +57,10 @@
     option.textContent = colors;
     choice.appendChild(option);
   });
-}
+};
 
 // Gère le choix de quantité page produit
- handleChooseQuantity = () => {
+handleChooseQuantity = () => {
   let btnPlus = document.querySelector(".btnPlus");
   let btnMinus = document.querySelector(".btnMinus");
   let quantity = document.querySelector(".quantityOfProduct");
@@ -75,19 +75,19 @@
     }
     quantity.innerHTML = compteur;
   });
-}
+};
 
 // Affiche le message "ajouté au panier"
- messageAddToCart = (selectedProductData, message) => {
+messageAddToCart = (selectedProductData, message) => {
   let messageEl = document.querySelector(".message");
   messageEl.innerText = `${selectedProductData.name} ${message}`;
   setTimeout(() => {
     messageEl.innerText = "";
   }, 2000);
-}
+};
 
 // Gère l'ajout au panier
- handleAddToCart = (selectedProductData) =>  {
+handleAddToCart = (selectedProductData) => {
   // Gestion de l'ajout de l'article au panier
   let btnAddToCart = document.querySelector(".addCart");
   let selectedValue = document.getElementById("select_choice");
@@ -116,7 +116,6 @@
         let index = productInLocalStorage.findIndex(
           (el) => el.id == cartItem.id
         );
-        console.log(index);
         productInLocalStorage[index].chosenQuantity += cartItem.chosenQuantity;
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         messageAddToCart(selectedProductData, " ajouté ");
@@ -126,7 +125,7 @@
         localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         messageAddToCart(selectedProductData, " ajouté ");
       }
-      // SI c'est le premier article
+      // Action SI c'est le premier article
     } else {
       productInLocalStorage = [];
       productInLocalStorage.push(cartItem);
@@ -135,12 +134,12 @@
     }
     displayNbsItemsInCart();
   });
-}
+};
 
 // FONCTIONS PAGE PANIER
 
 // Affiche le prix total du panier
- displayCartTotal = () => {
+displayCartTotal = () => {
   let totalText = document.getElementById("totalPrice");
   let elPriceNodeList = document.querySelectorAll(".price");
   let elQuantityNodeList = document.querySelectorAll(".quantityOfProduct");
@@ -155,10 +154,10 @@
   let result = arrayOfPrices.reduce(add);
   let resultFloat = result.toFixed(2).replace(".", ",");
   totalText.innerHTML = resultFloat;
-}
+};
 
-// Gère le choix de quantité pour la page panier 
- handleQuantityProduct = () => {
+// Gère le choix de quantité pour la page panier
+handleQuantityProduct = () => {
   let ProductsNodeList = document.querySelectorAll(".oneProductEl");
   ProductsNodeList.forEach((Product) => {
     let btnPlus = Product.querySelector(".btnPlus");
@@ -178,36 +177,40 @@
       displayCartTotal();
     });
   });
+};
+// Find index 
+ findIndex = ( el) => {
+  return [...el.parentElement.children].indexOf(el);
 }
-
 // Vide le panier complet
- deleteAllCart = () => {
+deleteAllCart = () => {
   let clearAll = document.querySelector(".clearAll");
   clearAll.addEventListener("click", () => {
     localStorage.removeItem("cartItem");
     window.location.href = "cart.html";
   });
-}
+};
 
 // Supprime l'élément cliqué
- deleteOneElOfCart = () => {
+deleteOneElOfCart = () => {
   let arrayAllBtns = document.querySelectorAll(".clearCart");
   // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
-      let indexOfClickedProduct = Array.prototype.indexOf.call(
-        arrayAllBtns,
-        btnDelete
-      );
+      const indexOfClickedProduct= [...btnDelete.parentElement.children].indexOf(btnDelete)
+      console.log(productInLocalStorage.length);
+      console.log(indexOfClickedProduct);
       // Au clic supprime le bon élément du local storage en "local"
-      productInLocalStorage.splice(indexOfClickedProduct, 1);
+      // productInLocalStorage.splice(indexOfClickedProduct, 1);
+
       // On renvoie au local storage le tableau sans l'élément supprimé
       // Au clic supprime visuellement l'item que l'on veut supprimer
       btnDelete.parentElement.parentElement.remove();
       // On renvoie au local storage le tableau sans l'élément supprimé
-      localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
-      if (productInLocalStorage.length > 0) {
+      if (productInLocalStorage.length > 1) {
+        productInLocalStorage.splice(indexOfClickedProduct, 1);
+        localStorage.setItem("cartItem", JSON.stringify(productInLocalStorage));
         displayNbsItemsInCart();
         displayCartTotal();
       } else {
@@ -216,10 +219,9 @@
       }
     });
   });
-}
-// Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs soit bien de type "string" avant envoie 
- getIdsArray = (productsArray, productInLocalStorage) => {
-  //récupérer les id présents dans le panier pour le tableau produit
+};
+// Récupère les IDs des produits présent dans le panier, vérifie aussi si les IDs soit bien de type "string" avant envoi de la commande
+getIdsArray = (productsArray, productInLocalStorage) => {
   if (productInLocalStorage) {
     Object.values(productInLocalStorage).forEach((product) => {
       if (typeof product.id === "string") {
@@ -229,24 +231,24 @@
       }
     });
   }
-}
+};
 // REGEXs FORMULAIRE
- isEmail = (email) => {
+isEmail = (email) => {
   return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
     email
   );
-}
- isOnlyText = (input) => {
+};
+isOnlyText = (input) => {
   return /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ-\s]+$/.test(
     input
   );
-}
- isAdress = (adress) => {
+};
+isAdress = (adress) => {
   return /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{6,}$/.test(adress);
-}
+};
 
 // Validation des données formulaire ( Visuellement )
- formInputValidation = () => {
+formInputValidation = () => {
   // Cible les inputs
   const firstName = form.firstName;
   const lastName = form.lastName;
@@ -254,26 +256,24 @@
   const city = form.city;
   const email = form.email;
   // Cible les valeurs inputs
-  // trim = remove space
   const firstNameValue = form.firstName.value.trim();
   const lastNameValue = form.lastName.value.trim();
   const adressValue = address.value.trim();
   const cityValue = form.city.value.trim();
   const emailValue = form.email.value.trim();
 
-  
   setErrorFor = (input, message) => {
     const formControl = input.parentElement;
     const small = formControl.querySelector("small");
     formControl.className = "form-control error";
     small.innerText = message;
-  }
+  };
 
-  setSuccessFor = (input) =>{
+  setSuccessFor = (input) => {
     const formControl = input.parentElement;
     formControl.className = "form-control success";
-  }
-  
+  };
+
   if (firstNameValue === "") {
     setErrorFor(firstName, "Prénom invalide");
   } else if (!isOnlyText(firstNameValue)) {
@@ -313,11 +313,10 @@
   } else {
     setSuccessFor(email);
   }
-
-}
+};
 
 /// Gestion formulaire ( pour l'envoi de la commande )
- handleForm = () => {
+handleForm = () => {
   let form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -349,13 +348,13 @@
       // Envoi de l'objet de commande / Retourne  id de commande
     }
   });
-}
+};
 
 // FONCTIONS PAGE CONFIRMATION
 
 // Vider local storage complet
- emptyAllLocalStorage = () => {
+emptyAllLocalStorage = () => {
   localStorage.removeItem("cartItem");
   localStorage.removeItem("orderId");
   localStorage.removeItem("cartTotalPrice");
-}
+};

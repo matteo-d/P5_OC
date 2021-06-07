@@ -138,7 +138,7 @@ body main div.product article p.product_description {
 }
 body main div.product article p.price {
   color: #4b3535;
-  font-size: 1em;
+  font-size: 1.3em;
   padding-left: 2rem;
   padding-bottom: 3rem;
   font-weight: bold;
@@ -240,7 +240,7 @@ body footer ul {
   }
   body main div.product article p.price {
     padding-bottom: 2rem;
-    font-size: 0.8rem;
+    font-size: 1.3em;
   }
   body main div.product article a.btnGoTo {
     padding: 0.8rem 0.5rem 0.8rem 0.5rem;
@@ -287,7 +287,7 @@ body footer ul {
   }
   body main div.product article p.price {
     padding-bottom: 2rem;
-    font-size: 0.8rem;
+    font-size: 1.3em;
   }
   body main div.product article a.btnGoTo {
     padding: 0.8rem 0.5rem 0.8rem 0.5rem;
@@ -335,7 +335,7 @@ body footer ul {
   }
   body main div.product article p.price {
     padding-bottom: 2rem;
-    font-size: 0.8rem;
+    font-size: 1.3em;
   }
   body main div.product article a.btnGoTo {
     padding: 0.8rem 0.5rem 0.8rem 0.5rem;
@@ -383,7 +383,7 @@ body footer ul {
   }
   body main div.product article p.price {
     padding-bottom: 2rem;
-    font-size: 0.8rem;
+    font-size: 1.3em;
   }
   body main div.product article a.btnGoTo {
     padding: 0.8rem 0.5rem 0.8rem 0.5rem;
