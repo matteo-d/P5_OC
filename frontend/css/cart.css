@@ -98,6 +98,7 @@ body nav .cartSvg {
 }
 body nav .cartSvg span.itemsInCart {
   font-size: 0.6rem;
+  font-weight: bold;
   background-color: #f1cbcb;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   border-radius: 30px;
