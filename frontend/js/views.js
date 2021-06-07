@@ -148,6 +148,10 @@ displayConfirmationHTML = () => {
 // Display ERROR
 
 displayError = (errorMessage, path) => {
+  if (document.querySelector("header")) {
+    let header = document.querySelector("header")
+    header.remove();
+  }
   let main = document.querySelector("main");
   main.innerHTML = "";
   let html = "";

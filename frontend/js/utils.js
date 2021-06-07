@@ -178,10 +178,7 @@ handleQuantityProduct = () => {
     });
   });
 };
-// Find index 
- findIndex = ( el) => {
-  return [...el.parentElement.children].indexOf(el);
-}
+
 // Vide le panier complet
 deleteAllCart = () => {
   let clearAll = document.querySelector(".clearAll");
@@ -194,18 +191,11 @@ deleteAllCart = () => {
 // Supprime l'élément cliqué
 deleteOneElOfCart = () => {
   let arrayAllBtns = document.querySelectorAll(".clearCart");
-  // on va chercher le local storage
   arrayAllBtns.forEach((btnDelete) => {
     btnDelete.addEventListener("click", () => {
       let productInLocalStorage = JSON.parse(localStorage.getItem("cartItem"));
       const indexOfClickedProduct= [...btnDelete.parentElement.children].indexOf(btnDelete)
-      console.log(productInLocalStorage.length);
-      console.log(indexOfClickedProduct);
-      // Au clic supprime le bon élément du local storage en "local"
-      // productInLocalStorage.splice(indexOfClickedProduct, 1);
 
-      // On renvoie au local storage le tableau sans l'élément supprimé
-      // Au clic supprime visuellement l'item que l'on veut supprimer
       btnDelete.parentElement.parentElement.remove();
       // On renvoie au local storage le tableau sans l'élément supprimé
       if (productInLocalStorage.length > 1) {
