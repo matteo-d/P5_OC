@@ -31,5 +31,6 @@
     window.location.href = `${cleanedURL}confirmation.html?orderId=${data.orderId}`; // Lien vers page confirmation
   } catch (e) {
     console.log(e);
+    displayError("Le serveur est inaccessible","../../index.html");
   }
 }

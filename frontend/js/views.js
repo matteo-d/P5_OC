@@ -113,9 +113,7 @@ displayCartHTML = () => {
   } else {
     displayError("Le panier est vide ", "../../index.html");
   }
- // if (document.getElementById("undefined")) {
-  // displayError("Le serveur est inaccessible",   "../../index.html");
- // }
+
 };
 
 //  Affiche l'HTML de la confirmation
