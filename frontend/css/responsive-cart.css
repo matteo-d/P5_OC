@@ -1,0 +1,38 @@
+@media only screen and (max-width: 330px) and (min-width: 0px) {
+  nav {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+  }
+  nav .clearAll {
+    padding-right: 0rem !important;
+  }
+
+  div.selectedProduct {
+    align-items: center;
+  }
+  div.selectedProduct ul :nth-child(1) {
+    grid-area: 1/1/7/6;
+  }
+  div.selectedProduct ul :nth-child(1) img {
+    width: 80%;
+    height: auto;
+    font-size: 1rem;
+  }
+  div.selectedProduct ul :nth-child(2) {
+    grid-area: 7/1/9/2;
+    font-size: 1rem;
+  }
+  div.selectedProduct ul :nth-child(3) {
+    grid-area: 7/2/9/3;
+    font-size: 1rem;
+  }
+  div.selectedProduct ul :nth-child(4) {
+    grid-area: 7/3/9/4;
+    font-size: 1rem;
+  }
+  div.selectedProduct ul :nth-child(5) {
+    grid-area: 7/4/9/5;
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=responsive-cart.css.map */

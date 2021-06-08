@@ -1,0 +1,290 @@
+@mixin responsiveIndex {
+  @media only screen and (max-width: 1240px) and (min-width: 1026px) {
+    body {
+      main {
+        div.product {
+          height: 22rem;
+          img.ourspic {
+            width: 33rem;
+          }
+          article {
+            p.product_description {
+              padding: 0rem 3rem 0.5rem 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1026px) and (min-width: 840px) {
+    body {
+      main {
+        div.product {
+          height: 22rem;
+          img.ourspic {
+            width: 30rem;
+          }
+          article {
+            h2 {
+              font-size: 2.2rem;
+            }
+            p.product_description {
+              padding: 0rem 2rem 0.5rem 2rem;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 840px) and (min-width: 732px) {
+    body {
+      main {
+        div.product {
+          height: 22rem;
+          img.ourspic {
+            width: 25rem;
+          }
+          article {
+            h2 {
+              font-size: 2.2rem;
+            }
+            p.product_description {
+              padding: 0rem 2rem 0.5rem 2rem;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 732px) and (min-width: 550px) {
+    body {
+      main {
+        div.product {
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          img.ourspic {
+            width: auto;
+            height: 28rem;
+            border-top: solid 1px rgb(215, 215, 215);
+            border-left: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+            border-top-right-radius: 33px;
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 33px;
+          }
+          article {
+            border-left: solid 1px rgb(215, 215, 215);
+            border-bottom: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-bottom-left-radius: 33px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 33px;
+            h2 {
+              font-size: 2.1rem;
+              padding-bottom: 0.8rem;
+            }
+            p.product_description {
+              padding-top: 0.2rem;
+              padding-bottom: 0.5rem;
+              font-size: 1rem;
+            }
+            p.price {
+              padding-bottom: 2rem;
+              font-size: 1.1em;
+            }
+            a.btnGoTo {
+              padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+              border: solid 2px #f2cccc;
+              font-size: 1rem;
+              margin-left: 1.6rem;
+              &:hover {
+                padding: 0.7rem 0.6rem 0.7rem 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 550px) and (min-width: 480px) {
+    body {
+      main {
+        div.product {
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          img.ourspic {
+            width: auto;
+            height: 23rem;
+
+            border-top: solid 1px rgb(215, 215, 215);
+            border-left: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-top-right-radius: 33px;
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 33px;
+          }
+          article {
+            border-left: solid 1px rgb(215, 215, 215);
+            border-bottom: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-bottom-left-radius: 33px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 33px;
+            h2 {
+              font-size: 1.8rem;
+              padding-bottom: 0.8rem;
+            }
+            p.product_description {
+              padding-top: 0.2rem;
+              padding-bottom: 0.5rem;
+              font-size: 1rem;
+            }
+            p.price {
+              padding-bottom: 2rem;
+              font-size: 1.1em;
+            }
+            a.btnGoTo {
+              padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+              border: solid 2px #f2cccc;
+              font-size: 1rem;
+              margin-left: 1.6rem;
+              &:hover {
+                padding: 0.7rem 0.6rem 0.7rem 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 480px) and (min-width: 400px) {
+    body {
+      main {
+        div.product {
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          img.ourspic {
+            width: auto;
+            height: 20rem;
+
+            border-top: solid 1px rgb(215, 215, 215);
+            border-left: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-top-right-radius: 33px;
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 33px;
+          }
+          article {
+            border-left: solid 1px rgb(215, 215, 215);
+            border-bottom: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-bottom-left-radius: 33px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 33px;
+            h2 {
+              font-size: 1.6rem;
+              padding-bottom: 0.8rem;
+            }
+            p.product_description {
+              padding-top: 0.2rem;
+              padding-bottom: 0.5rem;
+              font-size: 1rem;
+              padding-right: 1rem;
+            }
+            p.price {
+              padding-bottom: 2rem;
+              font-size: 1.1em;
+            }
+            a.btnGoTo {
+              padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+              border: solid 2px #f2cccc;
+              font-size: 1rem;
+              margin-left: 1.6rem;
+              &:hover {
+                padding: 0.7rem 0.6rem 0.7rem 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 400px) and (min-width: 0px) {
+    body {
+      main {
+        div.product {
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          img.ourspic {
+            width: auto;
+            height: 17rem;
+
+            border-top: solid 1px rgb(215, 215, 215);
+            border-left: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-top-right-radius: 33px;
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 33px;
+          }
+          article {
+            border-left: solid 1px rgb(215, 215, 215);
+            border-bottom: solid 1px rgb(215, 215, 215);
+            border-right: solid 1px rgb(215, 215, 215);
+
+            border-bottom-left-radius: 33px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 33px;
+            h2 {
+              font-size: 1.5rem;
+              padding-bottom: 0.8rem;
+            }
+            p.product_description {
+              padding-top: 0.2rem;
+              padding-bottom: 0.5rem;
+              font-size: 1rem;
+              padding-right: 1rem;
+            }
+            p.price {
+              padding-bottom: 2rem;
+                 font-size: 1.1em;
+            }
+            a.btnGoTo {
+              padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+              border: solid 2px #f2cccc;
+              font-size: 1rem;
+              margin-left: 1.6rem;
+              &:hover {
+                padding: 0.7rem 0.6rem 0.7rem 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 330px) and (min-width: 0px) {
+    nav {
+      display: flex !important;
+      justify-content: space-around;
+      align-items: center;
+      .cartSvg {
+        padding-right: 0rem !important;
+      }
+    }
+  }
+}

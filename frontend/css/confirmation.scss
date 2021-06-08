@@ -1,0 +1,80 @@
+@import "mixins.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  outline-color: black;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  .heart {
+    position: fixed;
+    top: -1vh;
+    z-index: 1;
+    font-size: 2rem;
+    transform: translateY(0);
+    animation: fall 3s linear forwards;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(105vh);
+    }
+  }
+
+  width: 100vw;
+  font-family: "Roboto", sans-serif;
+  @include styleNavbar;
+  main {
+    height: 95vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F6F6ED;
+    h1 {
+      width: 75%;
+      text-align: center;
+      padding-top: 0rem;
+      font-size: 1.8rem;
+      padding-bottom: 2rem;
+      color: black;
+    }
+    p {
+      text-align: center;
+      width: 65%;
+      padding-bottom: 1rem;
+      color: whitesmoke;
+      font-size: 1.5rem;
+      color: black;
+    }
+    a {
+      text-align: center;
+      width: 30%;
+      border: solid 2px #e8adad;
+      border-radius: 50px;
+      padding: 0.8rem 0.6rem 0.8rem 0.6rem;
+      color: black;
+      font-size: 1rem;
+    }
+  }
+}
+@media only screen and (max-width: 330px) and (min-width: 0px) {
+  nav {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    .cartSvg {
+      padding-right: 0rem !important;
+    }
+  }
+}
